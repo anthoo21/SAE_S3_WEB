@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Airbutus+Slab');
+@import url('https://fonts.googleapis.com/css2?family=El+Mukta');
+/*  __________________________________________________________________________ */
+/* |                         PAGE DE CONNEXION                                |*/
+/* |__________________________________________________________________________|*/
+body {
+	background-color:#D1F2EB;
+	font-family:"Arbutus Slab";
+}
+.container {
+	background-color:white;
+	line-height1.5em;
+	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+[class*="col-"] {
+    line-height: 70px;			/* hauteur des lignes */	
+    text-align: center;			/* Centrage horizontal */
+}
+.nav {
+	border-bottom : 7px solid #5AC1A4;	/* Bordure bas de la nav-bar verte */
+}
+/* Logo MedSoft */
+.logo1, .logo2 {
+	width:40%;
+}
+/*Image de fond avec "Bienvenue"*/
+.home {
+	background-image:url('../assets/image_fond.png');
+	background-size:100%;
+	height:300px;
+	padding-top:10%;
+	padding-left:5%;
+	font-size:2em;
+	font-weight:bold;
+
+}
+/* "Connexion à mon compte" */
+.titre {
+	text-align:center;
+	font-size:1.2em;
+	text-decoration:underline;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-bottom:5%;
+}
+/*Formulaire de connexion*/
+form {
+	font-size:2em;
+	font-family : "Arbulatus Slab";
+}
+/*Bouton "Me Connecter"*/
+.buttonConnect {
+	background:#5BC1A5;
+	color:white;
+	border:2px solid rgba(20, 153, 153, 0.4);
+	border-radius:10px;
+	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
+	width:auto;
+	height:auto;
+	text-align:center;
+}
+/* Espacement entre les divs */
+div {
+	margin-bottom:20px;
+}
+
+.fond {
+	background-color: lightcyan;
+}
+
+/*  __________________________________________________________________________ */
+/* |                         PAGE D'ACCUEIL MEDECIN                           |*/
+/* |__________________________________________________________________________|*/
+
+/* Logo nav_bar */
+.logo3, .logo4 {
+	width:20%;
+}
+
+.logo5 {
+	width:16%;
+}
+
+.doctorName {
+	font-size:2.5em;
+}
+
+hr {
+	border: 2px solid #5BC1A5;
+	width: 600px;	
+}
+
+.cadre {
+	background-color: #EFF0F0;
+	text-align:center;
+}
+
+.formulaire {
+	margin:auto;
+}
+
+.testtest {
+	background-color:#88E1D6;
+	color:white;
+}
