@@ -9,13 +9,14 @@ body {
 }
 .container {
 	background-color:white;
-	line-height1.5em;
+	line-height:1.5em;
 	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 [class*="col-"] {
     line-height: 70px;			/* hauteur des lignes */	
     text-align: center;			/* Centrage horizontal */
 }
+/* Navbar */
 .nav {
 	border-bottom : 7px solid #5AC1A4;	/* Bordure bas de la nav-bar verte */
 }
@@ -32,7 +33,6 @@ body {
 	padding-left:5%;
 	font-size:2em;
 	font-weight:bold;
-
 }
 /* "Connexion à mon compte" */
 .titre {
@@ -44,9 +44,13 @@ body {
 	padding-bottom:5%;
 }
 /*Formulaire de connexion*/
-form {
+.formConnexion {
 	font-size:2em;
 	font-family : "Arbulatus Slab";
+}
+/* Alignement à droite des labels du form*/
+.rightAlign {
+	text-align:right;
 }
 /*Bouton "Me Connecter"*/
 .buttonConnect {
@@ -58,48 +62,148 @@ form {
 	width:auto;
 	height:auto;
 	text-align:center;
+	padding:10px;
+}
+/* Div contenant le bouton "Me connecter"*/
+.btnConnect {
+	text-align:center;
 }
 /* Espacement entre les divs */
 div {
 	margin-bottom:20px;
 }
 
-.fond {
-	background-color: lightcyan;
-}
-
 /*  __________________________________________________________________________ */
 /* |                         PAGE D'ACCUEIL MEDECIN                           |*/
 /* |__________________________________________________________________________|*/
 
-/* Logo nav_bar */
+/* Logo profil patient et recherche de la navbar */
 .logo3, .logo4 {
 	width:20%;
 }
-
+/* Logo déconnexion de la navbar */
 .logo5 {
 	width:16%;
 }
-
+.logos {
+	padding:20px;
+	text-align:right;
+}
+/* Logo ajouter un patient*/
+.logo6 {
+	width:5%;
+}
+/* Nom du docteur authentifié */
 .doctorName {
 	font-size:2.5em;
-}
-
-hr {
-	border: 2px solid #5BC1A5;
-	width: 600px;	
-}
-
-.cadre {
-	background-color: #EFF0F0;
+	text-decoration:underline #5AC1A4;
 	text-align:center;
 }
-
-.formulaire {
-	margin:auto;
+/* Div permettant de mettre un espace blanc entre 
+le nom du docteur et la recherche par critère*/
+.espaceB {
+	padding:0px 30px 0px 30px;
+}
+/* Div contenant le formulaire */
+.rechCri {
+	background:lightgrey;
+}
+/* Formulaire de recherche de patients par critères */
+.rechercheCriteres {
+	font-size:1.2em;
+	padding:10px;
+	height:90px;
+}	
+/* Champs de saisies */
+.inputCritere {
+	padding:20px;
+}
+/* Saisies du formulaire */
+[type*="texte"] {
+	line-height:20%;
+	border:1px solid #B4B8B9;
+}
+/* Bouton rechercher du formulaire de recherche par critères*/
+.buttonRechercher {
+	background:lightgrey;
+	border:2px solid #B4B8B9;
+	border-radius:10px;
+	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
+	width:auto;
+	height:auto;
+	text-align:center;
+}
+/* Div du bouton "rechercher" du formulaire*/
+.divBtn {
+	line-height:50px;
+	padding:5px;
+	text-align:center;
+}
+/* Entête du tableau */
+th {
+	background:#88E1D6;
+	color:white;
+	border:1px solid white;
+}
+/* Div conenant le tableau*/ 
+.divTable {
+	padding:0px 30px 0px 30px;
+	text-align:center;
+}
+/* Cellules du tableau */
+th, td {
+	padding:10px;
+	text-align:center;
+}
+tr, td {
+	border:1px solid #B4B8B9;
+}
+/* Div contenant le bouton "Ajouter un patient" */
+.divBtnA {
+	padding:30px;
+	font-size:1.2em;
+}
+/* Lien du bouton "Ajouter" */
+a {
+	color:black;
+}
+a:hover {
+	color:black;
 }
 
-.testtest {
-	background-color:#88E1D6;
-	color:white;
+/*  __________________________________________________________________________ */
+/* |                         PAGE DE CREATION D'UN PATIENT                    |*/
+/* |__________________________________________________________________________|*/
+
+/* Titre création d'un patient*/
+.titreCreation {
+	text-decoration:none;
+	font-size:2em;
+	height:20px;
+	text-align:left;
+	padding:30px;
+}
+/* Formatage du padding */
+.paddingForm {
+	padding:30px;
+}
+
+/* Formulaire de création d'un patient*/
+.formPatient {
+	border:1px solid #B4B8B9;
+	line-height:40px;
+	font-size:1.1em;
+}
+.row {
+	height:auto;	/* Hauteur des lignes */
+	border:1px solid red;
+}
+/* Div contenant le bouton "Valider" du formulaire*/
+.btnValid {
+	text-align:center;
+	font-size:1.5em;
+}
+/* Formatage des boutons radios */
+[type*="radio"] {
+	width:15%;
 }
