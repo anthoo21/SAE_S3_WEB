@@ -44,3 +44,40 @@
 [Fri Dec 02 08:08:17.096430 2022] [mpm_winnt:notice] [pid 4456:tid 620] AH00418: Parent: Created child process 13296
 [Fri Dec 02 08:08:18.146360 2022] [ssl:warn] [pid 13296:tid 416] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Fri Dec 02 08:08:18.147409 2022] [ssl:warn] [pid 13296:tid 416] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 02 08:08:18.639785 2022] [ssl:warn] [pid 13296:tid 416] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Dec 02 08:08:18.640815 2022] [ssl:warn] [pid 13296:tid 416] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 02 08:08:18.641820 2022] [ssl:warn] [pid 13296:tid 416] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 02 08:08:18.857318 2022] [mpm_winnt:notice] [pid 13296:tid 416] AH00354: Child: Starting 64 worker threads.
+[Fri Dec 02 08:08:39.068909 2022] [:error] [pid 13296:tid 1284] [client ::1:59419] PHP Notice:  Undefined variable: resultats in Z:\\UWamp_SAE_WEB\\www\\cabinet_medical\\pages\\accueilMedecin.php on line 91
+[Fri Dec 02 08:08:39.069738 2022] [:error] [pid 13296:tid 1284] [client ::1:59419] PHP Stack trace:
+[Fri Dec 02 08:08:39.070541 2022] [:error] [pid 13296:tid 1284] [client ::1:59419] PHP   1. {main}() Z:\\UWamp_SAE_WEB\\www\\cabinet_medical\\pages\\accueilMedecin.php:0
+[Fri Dec 02 08:08:39.071299 2022] [:error] [pid 13296:tid 1284] [client ::1:59419] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on unknown in Z:\\UWamp_SAE_WEB\\www\\cabinet_medical\\pages\\accueilMedecin.php:91\nStack trace:\n#0 {main}\n  thrown in Z:\\UWamp_SAE_WEB\\www\\cabinet_medical\\pages\\accueilMedecin.php on line 91
+[Mon Dec 05 08:11:13.236423 2022] [ssl:warn] [pid 13876:tid 616] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:11:13.245399 2022] [ssl:warn] [pid 13876:tid 616] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:11:13.494733 2022] [core:warn] [pid 13876:tid 616] AH00098: pid file Z:/UWamp_SAE_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Dec 05 08:11:13.549586 2022] [ssl:warn] [pid 13876:tid 616] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Dec 05 08:11:13.550583 2022] [ssl:warn] [pid 13876:tid 616] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:11:13.550583 2022] [ssl:warn] [pid 13876:tid 616] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:11:15.489725 2022] [mpm_winnt:notice] [pid 13876:tid 616] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Mon Dec 05 08:11:15.490722 2022] [mpm_winnt:notice] [pid 13876:tid 616] AH00456: Server built: Jan 28 2016 09:58:25
+[Mon Dec 05 08:11:15.490722 2022] [core:notice] [pid 13876:tid 616] AH00094: Command line: 'Z:\\UWamp_SAE_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/UWamp_SAE_WEB/bin/apache -f Z:\\UWamp_SAE_WEB\\bin\\apache\\conf\\httpd.conf'
+[Mon Dec 05 08:11:15.498701 2022] [mpm_winnt:notice] [pid 13876:tid 616] AH00418: Parent: Created child process 14008
+[Mon Dec 05 08:11:16.069546 2022] [ssl:warn] [pid 14008:tid 636] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:11:16.069546 2022] [ssl:warn] [pid 14008:tid 636] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:11:16.342815 2022] [ssl:warn] [pid 14008:tid 636] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Dec 05 08:11:16.343813 2022] [ssl:warn] [pid 14008:tid 636] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:11:16.343813 2022] [ssl:warn] [pid 14008:tid 636] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:11:16.383706 2022] [mpm_winnt:notice] [pid 14008:tid 636] AH00354: Child: Starting 64 worker threads.
+[Mon Dec 05 08:11:52.977495 2022] [mpm_winnt:crit] [pid 14008:tid 636] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Mon Dec 05 08:21:13.255938 2022] [ssl:warn] [pid 1996:tid 600] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:21:13.256935 2022] [ssl:warn] [pid 1996:tid 600] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:21:13.419499 2022] [core:warn] [pid 1996:tid 600] AH00098: pid file Z:/UWamp_SAE_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Dec 05 08:21:13.475351 2022] [ssl:warn] [pid 1996:tid 600] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Dec 05 08:21:13.476475 2022] [ssl:warn] [pid 1996:tid 600] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:21:13.477222 2022] [ssl:warn] [pid 1996:tid 600] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Dec 05 08:21:13.787166 2022] [mpm_winnt:notice] [pid 1996:tid 600] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Mon Dec 05 08:21:13.788001 2022] [mpm_winnt:notice] [pid 1996:tid 600] AH00456: Server built: Jan 28 2016 09:58:25
+[Mon Dec 05 08:21:13.788212 2022] [core:notice] [pid 1996:tid 600] AH00094: Command line: 'Z:\\UWamp_SAE_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/UWamp_SAE_WEB/bin/apache -f Z:\\UWamp_SAE_WEB\\bin\\apache\\conf\\httpd.conf'
+[Mon Dec 05 08:21:13.794462 2022] [mpm_winnt:notice] [pid 1996:tid 600] AH00418: Parent: Created child process 11056
+[Mon Dec 05 08:21:14.411005 2022] [ssl:warn] [pid 11056:tid 620] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Dec 05 08:21:14.412003 2022] [ssl:warn] [pid 11056:tid 620] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name

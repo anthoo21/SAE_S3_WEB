@@ -28,10 +28,6 @@
 
 			try {
 				$pdo=new PDO($dsn,$user,$pass,$options);
-				$derniereVisite = "SELECT date_visite FROM visites WHERE id_visite = (SELECT MAX(id_visite) FROM visites)";
-				$requeteSelectALL="SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale"; 
-				$resultats=$pdo->query($requeteSelectALL);
-				$resultVisite=$pdo->query($derniereVisite);
 			} catch(PDOException $e){
 				//Il y a eu une erreur 
 				echo "<h1>Erreur : ".$e->getMessage();
@@ -70,11 +66,23 @@
 					</div>
 					<!--Recherche par nom prénom -->
 					<div class="col-md-3 col-sm-4 col-xs-12 inputCritere">
-						<input type="texte" name="rechercheNom" class="form-control" placeholder="NOM Prénom">
+						<input type="texte" name="rechercheNom" class="form-control" placeholder="NOM" value="<?php 
+						if(isset($_POST['rechercheNom'])) {
+							echo $_POST['rechercheNom'];
+						} else {
+							echo '';
+						}
+						?>">
 					</div>
 					<!--Recherche par numéro de sécurité sociale -->
 					<div class="col-md-3 col-sm-4 col-xs-12 inputCritere">
-						<input type="texte" name="rechercheNSecu" class="form-control" placeholder="N° Sécurité Sociale">
+						<input type="texte" name="rechercheNSecu" class="form-control" placeholder="N° Sécurité Sociale" value="<?php 
+						if(isset($_POST['rechercheNSecu'])) {
+							echo $_POST['rechercheNSecu'];
+						} else {
+							echo '';
+						}
+						?>">
 					</div>
 					<!--Bouton rechercher -->
 					<div class="col-md-3 col-sm-4 col-xs-12 divBtn">
@@ -98,6 +106,26 @@
 							<th>Dernière visite</th>
 						</tr>
 					<?php 
+						if((isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" ) || (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "")) {
+							$requeteSelect="";
+							$nom = "%".$_POST['rechercheNom']."%";
+							$nsecu = "%".$_POST['rechercheNSecu']."%";
+							if(isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" && isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
+								$requeteSelect="WHERE nom LIKE '".$nom."' AND numeroCarteVitale LIKE '".$nsecu."'";
+							} else if(isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "") {
+								$requeteSelect="WHERE nom LIKE '".$nom."'";
+							} else if (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
+								$requeteSelect="WHERE numeroCarteVitale LIKE '".$nsecu."'";
+							}
+							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect);
+							$resultats->bindParam('nom', $_POST['rechercheNom']);
+							$resultats->bindParam('nsecu', $_POST['rechercheNSecu']);
+							$resultats->execute();
+
+						} else {
+							$requeteSelectALL="SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale"; 
+							$resultats=$pdo->query($requeteSelectALL);
+						}
 						while($ligne = $resultats->fetch()) {
 							echo '<tr>';
 								echo '<td>'.$ligne['nom'].'</td>';

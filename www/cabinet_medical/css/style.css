@@ -196,7 +196,7 @@ a:hover {
 }
 .row {
 	height:auto;	/* Hauteur des lignes */
-	border:1px solid red;
+	/*border:1px solid red;*/
 }
 /* Div contenant le bouton "Valider" du formulaire*/
 .btnValid {

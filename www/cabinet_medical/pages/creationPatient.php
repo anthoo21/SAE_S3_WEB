@@ -3,8 +3,8 @@
   <head>
       <title>MEDSOFT - Accueil Medecin</title>
       <meta charset="utf-8">
-	  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-	  <link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.css">
+	  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+	  <link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.css" />
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
