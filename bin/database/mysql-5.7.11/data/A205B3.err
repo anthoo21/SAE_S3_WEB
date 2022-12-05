@@ -130,3 +130,7 @@ Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
 2022-12-05T07:21:14.545621Z 0 [Note] IPv6 is available.
 2022-12-05T07:21:14.546618Z 0 [Note]   - '::' resolves to '::';
 2022-12-05T07:21:14.547276Z 0 [Note] Server socket created on IP: '::'.
+2022-12-05T07:21:14.601416Z 0 [Note] InnoDB: Buffer pool(s) load completed at 221205  8:21:14
+2022-12-05T07:21:14.928993Z 0 [Note] Event Scheduler: Loaded 0 events
+2022-12-05T07:21:14.928993Z 0 [Note] Z:\UWamp_SAE_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
