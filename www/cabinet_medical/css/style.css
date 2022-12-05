@@ -207,3 +207,7 @@ a:hover {
 [type*="radio"] {
 	width:15%;
 }
+/* Champs du formulaire vide*/
+.enRouge {
+	color:red;
+}
