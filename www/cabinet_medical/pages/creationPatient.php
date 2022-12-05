@@ -11,6 +11,24 @@
   <body>
   
 	<?php
+		$host = 'localhost';
+		$db = 'medsoft';
+		$user = 'root';
+		$pass = 'root';
+		$charset = 'utf8mb4';
+		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+		$options = [
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+		PDO::ATTR_EMULATE_PREPARES => false
+		];
+		try {
+			$pdo = new PDO($dsn, $user, $pass, $options);
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			//throw new PDOException($e->getMessage(), (int)$e->getCode());
+		}
+
 		//Récupération des données
 		$ToutOK=true; //Savoir si toutes les données ont été rentrées
 		
@@ -31,8 +49,10 @@
 		}
 		
 		//Récupération du genre
-		if(isset($_POST['genre'])) {
-			$genre=htmlspecialchars($_POST['genre']);
+		if(isset($_POST['genre']) and $_POST['genre']=="Féminin") {
+			$genre="01";
+		} else if(isset($_POST['genre']) and $_POST['genre']=="Masculin") {
+			$genre="02";
 		} else {
 			$genre="";
 			$ToutOK=false;
@@ -55,10 +75,10 @@
 		}
 		
 		//Récupération de l'email
-		if(isset($_POST['email']) and $_POST['email']!="") {
-			$email=htmlspecialchars($_POST['email']);
+		if(isset($_POST['mail']) and $_POST['mail']!="") {
+			$mail=htmlspecialchars($_POST['mail']);
 		} else {
-			$email="";
+			$mail="";
 			$ToutOK=false;
 		}
 		
@@ -87,16 +107,36 @@
 		}
 		
 		//Récupération des allergies
-		if(isset($_POST['allergies']) and $_POST['allergies']!="") {
-			$allergies=htmlspecialchars($_POST['allergies']);
+		if(isset($_POST['allergies']) and $_POST['allergies']=="Oui") {
+			$allergies="Oui";
+		} else if(isset($_POST['allergies']) and $_POST['allergies']=="Non") {
+			$allergies="Non";
 		} else {
 			$allergies="";
 			$ToutOK=false;
 		}
-		
-		//TODO
-		// if($ToutOK) {
-		
+
+		//Récupération des commentaires
+		if(isset($_POST['commentaires'])) {
+			$commentaires=htmlspecialchars($_POST['commentaires']);
+		} else {
+			$commentaires="";
+			$ToutOK=false;
+		}
+
+		//Récupération de l'ID du médecin connecté => TODO
+		$id_medecin="001";
+
+		try {
+			if($ToutOK) {
+				$requete="INSERT INTO patients (numeroCarteVitale, nom, prenom, id_genre, tel, email, dateNai, poids, id_medecin, allergies, commentaires)
+						VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				$stmt = $pdo->prepare($requete);
+				$stmt->execute([$noCV, $nom, $prenom, $genre, $portable, $mail, $date, $poids, $id_medecin, $allergies, $commentaires]);
+			}
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
 	?>
 	<div class="container">
 		<!-- Nav-bar -->
@@ -140,7 +180,7 @@
 									</div>
 									<!--Saisie du nom-->
 									<div class="row">
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12 <?php if($nom=="") { echo "enRouge";}?>">
 											<label for="nom">Nom : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -149,7 +189,7 @@
 									</div>
 									<div class="row">
 										<!--Saisie du prénom-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($prenom=="") { echo "enRouge";}?>">
 											<label for="prenom">Prénom : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -158,19 +198,19 @@
 									</div>
 									<div class="row">
 										<!--Saisie du Genre-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($genre=="") { echo "enRouge";}?>">
 											<label for="genre">Genre: </label>
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-6">
-											<input type="radio" name="genre" class="form-control">Féminin
+											<input type="radio" name="genre"  value="Féminin" class="form-control" <?php if($genre=="Féminin") { echo 'checked="checked"'; }?>>Féminin
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-6">
-											<input type="radio" name="genre" class="form-control">Masculin
+											<input type="radio" name="genre" value="Masculin" class="form-control" <?php if($genre=="Masculin") { echo 'checked="checked"'; }?>>Masculin
 										</div>
 									</div>
 									<div class="row">
 										<!--Saisie de l'adresse-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($adresse=="") { echo "enRouge";}?>">
 											<label for="adresse">Adresse : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -179,7 +219,7 @@
 									</div>
 									<div class="row">
 										<!--Saisie du téléphone-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($portable=="") { echo "enRouge";}?>">
 											<label for="portable">Portable : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -188,16 +228,16 @@
 									</div>
 									<div class="row">
 										<!--Saisie du mail-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<label for="email">Email : </label>
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($mail=="") { echo "enRouge";}?>">
+											<label for="mail">Email : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="email" name="mail" class="form-control" value="<?php echo $email;?>">
+											<input type="email" name="mail" class="form-control" value="<?php echo $mail;?>">
 										</div>
 									</div>
 									<div class="row">
 										<!--Saisie de la date de naissance-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($date=="") { echo "enRouge";}?>">
 											<label for="date">Date de naissance : </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -206,11 +246,11 @@
 									</div>
 									<div class="row">
 										<!--Saisie du poids-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($poids=="") { echo "enRouge";}?>">
 											<label for="poids">Poids: </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="number" name="poids" class="form-control" value="<?php echo $poids;?>">
+											<input type="text" name="poids" class="form-control" value="<?php echo $poids;?>">
 										</div>
 									</div>
 								</div>
@@ -219,32 +259,32 @@
 								<div class="col-md-6 col-sm-12 col-xs-12">
 									<div class="row">
 										<!--Saisie du numéro de sécu-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<label for="noCV">N° carte vitale: </label>
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($noCV=="") { echo "enRouge";}?>">
+											<label for="noCV" >N° carte vitale: </label>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="number" name="noCV" class="form-control">
+											<input type="text" name="noCV" class="form-control" value="<?php echo $noCV;?>">
 										</div>
 									</div>
 									<div class="row">
 										<!--Saisie de l'allergie-->
-										<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-sm-6 col-xs-12  <?php if($allergies=="") { echo "enRouge";}?>">
 											<label for="allergies">Allergie: </label>
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-6">
-											<input type="radio" name="allergies" class="form-control">Oui
+											<input type="radio" name="allergies" value="Oui" class="form-control" <?php if($allergies=="Oui") { echo 'checked="checked"'; }?>>Oui
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-6">
-											<input type="radio" name="allergies" class="form-control">Non
+											<input type="radio" name="allergies" value="Non" class="form-control" <?php if($allergies=="Non") { echo 'checked="checked"'; }?>>Non
 										</div>
 									</div>
 									<div class="row">
 										<!--Saisie de commentaires-->
-										<div class="col-md-12 col-sm-7 col-xs-12">
+										<div class="col-md-12 col-sm-7 col-xs-12  <?php if($commentaires=="") { echo "enRouge";}?>">
 											<label for="commentaires">Commentaires: </label>
 										</div>
 										<div class="col-md-12 col-sm-6 col-xs-12">
-											<textarea name="commentaires" rows="7" cols="45"></textarea>
+											<textarea name="commentaires" rows="7" cols="45"><?php echo $commentaires;?></textarea>
 										</div>
 									</div>
 									<div class="row">
