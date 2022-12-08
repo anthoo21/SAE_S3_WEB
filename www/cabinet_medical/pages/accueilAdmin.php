@@ -8,7 +8,7 @@
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body class="accueilAdmin">
+  <body>
 		<?php 
 
 			$host='localhost';	// Serveur de BD
@@ -34,7 +34,7 @@
 			}
 
 		?>
-	<div class="container">
+	<div class="container bleu">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-4 col-sm-4 col-xs-4">
@@ -50,7 +50,7 @@
 		</div>
 		<div class="row">
 		</br>
-			<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
+			<div class="col-md-12 col-sm-12 col-xs-12 adminName">
 				ADMINISTRATEUR 
 			</div>	
 		</div></br>
@@ -109,30 +109,48 @@
 						</table>
 					<!--Bouton "Ajouter un médecin" -->
 					<div class="row divBtnA left">
-						<a href="#"><img class="logo6" src="../assets/ajouter.png" alt="logo ajouter">Ajouter un médecin</a>
+						<a href="#"><img class="logo7" src="../assets/ajouterM.png" alt="logo ajouter">Ajouter un médecin</a>
 					</div>
 				</div>	
 			</div>
 		</div>
-		<div class="row">
+		<div class="row bordure">
 			<div class="col-md-12 col-xs-12 col-sm-12">
-				<div class="bordure">
-					<h4><u><b>Mise à jour des données : </b></u></h4>
-
-					<p style="color: darkred">Importer les 9 fichiers de la base de données dans la bonne ligne</p>
-
-					<form method="post" action="accueilAdmin.php" class="aaa2">
-							<span>test<input type="file" id="test"name="cis_bdpm" accept=".txt"></span>
-							<input type="file" name="cis_cip_bdpm" accept=".txt">
-							<input type="file" name="cis_compo_bdpm" accept=".txt">
-							<input type="file" name="cis_cpd_bdpm" accept=".txt">
-							<input type="file" name="cis_gener_bdpm" accept=".txt">
-							<input type="file" name="cis_has_asmr_bdpm" accept=".txt">
-							<input type="file" name="cis_has_smr_bdpm" accept=".txt">
-							<input type="file" name="cis_infoimportantes_bdpm" accept=".txt">
-							<input type="file" name="has_lienspagect_bdpm" accept=".txt">
-					</form>
-				</div>	
+				<h4><u><b>Mise à jour des données : </b></u></h4>
+			</div>
+			<div class="col-md-12 col-xs-12 col-sm-12">
+				<p style="color: darkred">Importer les 9 fichiers de la base de données dans la bonne ligne</p>
+			</div>
+			<div class="col-md-12 col-xs-12 col-sm-12">
+				<form method="post" action="accueilAdmin.php" class="aaa2">
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" id="test"name="cis_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_cip_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_compo_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_cpd_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_gener_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_has_asmr_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_has_smr_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="cis_infoimportantes_bdpm" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="file" name="has_lienspagect_bdpm" accept=".txt">
+					</div>
+				</form>	
 			</div>
 		</div>
 	</div>
