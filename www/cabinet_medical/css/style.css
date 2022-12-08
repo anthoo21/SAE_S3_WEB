@@ -7,7 +7,7 @@ body {
 	background-color:#D1F2EB;
 	font-family:"Arbutus Slab";
 }
-.1 {
+.container {
 	background-color:white;
 	line-height:1.5em;
 	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -220,7 +220,15 @@ a:hover {
 .accueilAdmin{
 	background-color: #E0EEF4;
 }
-
+.bleu {
+	background-color: #E0EEF4;
+}
+/* Nom Admmin */
+.adminName {
+	font-size:2.5em;
+	text-decoration:underline #1FA9E9;
+	text-align:center;
+}
 .bordure {
 	border-style:solid ; 	/* Bordure double */
 	border-width:2px;		/* Epaisseur bordure */
@@ -240,4 +248,14 @@ a:hover {
 
 .left {
 	text-align: left;
+}
+/* Logo ajouter un medecin*/
+.logo7 {
+	width:5%;
+}
+/* Formatage */
+[type*="file"] {
+	width:30%;
+	background-color:white;
+	padding:8px;
 }
