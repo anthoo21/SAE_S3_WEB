@@ -8,7 +8,7 @@
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body class="body">
+  <body>
 		<?php 
 
 			$host='localhost';	// Serveur de BD
@@ -34,7 +34,7 @@
 			}
 
 		?>
-	<div class="container 1">
+	<div class="container">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-4 col-sm-4 col-xs-4">
