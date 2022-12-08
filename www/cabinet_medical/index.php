@@ -8,8 +8,8 @@
 	  <link rel="stylesheet" href="css/style.css"> 
   </head>
   
-  <body>
-	<div class="container">
+  <body class="body">
+	<div class="container 1">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-6 col-sm-12 col-xs-12">

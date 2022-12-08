@@ -8,7 +8,7 @@
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body>
+  <body class="body">
 		<?php 
 
 			$host='localhost';	// Serveur de BD
@@ -34,7 +34,7 @@
 			}
 
 		?>
-	<div class="container">
+	<div class="container 1">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-4 col-sm-4 col-xs-4">
@@ -97,13 +97,13 @@
 			<!--TODO : pb d'affichage -> 8 colonnes en ordi / 4 colonnes en tablette / 3 colonnes en smartphone-->
 				<div class="col-md-12">
 					<tr class="testtest">
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th>Genre</th>
-							<th>Téléphone</th>
-							<th>Email</th>
-							<th>Date de naissance</th>
-							<th>Dernière visite</th>
+							<th class="thMed">Nom</th>
+							<th class="thMed">Prénom</th>
+							<th class="thMed">Genre</th>
+							<th class="thMed">Téléphone</th>
+							<th class="thMed">Email</th>
+							<th class="thMed">Date de naissance</th>
+							<th class="thMed">Dernière visite</th>
 						</tr>
 					<?php 
 						if((isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" ) || (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "")) {

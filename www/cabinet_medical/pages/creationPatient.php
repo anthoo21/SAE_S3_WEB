@@ -8,7 +8,7 @@
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body>
+  <body class="body">
   
 	<?php
 		$host = 'localhost';
@@ -138,7 +138,7 @@
 			echo $e->getMessage();
 		}
 	?>
-	<div class="container">
+	<div class="container 1">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-4 col-sm-4 col-xs-4">

@@ -7,18 +7,19 @@ body {
 	background-color:#D1F2EB;
 	font-family:"Arbutus Slab";
 }
-.container {
+.1 {
 	background-color:white;
 	line-height:1.5em;
 	box-shadow:0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 [class*="col-"] {
-    line-height: 70px;			/* hauteur des lignes */	
+    line-height: 40px;			/* hauteur des lignes */	
     text-align: center;			/* Centrage horizontal */
 }
 /* Navbar */
 .nav {
 	border-bottom : 7px solid #5AC1A4;	/* Bordure bas de la nav-bar verte */
+	background-color: white;
 }
 /* Logo MedSoft */
 .logo1, .logo2 {
@@ -140,7 +141,7 @@ le nom du docteur et la recherche par critère*/
 	text-align:center;
 }
 /* Entête du tableau */
-th {
+.thMed {
 	background:#88E1D6;
 	color:white;
 	border:1px solid white;
@@ -210,4 +211,33 @@ a:hover {
 /* Champs du formulaire vide*/
 .enRouge {
 	color:red;
+}
+
+/*  __________________________________________________________________________ */
+/* |                         PAGE D'ACCUEIL ADMINISTRATEUR                    |*/
+/* |__________________________________________________________________________|*/
+
+.accueilAdmin{
+	background-color: #E0EEF4;
+}
+
+.bordure {
+	border-style:solid ; 	/* Bordure double */
+	border-width:2px;		/* Epaisseur bordure */
+	border-color:#1B4B67;	/* Couleur de la bordure */
+	padding:8px;			/* Marge int�rieure */
+	min-height:200px;		/* Hauteur minimale d'une boite */
+	margin:5px;
+}
+
+.thAdm {
+	background-color: #A5DBF4;
+}
+
+.ligneMed {
+	background-color: white;
+}
+
+.left {
+	text-align: left;
 }
