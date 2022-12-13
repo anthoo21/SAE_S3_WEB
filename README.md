@@ -7,7 +7,7 @@ Elle permet, entre autres, la gestion des médecins, la gestion et le suivi des 
 Le projet est codé en html, css, php et sql2.
 Participants au projet : Anthony, Armand, Charlie, Julie et Marion
 
-# Déinition de fini
+# Définition de fini
 
 1. Toutes les tâches de développement sont terminées
 2. Les tests unitaires sont rédigés et vérifiés à un niveau d’au moins 80%
