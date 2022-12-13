@@ -587,3 +587,107 @@
 [Mon Dec 12 14:31:01.087932 2022] [:error] [pid 11584:tid 1272] [client ::1:61404] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/accueilAdmin.php
 [Mon Dec 12 14:31:01.088855 2022] [:error] [pid 11584:tid 1272] [client ::1:61404] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\accueilAdmin.php:0, referer: http://localhost/cabinet_medical/pages/accueilAdmin.php
 [Mon Dec 12 14:35:29.562656 2022] [mpm_winnt:crit] [pid 11584:tid 412] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Tue Dec 13 07:45:25.661332 2022] [ssl:warn] [pid 11320:tid 584] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 07:45:25.661332 2022] [ssl:warn] [pid 11320:tid 584] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 07:45:25.900600 2022] [core:warn] [pid 11320:tid 584] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Dec 13 07:45:25.971437 2022] [ssl:warn] [pid 11320:tid 584] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Tue Dec 13 07:45:25.972311 2022] [ssl:warn] [pid 11320:tid 584] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 07:45:25.973356 2022] [ssl:warn] [pid 11320:tid 584] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 07:45:26.324421 2022] [mpm_winnt:notice] [pid 11320:tid 584] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Tue Dec 13 07:45:26.324421 2022] [mpm_winnt:notice] [pid 11320:tid 584] AH00456: Server built: Jan 28 2016 09:58:25
+[Tue Dec 13 07:45:26.325419 2022] [core:notice] [pid 11320:tid 584] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Tue Dec 13 07:45:26.333397 2022] [mpm_winnt:notice] [pid 11320:tid 584] AH00418: Parent: Created child process 9532
+[Tue Dec 13 07:45:27.242692 2022] [ssl:warn] [pid 9532:tid 668] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 07:45:27.244686 2022] [ssl:warn] [pid 9532:tid 668] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 07:45:27.515960 2022] [ssl:warn] [pid 9532:tid 668] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Tue Dec 13 07:45:27.516958 2022] [ssl:warn] [pid 9532:tid 668] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 07:45:27.517956 2022] [ssl:warn] [pid 9532:tid 668] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 07:45:27.605720 2022] [mpm_winnt:notice] [pid 9532:tid 668] AH00354: Child: Starting 64 worker threads.
+[Tue Dec 13 07:45:43.099484 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP Fatal error:  spl_autoload(): Class controllers\\CategoriesController could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:45:43.099931 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:45:43.100288 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:45:43.100647 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:45:43.101008 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:45:43.101367 2022] [:error] [pid 9532:tid 1264] [client ::1:60312] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:46:24.541760 2022] [:error] [pid 9532:tid 1264] [client ::1:60322] PHP Fatal error:  Uncaught LogicException: Class services\\MedecinsService could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\medecinscontroller.php:17\nStack trace:\n#0 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\medecinscontroller.php(17): spl_autoload('services\\\\Medeci...')\n#1 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php(11): controllers\\MedecinsController->__construct()\n#2 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php(36): controllers\\HomeController->index(Object(PDO))\n#3 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php(19): yasmf\\Router->route(Object(yasmf\\DataSource))\n#4 {main}\n  thrown in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\medecinscontroller.php on line 17, referer: http://localhost/
+[Tue Dec 13 07:49:05.651835 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:05.652433 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:05.652833 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:05.653168 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:05.653168 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:05.653168 2022] [:error] [pid 9532:tid 1264] [client ::1:60406] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:43.203818 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:43.203818 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:43.203818 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:43.204818 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:43.205334 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:43.205675 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:43.763565 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:43.763565 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:43.764565 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:43.764565 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:43.764565 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:43.765562 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:43.944292 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:43.944793 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:43.945211 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:43.945645 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:43.946110 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:43.946556 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:44.084184 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:44.084672 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:44.084989 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:44.085318 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:44.085651 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:44.085982 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:44.210407 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:44.211055 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:44.211402 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:44.211779 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:44.212137 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:44.212492 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:44.397856 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:44.398592 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:44.398592 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:44.398592 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:44.399592 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:44.399592 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:44.561889 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:44.561889 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:44.561889 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:44.562987 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:44.563182 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:44.563607 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:49:44.740383 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Fatal error:  spl_autoload(): Class controllers\\View could not be loaded in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php on line 11, referer: http://localhost/
+[Tue Dec 13 07:49:44.740885 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP Stack trace:, referer: http://localhost/
+[Tue Dec 13 07:49:44.741263 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/
+[Tue Dec 13 07:49:44.741653 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/
+[Tue Dec 13 07:49:44.742030 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   3. controllers\\HomeController->index() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/
+[Tue Dec 13 07:49:44.742424 2022] [:error] [pid 9532:tid 1264] [client ::1:60407] PHP   4. spl_autoload() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\homecontroller.php:11, referer: http://localhost/
+[Tue Dec 13 07:51:02.541510 2022] [:error] [pid 9532:tid 1256] [client ::1:60472] script 'Z:/SAE_S3_WEB/www/cabinet_medical/accueilMedecin.php' not found or unable to stat, referer: http://localhost/cabinet_medical/
+[Tue Dec 13 07:51:13.012829 2022] [:error] [pid 9532:tid 1272] [client ::1:60478] script 'Z:/SAE_S3_WEB/www/cabinet_medical/accueilMedecin.php' not found or unable to stat, referer: http://localhost/cabinet_medical/
+[Tue Dec 13 07:51:35.443409 2022] [:error] [pid 9532:tid 1272] [client ::1:60494] script 'Z:/SAE_S3_WEB/www/cabinet_medical/accueilMedecin.php' not found or unable to stat, referer: http://localhost/cabinet_medical/
+[Tue Dec 13 07:56:24.759876 2022] [:error] [pid 9532:tid 1256] [client ::1:55047] PHP Fatal error:  Uncaught Error: Call to undefined method services\\MedecinsService::getDefaultService() in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\medecinscontroller.php:17\nStack trace:\n#0 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php(31): controllers\\MedecinsController->__construct()\n#1 Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php(19): yasmf\\Router->route(Object(yasmf\\DataSource))\n#2 {main}\n  thrown in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\medecinscontroller.php on line 17, referer: http://localhost/cabinet_medical/
+[Tue Dec 13 07:59:58.188154 2022] [:error] [pid 9532:tid 1256] [client ::1:55151] script 'Z:/SAE_S3_WEB/www/cabinet_medical/creationPatient.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php
+[Tue Dec 13 08:05:55.012350 2022] [:error] [pid 9532:tid 1272] [client 127.0.0.1:53849] script 'Z:/SAE_S3_WEB/www/cabinet_medical/accueilMedecin.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php
+[Tue Dec 13 08:05:59.365682 2022] [:error] [pid 9532:tid 1272] [client 127.0.0.1:53849] script 'Z:/SAE_S3_WEB/www/cabinet_medical/creationPatient.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php
+[Tue Dec 13 08:13:45.689478 2022] [mpm_winnt:crit] [pid 9532:tid 668] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Tue Dec 13 09:23:09.668848 2022] [ssl:warn] [pid 3532:tid 664] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 09:23:09.669392 2022] [ssl:warn] [pid 3532:tid 664] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 09:23:09.886961 2022] [core:warn] [pid 3532:tid 664] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Dec 13 09:23:09.946787 2022] [ssl:warn] [pid 3532:tid 664] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Tue Dec 13 09:23:09.947898 2022] [ssl:warn] [pid 3532:tid 664] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 09:23:09.948475 2022] [ssl:warn] [pid 3532:tid 664] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 09:23:10.236631 2022] [mpm_winnt:notice] [pid 3532:tid 664] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Tue Dec 13 09:23:10.237679 2022] [mpm_winnt:notice] [pid 3532:tid 664] AH00456: Server built: Jan 28 2016 09:58:25
+[Tue Dec 13 09:23:10.238000 2022] [core:notice] [pid 3532:tid 664] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Tue Dec 13 09:23:10.248057 2022] [mpm_winnt:notice] [pid 3532:tid 664] AH00418: Parent: Created child process 12128
+[Tue Dec 13 09:23:10.920590 2022] [ssl:warn] [pid 12128:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 09:23:10.921393 2022] [ssl:warn] [pid 12128:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 09:23:11.159004 2022] [ssl:warn] [pid 12128:tid 588] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Tue Dec 13 09:23:11.159515 2022] [ssl:warn] [pid 12128:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Dec 13 09:23:11.160200 2022] [ssl:warn] [pid 12128:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Dec 13 09:23:11.208275 2022] [mpm_winnt:notice] [pid 12128:tid 588] AH00354: Child: Starting 64 worker threads.
+[Tue Dec 13 09:40:45.833757 2022] [:error] [pid 12128:tid 1420] [client ::1:51198] script 'Z:/SAE_S3_WEB/www/cabinet_medical/creationPatient.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php
+[Tue Dec 13 10:09:35.578437 2022] [:error] [pid 12128:tid 1400] [client ::1:49980] script 'Z:/SAE_S3_WEB/www/cabinet_medical/creationPatient.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php
+[Tue Dec 13 10:10:29.085695 2022] [:error] [pid 12128:tid 1400] [client ::1:49981] script 'Z:/SAE_S3_WEB/www/cabinet_medical/creationPatient.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php

@@ -23,7 +23,7 @@ body {
 }
 /* Logo MedSoft */
 .logo1, .logo2 {
-	width:40%;
+	max-width:40%;
 }
 /*Image de fond avec "Bienvenue"*/
 .home {
@@ -80,7 +80,7 @@ div {
 
 /* Logo profil patient et recherche de la navbar */
 .logo3, .logo4 {
-	width:20%;
+	max-width:20%;
 }
 /* Logo déconnexion de la navbar */
 .logo5 {
@@ -172,6 +172,17 @@ a:hover {
 	color:black;
 }
 
+.btnDeTest {
+	background-image: url("../assets/Ajouter.png");
+	border: none;
+	width: 100px;
+	height: 100px;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-color: white;
+	background-position-x: center;
+	background-position-y: center;
+}
 /*  __________________________________________________________________________ */
 /* |                         PAGE DE CREATION D'UN PATIENT                    |*/
 /* |__________________________________________________________________________|*/
