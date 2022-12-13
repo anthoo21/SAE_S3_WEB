@@ -121,34 +121,90 @@
 			<div class="col-md-12 col-xs-12 col-sm-12">
 				<p style="color: darkred">Importer les 9 fichiers de la base de données dans la bonne ligne</p>
 			</div>
+			<?php 
+			// && $_POST['cis1'] != "" && $_POST['cis2'] != "" && $_POST['cis3'] != "" && $_POST['cis4'] != "" 
+			//	&& $_POST['cis5'] != "" && $_POST['cis6'] != "" && $_POST['cis7'] != "" && $_POST['cis8'] != ""
+			if(isset($_FILES['cis1'])) {
+				try {
+					$tabName = array('Part1.txt','CIS_CIP_bdpm.txt', 'CIS_COMPO_bdpm.txt', 'CIS_CPD_bdpm.txt', 'CIS_GENER_bdpm.txt','CIS_HAS_ASMR_bdpm','CIS_HAS_SMR_bdpm','CIS_InfoImportantes_bdpm','HAS_LiensPageCT_bdpm');
+					$target_dir = "../fichierImport/";
+					for($i = 1; $i <= 1; $i++) {
+						$uploadOk = 1;
+						$target_file = $target_dir.basename($_FILES["cis".strval($i)]["name"]);
+						$ficType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));			
+						// Regarder si le fichier existe déjà
+						if (file_exists($target_file)) {
+							$uploadOk = 0;
+						}
+						// Accepter que les .txt
+						if($ficType != "txt") {
+							$uploadOk = 0;
+						}
+						// Vérifie si le fichier est le bon
+						if(htmlspecialchars(basename($_FILES["cis".strval($i)]["name"])) != $tabName[$i-1]) {
+							$uploadOk = 0;
+						}
+						// $listeMedic = basename($_FILES["cis".strval($i)]["name"]);
+						// $tabMedic = file($listeMedic,FILE_IGNORE_NEW_LINES);
+						// foreach ($tabMedic as $listeMedoc) {
+						// 	$tab = explode('	',$listeMedoc);
+						// 	echo $tab[0];
+						// }
+						//Si uploadOk = 0, c'est qu'il y a eu une erreur
+						if ($uploadOk == 0) {
+							echo "Le fichier n'a pas pu être traité.</br>";
+						// Sinon, essaye d'upload le fichier
+						} else {
+							echo $_FILES["cis1"]["size"];
+							if (move_uploaded_file($_FILES["cis".strval($i)]["tmp_name"], $target_file)) {
+								echo "Le fichier ".basename( $_FILES["cis".strval($i)]["name"])." a été correctement importé.</br>";
+							} else {
+								echo "Le fichier ".basename( $_FILES["cis".strval($i)]["name"])." provoque une erreur, merci d'importer le bon fichier.</br>";
+							}
+						}
+					}
+					/* if($allVerif) {
+						echo 'Tous les fichiers sont OK';
+					} else {
+						echo 'Au moins 1 des fichiers n\'est pas bon';
+					} */
+				} catch (exception $e) {
+					echo "erreur : ".$e->getMessage();
+				}
+			} 
+			
+			?>
 			<div class="col-md-12 col-xs-12 col-sm-12">
-				<form method="post" action="accueilAdmin.php" class="aaa2">
+				<form method="post" action="accueilAdmin.php" class="aaa2" enctype="multipart/form-data">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" id="test"name="cis_bdpm" accept=".txt">
+						<input type="file" name="cis1" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_cip_bdpm" accept=".txt">
+						<input type="file" name="cis2" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_compo_bdpm" accept=".txt">
+						<input type="file" name="cis3" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_cpd_bdpm" accept=".txt">
+						<input type="file" name="cis4" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_gener_bdpm" accept=".txt">
+						<input type="file" name="cis5" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_has_asmr_bdpm" accept=".txt">
+						<input type="file" name="cis6" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_has_smr_bdpm" accept=".txt">
+						<input type="file" name="cis7" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis_infoimportantes_bdpm" accept=".txt">
+						<input type="file" name="cis8" accept=".txt">
 					</div>
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="has_lienspagect_bdpm" accept=".txt">
+						<input type="file" name="cis9" accept=".txt">
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<input type="submit" value="Importer" name="btnImport" class="btnImport">
 					</div>
 				</form>	
 			</div>
@@ -156,3 +212,35 @@
 	</div>
   </body>
 </html>
+
+<?php 
+// if(isset($_FILES['fichierUpload']))
+// {
+// 	$dossier = '../images/Produits/';
+// 	var_dump($_FILES);
+// 	$fichier = basename($_FILES['fichierUpload']['name']);
+
+// 	$extensions = array('.PNG', '.GIF', '.JPG', '.JPEG');
+// 	// récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
+// 	$extension = strtoupper(strrchr($_FILES['fichierUpload']['name'], '.'));
+// 	//Test si l'extension est prise en charge
+// 	if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+// 	{
+// 		$OKfichier=false ;
+// 		$messageFichier="(Vous devez uploader un fichier de type png, gif, jpg, jpeg)" ;
+// 	} else {
+// 		$nouveauNomImage="img_".time().$extension ; // Renommage du fichier pour qu'il soit unique
+
+// 		if(move_uploaded_file($_FILES['fichierUpload']['tmp_name'], $dossier . $nouveauNomImage)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+// 		{
+// 			echo 'Upload effectué avec succès !';
+// 		}
+// 		else //Sinon (la fonction renvoie FALSE).
+// 		{
+// 			echo 'Echec de l\'upload !';
+// 			$OKfichier=false ;
+// 			$messageFichier="(Probleme chargement fichier)" ;
+// 		}
+// 	}
+// }
+?>
