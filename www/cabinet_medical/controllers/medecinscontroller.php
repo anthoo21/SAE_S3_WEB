@@ -7,15 +7,15 @@ use yasmf\View;
 
 class MedecinsController {
 
-    // private $medecinsService;
+    private $medecinsService;
 
-    // /**
-    //  * Create and initialize an ArticlesController object
-    //  */
-    // public function __construct()
-    // {
-    //     $this->medecinsService = MedecinsService::getDefaultService();
-    // }
+    /**
+    * Create and initialize an ArticlesController object
+    */
+    public function __construct()
+    {
+        $this->medecinsService = MedecinsService::getDefaultService();
+    }
 
     /**
      * @param $pdo
@@ -23,10 +23,14 @@ class MedecinsController {
      * @return View
      *  the view in charge of displaying the articles
      */
-    public function index() {
+    public function index($pdo) {
+        $searchStmt = $this->medecinsService->findAllPatients($pdo);
         $view = new View('cabinet_medical/views/accueilMedecin');
+        $view->setVar('searchStmt', $searchStmt);
         return $view;
     }
+
+
 
 }
 

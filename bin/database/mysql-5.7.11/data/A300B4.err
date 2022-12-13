@@ -91,3 +91,45 @@ Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
 2022-12-12T08:15:42.668528Z 0 [Note] Shutting down plugin 'binlog'
 2022-12-12T08:15:42.672517Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: Shutdown complete
 
+2022-12-13T10:01:49.538885Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2022-12-13T10:01:49.541877Z 0 [Warning] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2022-12-13T10:01:49.541877Z 0 [Warning] 'NO_AUTO_CREATE_USER' sql mode was not set.
+2022-12-13T10:01:49.541877Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-12-13T10:01:49.542874Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2022-12-13T10:01:49.542874Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe (mysqld 5.7.11) starting as process 11132 ...
+2022-12-13T10:01:49.835690Z 0 [ERROR] Can't open shared library 'Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\lib\plugin\keyring_file.dll' (errno: 126 Le module spécifié est introuvable.)
+2022-12-13T10:01:49.836688Z 0 [ERROR] Couldn't load plugin named 'keyring_file' with soname 'keyring_file.dll'.
+2022-12-13T10:01:49.957443Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2022-12-13T10:01:49.959433Z 0 [Note] InnoDB: Uses event mutexes
+2022-12-13T10:01:49.961433Z 0 [Note] InnoDB: Memory barrier is not used
+2022-12-13T10:01:49.962428Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2022-12-13T10:01:50.034028Z 0 [Note] InnoDB: Number of pools: 1
+2022-12-13T10:01:50.106675Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2022-12-13T10:01:50.192200Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2022-12-13T10:01:50.209154Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2022-12-13T10:01:50.680719Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2022-12-13T10:01:50.692828Z 0 [Note] InnoDB: Log scan progressed past the checkpoint lsn 3214209
+2022-12-13T10:01:50.694845Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 3214218
+2022-12-13T10:01:50.698845Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 3214218
+2022-12-13T10:01:50.700838Z 0 [Note] InnoDB: Database was not shutdown normally!
+2022-12-13T10:01:50.701830Z 0 [Note] InnoDB: Starting crash recovery.
+2022-12-13T10:01:54.782034Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2022-12-13T10:01:54.783033Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2022-12-13T10:01:54.786023Z 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2022-12-13T10:01:54.985489Z 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2022-12-13T10:01:55.016378Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2022-12-13T10:01:55.017375Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2022-12-13T10:01:55.017375Z 0 [Note] InnoDB: Waiting for purge to start
+2022-12-13T10:01:55.077245Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 4856ms. The settings might not be optimal. (flushed=0 and evicted=0, during the time.)
+2022-12-13T10:01:55.077245Z 0 [Note] InnoDB: 5.7.11 started; log sequence number 3214218
+2022-12-13T10:01:55.081205Z 0 [Note] InnoDB: Loading buffer pool(s) from Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\data\ib_buffer_pool
+2022-12-13T10:01:55.089438Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2022-12-13T10:01:55.370305Z 0 [Warning] Failed to set up SSL because of the following SSL library error: SSL context is not usable without certificate and private key
+2022-12-13T10:01:55.372298Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2022-12-13T10:01:55.373296Z 0 [Note] IPv6 is available.
+2022-12-13T10:01:55.374293Z 0 [Note]   - '::' resolves to '::';
+2022-12-13T10:01:55.374293Z 0 [Note] Server socket created on IP: '::'.
+2022-12-13T10:01:55.450214Z 0 [Note] InnoDB: Buffer pool(s) load completed at 221213 11:01:55
+2022-12-13T10:01:57.435165Z 0 [Note] Event Scheduler: Loaded 0 events
+2022-12-13T10:01:57.435165Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
