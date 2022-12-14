@@ -83,35 +83,15 @@
 			<!--TODO : pb d'affichage -> 8 colonnes en ordi / 4 colonnes en tablette / 3 colonnes en smartphone-->
 				<div class="col-md-12">
 					<tr class="testtest">
-							<th class="thMed">Nom</th>
-							<th class="thMed">Prénom</th>
-							<th class="thMed">Genre</th>
-							<th class="thMed">Téléphone</th>
-							<th class="thMed">Email</th>
-							<th class="thMed">Date de naissance</th>
-							<th class="thMed">Dernière visite</th>
-						</tr>
+						<th class="thMed">Nom</th>
+						<th class="thMed">Prénom</th>
+						<th class="thMed">Genre</th>
+						<th class="thMed">Téléphone</th>
+						<th class="thMed">Email</th>
+						<th class="thMed">Date de naissance</th>
+						<th class="thMed">Dernière visite</th>
+					</tr>
 					<?php 
-/* 						if((isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" ) || (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "")) {
-							$requeteSelect="";
-							$nom = "%".$_POST['rechercheNom']."%";
-							$nsecu = "%".$_POST['rechercheNSecu']."%";
-							if(isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" && isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
-								$requeteSelect="WHERE nom LIKE '".$nom."' AND numeroCarteVitale LIKE '".$nsecu."'";
-							} else if(isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "") {
-								$requeteSelect="WHERE nom LIKE '".$nom."'";
-							} else if (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
-								$requeteSelect="WHERE numeroCarteVitale LIKE '".$nsecu."'";
-							}
-							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect);
-							$resultats->bindParam('nom', $_POST['rechercheNom']);
-							$resultats->bindParam('nsecu', $_POST['rechercheNSecu']);
-							$resultats->execute();
-
-						} else {
-							$requeteSelectALL="SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale"; 
-							$resultats=$pdo->query($requeteSelectALL);
-						} */
 						while($ligne = $searchStmt->fetch()) {
 							echo '<tr>';
 								echo '<td>'.$ligne['nom'].'</td>';
@@ -129,8 +109,11 @@
 		</div>
 		<!--Bouton "Ajouter un patient" -->
 		<div class="row divBtnA">
-			<form action="index.php" method="post"><input hidden name="controller" value="Patients"><input hidden name="action" value="creationPatient">
-			<input type="submit" class="btnDeTest" value=""><label style="text-align: center">Ajouter un patient</label></form>
+			<form action="index.php" method="post">
+				<input hidden name="controller" value="Patients">
+				<input hidden name="action" value="index">
+				<input type="submit" class="btnDeTest" value=""><label style="text-align: center">Ajouter un patient</label>
+			</form>
 		</div>
 	</div>
   </body>

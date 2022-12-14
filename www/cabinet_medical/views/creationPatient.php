@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="Fr">
   <head>
-      <title>MEDSOFT - Accueil Medecin</title>
+      <title>MEDSOFT - Création d'un patient</title>
       <meta charset="utf-8">
 	  <link rel="stylesheet" href="bootstrap\css\bootstrap.css">
 	  <link rel="stylesheet" href="fontawesome-free-5.10.2-web\css\all.css">
@@ -11,126 +11,8 @@
   <body>
   
 	<?php
-		$host = 'localhost';
-		$db = 'medsoft';
-		$user = 'root';
-		$pass = 'root';
-		$charset = 'utf8mb4';
-		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-		$options = [
-		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-		PDO::ATTR_EMULATE_PREPARES => false
-		];
-		try {
-			$pdo = new PDO($dsn, $user, $pass, $options);
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-			//throw new PDOException($e->getMessage(), (int)$e->getCode());
-		}
-
-		//Récupération des données
-		$ToutOK=true; //Savoir si toutes les données ont été rentrées
-		
-		//Récupération du nom
-		if(isset($_POST['nom']) and $_POST['nom']!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $_POST['nom'])) {
-			$nom=htmlspecialchars($_POST['nom']);
-		} else {
-			$nom="";
-			$ToutOK=false;
-		}
-		// TODO => Attention aux caractères ' " ...
-		
-		//Récupération du prenom
-		if(isset($_POST['prenom']) and $_POST['prenom']!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $_POST['prenom'])) {
-			$prenom=htmlspecialchars($_POST['prenom']);
-		} else {
-			$prenom="";
-			$ToutOK=false;
-		}
-		//Récupération du genre
-		if(isset($_POST['genre']) and $_POST['genre']=="Féminin") {
-			$nomGenre="Féminin";
-			$genre="01";
-		} else if(isset($_POST['genre']) and $_POST['genre']=="Masculin") {
-			$nomGenre="Masculin";
-			$genre="02";
-		} else {
-			$nomGenre="";
-			$genre="";
-			$ToutOK=false;
-		}
-		//Récupération de l'adresse
-		if(isset($_POST['adresse']) and $_POST['adresse']!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $_POST['adresse'])) {
-			$adresse=htmlspecialchars($_POST['adresse']);
-		} else {
-			$adresse="";
-			$ToutOK=false;
-		}
-		//Récupération du numéro de portable
-		if(isset($_POST['portable']) and $_POST['portable']!="" and preg_match("~(0){1}[0-9]{9}~", $_POST['portable'])) {
-			$portable=htmlspecialchars($_POST['portable']);
-		} else {
-			$portable="";
-			$ToutOK=false;
-		}
-		//Récupération de l'email
-		if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['mail'])) {
-			$mail=htmlspecialchars($_POST['mail']);
-		} else {
-			$mail="";
-			$ToutOK=false;
-		}
-		//Récupération de la date de naissance
-		if(isset($_POST['date']) and $_POST['date']!="") {
-			$date=htmlspecialchars($_POST['date']);
-		} else {
-			$date="";
-			$ToutOK=false;
-		}
-		//Récupération du poids
-		if(isset($_POST['poids']) and $_POST['poids']!="") {			//preg_match("~([1|2]?([0-9]{1,2}))(\.[0-9]{1,3})?~", $_POST['poids'])
-			$poids=htmlspecialchars($_POST['poids']);
-		} else {
-			$poids="";
-			$ToutOK=false;
-		}
-		//TODO => regex
-		//Récupération du numero de carte vitale
-		if(isset($_POST['noCV']) and $_POST['noCV']!="" and preg_match("#^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$#", $_POST['noCV'])) {
-			$noCV=htmlspecialchars($_POST['noCV']);
-		} else {
-			$noCV="";
-			$ToutOK=false;
-		}
-		//Récupération des allergies
-		if(isset($_POST['allergies']) and $_POST['allergies']=="Oui") {
-			$allergies="Oui";
-		} else if(isset($_POST['allergies']) and $_POST['allergies']=="Non") {
-			$allergies="Non";
-		} else {
-			$allergies="";
-			$ToutOK=false;
-		}
-		//Récupération des commentaires
-		if(isset($_POST['commentaires'])) {
-			$commentaires=htmlspecialchars($_POST['commentaires']);
-		} else {
-			$commentaires="";
-			$ToutOK=false;
-		}
 		//Récupération de l'ID du médecin connecté => TODO
 		$id_medecin="001";
-
-		if($ToutOK) {
-			try {
-				$requete="INSERT INTO patients (numeroCarteVitale, nom, prenom, id_genre, tel, email, dateNai, poids, id_medecin, allergies, commentaires)
-					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-				$stmt = $pdo->prepare($requete);
-				$stmt->execute([$noCV, $nom, $prenom, $genre, $portable, $mail, $date, $poids, $id_medecin, $allergies, $commentaires]);
-			} catch (PDOException $e) {
-				echo $e->getMessage();
-			}
 		?>
 			<div class="container">
 				<!-- Nav-bar -->
@@ -232,13 +114,13 @@
 										<div class="row">
 											<!--Saisie du Genre-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($genre=="") { echo "enRouge";}?>">
-												<label for="genre">Genre: </label>
+												<label for="genre">Genre : </label>
 											</div>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input type="radio" name="genre"  value="Féminin" class="btnRadio form-control" <?php if($nomGenre=="Féminin") { echo 'checked="checked"'; }?>>Féminin
+												<input type="radio" name="genre"  value="01" class="btnRadio form-control" <?php if($nomGenre=="Féminin") { echo 'checked="checked"'; }?>>Féminin
 											</div>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input type="radio" name="genre" value="Masculin" class="btnRadio form-control" <?php if($nomGenre=="Masculin") { echo 'checked="checked"'; }?>>Masculin
+												<input type="radio" name="genre" value="02" class="btnRadio form-control" <?php if($nomGenre=="Masculin") { echo 'checked="checked"'; }?>>Masculin
 											</div>
 										</div>
 										<div class="row">
@@ -305,10 +187,10 @@
 												<label for="allergies">Allergie: </label>
 											</div>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input type="radio" name="allergies" value="Oui" class="btnRadio form-control" <?php if($allergies=="Oui") { echo 'checked="checked"'; }?>>Oui
+												<input type="radio" name="allergies" value="oui" class="btnRadio form-control" <?php if($allergies=="Oui") { echo 'checked="checked"'; }?>>Oui
 											</div>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input type="radio" name="allergies" value="Non" class="btnRadio form-control" <?php if($allergies=="Non") { echo 'checked="checked"'; }?>>Non
+												<input type="radio" name="allergies" value="non" class="btnRadio form-control" <?php if($allergies=="Non") { echo 'checked="checked"'; }?>>Non
 											</div>
 										</div>
 										<div class="row">
@@ -328,7 +210,8 @@
 											</div>
 										</div>
 									</div>
-									
+									<!--Envoi de l'id du medecin-->
+									<input hidden name="medecin" value="<?php echo $id_medecin; ?>">
 									<!--Bouton Valider-->
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton">
 										<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">

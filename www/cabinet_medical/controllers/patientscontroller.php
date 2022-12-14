@@ -7,29 +7,126 @@ use yasmf\View;
 
 class PatientsController {
 
-    // private $medecinsService;
+    private $patientsService;
 
-    // /**
-    //  * Create and initialize an ArticlesController object
-    //  */
-    // public function __construct()
-    // {
-    //     $this->medecinsService = MedecinsService::getDefaultService();
-    // }
+    /**
+     * Create and initialize an PatientsController object
+     */
+    public function __construct()
+    {
+        $this->patientsService = PatientsService::getDefaultService();
+    }
 
     /**
      * @param $pdo
      *  the pdo object used to connect to the database
      * @return View
-     *  the view in charge of displaying the articles
+     *  the view in charge of displaying the form to add a patient
      */
-    public function creationPatient() {
+    public function index($pdo) {
         $view = new View('cabinet_medical/views/creationPatient');
         return $view;
     }
 
+    /**
+     * @param $pdo
+     *  the pdo object used to connect to the database
+     * @return View
+     *  the view in charge of displaying the form to add a patient
+     */
+    public function addPatient($pdo) {
+        $check = true;
+        $nom = HttpHelper::getParam('nom');
+        $prenom = HttpHelper::getParam('prenom');
+        $genre = HttpHelper::getParam('genre');
+        $adresse = HttpHelper::getParam('adresse');
+        $portable = HttpHelper::getParam('portable');
+        $mail = HttpHelper::getParam('mail');
+        $date = HttpHelper::getParam('date');
+        $poids = HttpHelper::getParam('poids');
+        $noCV = HttpHelper::getParam('noCV');
+        $allergies = HttpHelper::getParam('allergies');
+        $commentaires = HttpHelper::getParam('commentaires');
+        $medecin = HttpHelper::getParam('id_medecin');
 
+        //Check nom
+        if(isset($nom) and $nom!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $nom)) {
+			$nom=htmlspecialchars($nom);
+		} else {
+			$check=false;
+		}
 
+        //Check prenom
+        if(isset($prenom) and $prenom!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $prenom)) {
+			$prenom=htmlspecialchars($prenom);
+		} else {
+			$check=false;
+		}
+
+        //Check genre
+		if(isset($genre) and $genre!="" and ($genre=="01" || $genre=="02")) {
+			$genre=htmlspecialchars($genre);
+		} else {
+            $check=false;
+        }
+
+        //Check adresse
+		if(isset($adresse) and $adresse!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $adresse)) {
+			$adresse=htmlspecialchars($adresse);
+		} else {
+			$check=false;
+		}
+
+        //Check portable
+		if(isset($portable) and $portable!="" and preg_match("~(0){1}[0-9]{9}~", $portable)) {
+			$portable=htmlspecialchars($portable);
+		} else {
+			$check=false;
+		}
+
+        //Check mail
+		if(isset($mail) and $mail!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $mail)) {
+			$mail=htmlspecialchars($mail);
+		} else {
+			$check=false;
+		}
+
+        //Check date naissance
+		if(isset($date) and $date!="") {
+			$date=htmlspecialchars($date);
+		} else {
+			$check=false;
+		}
+
+        //Check poid
+		if(isset($poids) and $poids!="") {			//preg_match("~([1|2]?([0-9]{1,2}))(\.[0-9]{1,3})?~", $poids)
+        $poids=htmlspecialchars($poids);
+        } else {
+            $check=false;
+        }
+        //TODO => regex
+
+        //Check 
+        if(isset($noCV) and $noCV!="" and preg_match("#^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$#", $noCV)) {
+            $noCV=htmlspecialchars($noCV);
+        } else {
+            $check=false;
+        }
+
+        //Check allergies
+        if(isset($allergies) and ($allergies=="oui" || $allergies=="non")) {
+            $allergies=htmlspecialchars($allergies);
+        } else {
+            $check=false;
+        }
+
+        //Check commentaires
+        if(isset($commentaires)) {
+            $commentaires=htmlspecialchars($commentaires);
+        } else {
+            $check=false;
+        }
+    }
 }
 
 
