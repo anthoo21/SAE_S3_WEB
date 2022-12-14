@@ -1,3 +1,20 @@
+<?php
+session_start(); //démarrage d'une session
+
+//Vérification que les variables sessions de l'utilisateur existent
+if(isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
+	$login = $_SESSION['login'];
+	$pwd = $_SESSION['pwd'];
+	$nom = $_SESSION['nom'];
+	$prenom = $_SESSION['prenom'];
+}
+
+if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
+	session_destroy();
+	header('Location: ../index.php');
+  	exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="Fr">
   <head>
@@ -45,22 +62,28 @@
 			<!--Espace dans la navbar-->
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
-				<img class="logo3" src="../assets/profil_patients.png" alt="logo patient">
-				<img class="logo4" src="../assets/recherche_medicaments.png" alt="logo recherche">
-				<img class="logo5" src="../assets/deconnexion.png" alt="logo deconnexion">
+				<form action="accueilMedecin.php" method="post">
+					<button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button>				
+					<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+				</form>
 			</div>	
 		</div>
-		<!--Nom du docteur-->
+		
+		<!--NOM DU DOCTEUR-->
 		<div class="row">
 		</br>
 			<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
-				Docteur Calin TORGE <!--A générer depuis l'authentification-->
+			<?php 
+					echo "Docteur ".$_SESSION['nom'].' '.$_SESSION['prenom'];
+			?>
 			</div>	
 		</div></br>
+		
 		<!--Recherche par critères-->
 		<div class="row espaceB">
 			<div class="row rechCri">
-				<form class="rechercheCriteres" method="post" action="accueilMedecin.php"> <!--TODO : PHP-->
+				<form class="rechercheCriteres" method="post" action="accueilMedecin.php">
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<h3>Recherche par critère :</h3>
 					</div>
@@ -94,16 +117,15 @@
 		<!--Liste des patients-->
 		<div class="row divTable">
 			<table class="table table-bordered table-striped">
-			<!--TODO : pb d'affichage -> 8 colonnes en ordi / 4 colonnes en tablette / 3 colonnes en smartphone-->
 				<div class="col-md-12">
 					<tr class="testtest">
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th>Genre</th>
-							<th>Téléphone</th>
-							<th>Email</th>
-							<th>Date de naissance</th>
-							<th>Dernière visite</th>
+							<th class="thMed">Nom</th>
+							<th class="thMed">Prénom</th>
+							<th class="thMed">Genre</th>
+							<th class="thMed">Téléphone</th>
+							<th class="thMed">Email</th>
+							<th class="thMed">Date de naissance</th>
+							<th class="thMed">Dernière visite</th>
 						</tr>
 					<?php 
 						if((isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" ) || (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "")) {
@@ -143,7 +165,7 @@
 		</div>
 		<!--Bouton "Ajouter un patient" -->
 		<div class="row divBtnA">
-			<a href="creationPatient.php"><img class="logo6" src="../assets/ajouter.png" alt="logo ajouter">  Ajouter un patient  </a>
+			<a href="creationPatient.php"><button type="button" class="btn btn-success btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter un patient  </a>
 		</div>
 	</div>
   </body>
