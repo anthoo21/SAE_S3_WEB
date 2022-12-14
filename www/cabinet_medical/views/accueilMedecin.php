@@ -43,7 +43,9 @@
 		<!--Recherche par critères-->
 		<div class="row espaceB">
 			<div class="row rechCri">
-				<form class="rechercheCriteres" method="post" action="accueilMedecin.php"> <!--TODO : Modifier l'envoi pour appeler controller-->
+				<form class="rechercheCriteres" method="post" action="index.php"> <!--TODO : Modifier l'envoi pour appeler controller-->
+					<input hidden name="action" value="index">
+    				<input hidden name="controller" value="Medecins">
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<h3>Recherche par critère :</h3>
 					</div>
@@ -69,6 +71,7 @@
 					</div>
 					<!--Bouton rechercher -->
 					<div class="col-md-3 col-sm-4 col-xs-12 divBtn">
+						<input hidden name="action" value="afficherSelectedPatients">
 						<input type="submit" name="rechercher" value="Rechercher" class="buttonRechercher">
 					</div>	
 				</form>

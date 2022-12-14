@@ -21,7 +21,7 @@ class MedecinsController {
      * @param $pdo
      *  the pdo object used to connect to the database
      * @return View
-     *  the view in charge of displaying the articles
+     *  the view in charge of displaying the patients
      */
     public function index($pdo) {
         $searchStmt = $this->medecinsService->findAllPatients($pdo);
@@ -30,6 +30,24 @@ class MedecinsController {
         return $view;
     }
 
+    /**
+     * @param $pdo $rechercheNom $rechercheNumSecu
+     *  the pdo object used to connect to the database, the other two params are used in findSelectedPatients
+     * @return View
+     *  the view in charge of displaying the selected patients
+     */
+    public function afficherSelectedPatients($pdo) {
+        $nom = HttpHelper::getParam('rechercheNom');
+        $secu = HttpHelper::getParam('rechercheNSecu');
+        if ((isset($nom) && $nom != "" ) || (isset($secu) && $secu != "")) {
+            $searchStmt = $this->medecinsService->findSelectedPatients($pdo, $nom, $secu);
+        } else {
+            $searchStmt = $this->medecinsService->findAllPatients($pdo);
+        }
+        $view = new View('cabinet_medical/views/accueilMedecin');
+        $view->setVar('searchStmt', $searchStmt);
+        return $view;
+    }
 
 
 }

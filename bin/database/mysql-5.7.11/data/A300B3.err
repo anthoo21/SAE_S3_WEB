@@ -158,3 +158,25 @@ Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
 2022-12-02T07:12:19.509590Z 39 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
 2022-12-02T07:12:19.510589Z 39 [ERROR] InnoDB: Cannot create file '.\medsoft\genres.ibd'
 2022-12-02T07:12:19.511585Z 39 [ERROR] InnoDB: The file '.\medsoft\genres.ibd' already exists though the corresponding table did not exist in the InnoDB data dictionary. Have you moved InnoDB .ibd files around without using the SQL commands DISCARD TABLESPACE and IMPORT TABLESPACE, or did mysqld crash in the middle of CREATE TABLE? You can resolve the problem by removing the file '.\medsoft\genres.ibd' under the 'datadir' of MySQL.
+2022-12-14T07:24:38.324392Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2022-12-14T07:24:38.329030Z 0 [Warning] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2022-12-14T07:24:38.329030Z 0 [Warning] 'NO_AUTO_CREATE_USER' sql mode was not set.
+2022-12-14T07:24:38.329030Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-12-14T07:24:38.330072Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2022-12-14T07:24:38.330072Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe (mysqld 5.7.11) starting as process 3268 ...
+2022-12-14T07:24:38.653410Z 0 [ERROR] Can't open shared library 'Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\lib\plugin\keyring_file.dll' (errno: 126 Le module spécifié est introuvable.)
+2022-12-14T07:24:38.654441Z 0 [ERROR] Couldn't load plugin named 'keyring_file' with soname 'keyring_file.dll'.
+2022-12-14T07:24:38.751457Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2022-12-14T07:24:38.754455Z 0 [Note] InnoDB: Uses event mutexes
+2022-12-14T07:24:38.755454Z 0 [Note] InnoDB: Memory barrier is not used
+2022-12-14T07:24:38.757446Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2022-12-14T07:24:38.819464Z 0 [Note] InnoDB: Number of pools: 1
+2022-12-14T07:24:38.857378Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2022-12-14T07:24:38.943443Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2022-12-14T07:24:38.958102Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2022-12-14T07:24:39.328860Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2022-12-14T07:24:39.358150Z 0 [Note] InnoDB: Log scan progressed past the checkpoint lsn 3214265
+2022-12-14T07:24:39.361107Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 3214274
+2022-12-14T07:24:39.368745Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 3214274
+2022-12-14T07:24:39.392195Z 0 [Note] InnoDB: Database was not shutdown normally!
+2022-12-14T07:24:39.402885Z 0 [Note] InnoDB: Starting crash recovery.
