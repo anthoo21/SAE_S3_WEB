@@ -25,6 +25,7 @@ class PatientsController {
      */
     public function index($pdo) {
         $view = new View('cabinet_medical/views/creationPatient');
+        $view->setVar('check', false);
         return $view;
     }
 
@@ -126,6 +127,30 @@ class PatientsController {
         } else {
             $check=false;
         }
+
+        //Appel de la fonction insert ou la vue form
+        $view = new View('cabinet_medical/views/creationPatient');
+        if ($check == false) {
+            $view->setVar('nom',$nom);
+            $view->setVar('prenom',$prenom);
+            $view->setVar('genre',$genre);
+            $view->setVar('adresse',$adresse);
+            $view->setVar('portable',$portable);
+            $view->setVar('mail',$mail);
+            $view->setVar('date',$date);
+            $view->setVar('poids',$poids);
+            $view->setVar('noCV',$noCV);
+            $view->setVar('allergies',$allergies);
+            $view->setVar('commentaires',$commentaires);
+            $view->setVar('check', false);
+            var_dump($view);
+            return $view;
+        } else if ($check == true){
+            //$stmt = $this->patientsService->addPatient($pdo, $nom, $prenom, $genre, $adresse, $portable, $mail, $poids, $noCV, $allergies, $commentaires, $medecin);
+            $view->setVar('check', true);
+            return $view;
+        }
+        
     }
 }
 
