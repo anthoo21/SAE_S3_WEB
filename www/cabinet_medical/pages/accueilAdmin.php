@@ -127,7 +127,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						</table>
 					<!--Bouton "Ajouter un médecin" -->
 					<div class="row divBtnA left">
-						<a href="#"><button type="button" class="btn btn-info btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter un médecin</a>
+						<a href="creationMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter un médecin</a>
 					</div>
 				</div>	
 			</div>
