@@ -111,23 +111,30 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$ToutOK = false;
 		}
 
-		$role = 'MED';
-		$id = '004'; // A retirer une fois la BDD modifiée en Auto incrément
+		$role = 'ADM';
+		$id = '004'; // A retirer une fois la BDD modifiée en Auto incrément		
+		$erreur = '';
 
 		if($ToutOK) {
-			try { // Faire une transaction
+			try {
+				$pdo->beginTransaction(); // N'exécute pas si problème dans une des deux insersions
+
 				$requete = "INSERT INTO utilisateurs (identifiant, motDePasse, code_role) VALUES (?, ?, ?);";
 				$stmt = $pdo->prepare($requete);
 				$stmt->execute([$identifiant, $motDePasse, $role]);
 
-				$requete2 = "INSERT INTO medecins ( id_med, nom, prenom, dateNai, adresse, tel, email, id_util)
-					VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+				$requete2 = "INSERT INTO medecins ( id_med, nom, prenom, dateNai, adresse, tel, email, id_util) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
 				$stmt2 = $pdo->prepare($requete2);
 				$stmt2->execute([ $id, $nom, $prenom, $date, $adresse, $portable, $mail, $identifiant]);
 
+				$pdo->commit();
 			} catch (PDOException $e) {
-				echo $e->getMessage();
+				$erreur = $e->getMessage();
+				$pdo->rollBack();
 			}
+		}
+
+		if ($ToutOK && $erreur == '') {
 		?>
 			<div class="container bleu">
 				<!-- Nav-bar -->
@@ -140,8 +147,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!--Espace dans la navbar-->
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="creationMedecin.php" method="post">
-						    <a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
+						<form action="accueilAdmin.php" method="post">
+							<button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button>				
 							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
@@ -172,7 +179,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				</div>
 			</div>
 		<?php					
-		} else {
+		} elseif ($ToutOK && $erreur != '') {
 		?>
 			<div class="container bleu">
 				<!-- Nav-bar -->
@@ -185,7 +192,54 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!--Espace dans la navbar-->
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="creationMedecin.php" method="post">
+						<form action="accueilAdmin.php" method="post">
+							<button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button>				
+							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+						</form>
+					</div>	
+				</div>
+				<!-- Titre administrateur -->
+				<div class="row">
+					</br>
+					<div class="col-md-12 col-sm-12 col-xs-12 adminName">
+						ADMINISTRATEUR 
+					</div>	
+				</div>
+				<div class="row paddingForm">
+					<div class="row formPatient">
+						<!--Titre "Création d'un medecin"-->
+						<div class="col-md-12 col-sm-12 col-xs-12 titre titreCreation">
+							Création d'un médecin
+						</div>
+						<!--Message-->
+						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
+							<h2>Erreur lors de l'enregistrement ! </br> <?php echo $erreur ?></h2>
+						</div>
+						<!--Retour création-->
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							</br> </br> </br>
+							<a href="creationMedecin.php">Retour à la création</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<?php					
+				} else {
+			?>
+			<div class="container">
+				<!-- Nav-bar -->
+				<div class="row nav">
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
+						<img class="logo2" src="../assets/logo_titre.png" alt="logo medsoft">
+					</div>	
+					<div class="col-md-4 col-sm-4 col-xs-4">
+					<!--Espace dans la navbar-->
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 logos">
+						<form action="accueilAdmin.php" method="post">
 							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
 							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
@@ -213,6 +267,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									<!--Partie Gauche-->
 									<div class="col-md-6 col-sm-12 col-xs-12">
 										<!--Saisie du nom-->
+										</br>
 										<div class="row">
 											<div class="col-md-6 col-sm-6 col-xs-12 <?php if($nom=="") { echo "enRouge";}?>">
 												<label for="nom">Nom : </label>
