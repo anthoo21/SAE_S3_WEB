@@ -147,8 +147,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!--Espace dans la navbar-->
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="accueilAdmin.php" method="post">
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button>				
+						<form action="creationMedecin.php" method="post">
+							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
 							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
@@ -171,10 +171,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
 							<h2>Enregistrement du nouveau medecin validé !</h2>
 						</div>
-						<!--Retour accueil-->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<a href="accueilAdmin.php">Retour à ma page d'accueil</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -192,8 +188,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!--Espace dans la navbar-->
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="accueilAdmin.php" method="post">
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button>				
+						<form action="creationMedecin.php" method="post">
+							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
 							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
@@ -239,7 +235,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!--Espace dans la navbar-->
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="accueilAdmin.php" method="post">
+						<form action="creationMedecin.php" method="post">
 							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
 							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
