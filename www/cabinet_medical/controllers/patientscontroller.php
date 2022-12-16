@@ -48,12 +48,13 @@ class PatientsController {
         $noCV = HttpHelper::getParam('noCV');
         $allergies = HttpHelper::getParam('allergies');
         $commentaires = HttpHelper::getParam('commentaires');
-        $medecin = HttpHelper::getParam('id_medecin');
+        $medecin = HttpHelper::getParam('medecin');
 
         //Check nom
         if(isset($nom) and $nom!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $nom)) {
 			$nom=htmlspecialchars($nom);
 		} else {
+            $nom=htmlspecialchars($nom);
 			$check=false;
 		}
 
@@ -61,6 +62,7 @@ class PatientsController {
         if(isset($prenom) and $prenom!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $prenom)) {
 			$prenom=htmlspecialchars($prenom);
 		} else {
+            $prenom=htmlspecialchars($prenom);
 			$check=false;
 		}
 
@@ -68,6 +70,7 @@ class PatientsController {
 		if(isset($genre) and $genre!="" and ($genre=="01" || $genre=="02")) {
 			$genre=htmlspecialchars($genre);
 		} else {
+            $genre=htmlspecialchars($genre);
             $check=false;
         }
 
@@ -75,6 +78,7 @@ class PatientsController {
 		if(isset($adresse) and $adresse!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $adresse)) {
 			$adresse=htmlspecialchars($adresse);
 		} else {
+            $adresse=htmlspecialchars($adresse);
 			$check=false;
 		}
 
@@ -89,6 +93,7 @@ class PatientsController {
 		if(isset($mail) and $mail!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $mail)) {
 			$mail=htmlspecialchars($mail);
 		} else {
+            $portable=htmlspecialchars($portable);
 			$check=false;
 		}
 
@@ -96,6 +101,7 @@ class PatientsController {
 		if(isset($date) and $date!="") {
 			$date=htmlspecialchars($date);
 		} else {
+            $date=htmlspecialchars($date);
 			$check=false;
 		}
 
@@ -103,6 +109,7 @@ class PatientsController {
 		if(isset($poids) and $poids!="") {			//preg_match("~([1|2]?([0-9]{1,2}))(\.[0-9]{1,3})?~", $poids)
         $poids=htmlspecialchars($poids);
         } else {
+            $poids=htmlspecialchars($poids);
             $check=false;
         }
         //TODO => regex
@@ -111,6 +118,7 @@ class PatientsController {
         if(isset($noCV) and $noCV!="" and preg_match("#^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$#", $noCV)) {
             $noCV=htmlspecialchars($noCV);
         } else {
+            $noCV=htmlspecialchars($noCV);
             $check=false;
         }
 
@@ -118,15 +126,19 @@ class PatientsController {
         if(isset($allergies) and ($allergies=="oui" || $allergies=="non")) {
             $allergies=htmlspecialchars($allergies);
         } else {
+            $allergies=htmlspecialchars($allergies);
             $check=false;
+        }
+         
+        //Check id medecin
+        if (isset($medecin) && ($medecin == "001")) { //mettre une regex pour verifier la validité de l'id medecin
+            $medecin=htmlspecialchars($medecin);
+        } else {
+            $medecin=htmlspecialchars($medecin);
+            $check = false;
         }
 
-        //Check commentaires
-        if(isset($commentaires)) {
-            $commentaires=htmlspecialchars($commentaires);
-        } else {
-            $check=false;
-        }
+        $commentaires=htmlspecialchars($commentaires);
 
         //Appel de la fonction insert ou la vue form
         $view = new View('cabinet_medical/views/creationPatient');
@@ -142,15 +154,35 @@ class PatientsController {
             $view->setVar('noCV',$noCV);
             $view->setVar('allergies',$allergies);
             $view->setVar('commentaires',$commentaires);
+            $view->setVar('id_medecin', $medecin);
             $view->setVar('check', false);
             var_dump($view);
             return $view;
         } else if ($check == true){
-            //$stmt = $this->patientsService->addPatient($pdo, $nom, $prenom, $genre, $adresse, $portable, $mail, $poids, $noCV, $allergies, $commentaires, $medecin);
-            $view->setVar('check', true);
-            return $view;
+            try {
+                $this->patientsService->addPatient($pdo, $nom, $prenom, $genre, $adresse, $portable, $mail, $poids, $date, $noCV, $allergies, $commentaires, $medecin);
+                $view->setVar('check', true);
+                var_dump($view);
+                return $view;
+            } catch (\PDOException $ex) {
+                $view->setVar('check', false);
+                $view->setVar('erreur', $ex);
+                $view->setVar('nom',$nom);
+                $view->setVar('prenom',$prenom);
+                $view->setVar('genre',$genre);
+                $view->setVar('adresse',$adresse);
+                $view->setVar('portable',$portable);
+                $view->setVar('mail',$mail);
+                $view->setVar('date',$date);
+                $view->setVar('poids',$poids);
+                $view->setVar('noCV',$noCV);
+                $view->setVar('allergies',$allergies);
+                $view->setVar('commentaires',$commentaires);
+                $view->setVar('id_medecin', $medecin);
+                var_dump($view);
+                return $view;
+            }
         }
-        
     }
 }
 

@@ -22,7 +22,7 @@ class MedecinsService
     }
 
     /**
-     * @param $pdo $nom $secu
+     * @param $pdo $Rnom $Rsecu
      *  the pdo object used to connect to the database, nom and secu are used to find the correct patients
      * @return $searchStmt
      *  to access to all categories
