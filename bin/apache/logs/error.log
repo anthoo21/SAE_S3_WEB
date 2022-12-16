@@ -1394,3 +1394,8 @@
 [Fri Dec 16 10:16:11.250314 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00418: Parent: Created child process 3188
 [Fri Dec 16 10:16:11.972659 2022] [ssl:warn] [pid 3188:tid 616] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Fri Dec 16 10:16:11.973660 2022] [ssl:warn] [pid 3188:tid 616] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 10:16:12.248597 2022] [ssl:warn] [pid 3188:tid 616] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Dec 16 10:16:12.249952 2022] [ssl:warn] [pid 3188:tid 616] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 10:16:12.251123 2022] [ssl:warn] [pid 3188:tid 616] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 10:16:12.386272 2022] [mpm_winnt:notice] [pid 3188:tid 616] AH00354: Child: Starting 64 worker threads.
+[Fri Dec 16 10:36:54.134160 2022] [:error] [pid 3188:tid 1264] [client ::1:51339] script 'Z:/SAE_S3_WEB/www/cabinet_medical/accueilMedecin.php' not found or unable to stat, referer: http://localhost/cabinet_medical/index.php

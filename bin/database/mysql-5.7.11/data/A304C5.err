@@ -37,3 +37,12 @@
 2022-12-16T08:58:33.799261Z 0 [Note]   - '::' resolves to '::';
 2022-12-16T08:58:33.800255Z 0 [Note] Server socket created on IP: '::'.
 2022-12-16T08:58:34.006080Z 0 [Note] InnoDB: Buffer pool(s) load completed at 221216  9:58:34
+2022-12-16T08:58:44.443395Z 0 [Note] Event Scheduler: Loaded 0 events
+2022-12-16T08:58:44.443395Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
+2022-12-16T09:16:10.375961Z 2 [Note] Aborted connection 2 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-16T09:16:10.375961Z 4 [Note] Aborted connection 4 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-16T09:16:10.375961Z 5 [Note] Aborted connection 5 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-16T09:16:10.375961Z 3 [Note] Aborted connection 3 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-16T09:16:10.375961Z 22 [Note] Aborted connection 22 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-16T09:16:10.375961Z 13 [Note] Aborted connection 13 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)

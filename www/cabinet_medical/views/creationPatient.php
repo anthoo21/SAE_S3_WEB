@@ -14,16 +14,16 @@
 			<!-- Nav-bar -->
 			<div class="row nav">
 				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
-					<img class="logo2" src="../assets/logo_titre.png" alt="logo medsoft">
+					<img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
+					<img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
 				</div>	
 				<div class="col-md-4 col-sm-4 col-xs-4">
 				<!--Espace dans la navbar-->
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
-					<a href="accueilMedecin.php"><img class="logo3" src="../assets/profil_patients.png" alt="logo patient"></a>
-					<img class="logo4" src="../assets/recherche_medicaments.png" alt="logo recherche">
-					<img class="logo5" src="../assets/deconnexion.png" alt="logo deconnexion">
+					<a href="/cabinet_medical?controller=Medecins"><img class="logo3" src="assets\profil_patients.png" alt="logo patient"></a>
+					<img class="logo4" src="assets\recherche_medicaments.png" alt="logo recherche">
+					<img class="logo5" src="assets\deconnexion.png" alt="logo deconnexion">
 				</div>	
 			</div>
 			<!--Nom du docteur-->
