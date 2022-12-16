@@ -1352,3 +1352,45 @@
 [Thu Dec 15 11:41:17.599231 2022] [mpm_winnt:notice] [pid 11808:tid 656] AH00418: Parent: Created child process 9476
 [Thu Dec 15 11:41:18.326650 2022] [ssl:warn] [pid 9476:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Thu Dec 15 11:41:18.327836 2022] [ssl:warn] [pid 9476:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Dec 15 11:41:18.590777 2022] [ssl:warn] [pid 9476:tid 588] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Thu Dec 15 11:41:18.591517 2022] [ssl:warn] [pid 9476:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Dec 15 11:41:18.592495 2022] [ssl:warn] [pid 9476:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Dec 15 11:41:18.661434 2022] [mpm_winnt:notice] [pid 9476:tid 588] AH00354: Child: Starting 64 worker threads.
+[Fri Dec 16 09:58:29.548547 2022] [ssl:warn] [pid 2204:tid 424] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 09:58:29.555496 2022] [ssl:warn] [pid 2204:tid 424] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 09:58:29.819518 2022] [core:warn] [pid 2204:tid 424] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Fri Dec 16 09:58:29.884820 2022] [ssl:warn] [pid 2204:tid 424] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Dec 16 09:58:29.885816 2022] [ssl:warn] [pid 2204:tid 424] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 09:58:29.886814 2022] [ssl:warn] [pid 2204:tid 424] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 09:58:31.931764 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Fri Dec 16 09:58:31.933563 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00456: Server built: Jan 28 2016 09:58:25
+[Fri Dec 16 09:58:31.933952 2022] [core:notice] [pid 2204:tid 424] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Fri Dec 16 09:58:31.948714 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00418: Parent: Created child process 8420
+[Fri Dec 16 09:58:32.654033 2022] [ssl:warn] [pid 8420:tid 596] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 09:58:32.654033 2022] [ssl:warn] [pid 8420:tid 596] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 09:58:33.412034 2022] [ssl:warn] [pid 8420:tid 596] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Dec 16 09:58:33.412034 2022] [ssl:warn] [pid 8420:tid 596] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 09:58:33.413031 2022] [ssl:warn] [pid 8420:tid 596] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 09:58:33.458345 2022] [mpm_winnt:notice] [pid 8420:tid 596] AH00354: Child: Starting 64 worker threads.
+[Fri Dec 16 10:00:43.597992 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP Warning:  Missing argument 13 for services\\PatientsService::addPatient(), called in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\patientscontroller.php on line 149 and defined in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\services\\patientsservice.php on line 16, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.598468 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP Stack trace:, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.598946 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.599201 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.599201 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   3. controllers\\PatientsController->addPatient() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.600489 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   4. services\\PatientsService::addPatient() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\patientscontroller.php:149, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.627503 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP Notice:  Undefined variable: medecin in Z:\\SAE_S3_WEB\\www\\cabinet_medical\\services\\patientsservice.php on line 21, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.628083 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP Stack trace:, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.628083 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   1. {main}() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:0, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.628083 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   2. yasmf\\Router->route() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\index.php:19, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.629195 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   3. controllers\\PatientsController->addPatient() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\yasmf\\router.php:36, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:00:43.630380 2022] [:error] [pid 8420:tid 1248] [client ::1:55745] PHP   4. services\\PatientsService::addPatient() Z:\\SAE_S3_WEB\\www\\cabinet_medical\\controllers\\patientscontroller.php:149, referer: http://localhost/cabinet_medical/index.php
+[Fri Dec 16 10:16:10.384938 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00428: Parent: child process 8420 exited with status 3221225477 -- Restarting.
+[Fri Dec 16 10:16:10.932317 2022] [ssl:warn] [pid 2204:tid 424] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Dec 16 10:16:10.953626 2022] [ssl:warn] [pid 2204:tid 424] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 10:16:10.954697 2022] [ssl:warn] [pid 2204:tid 424] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Dec 16 10:16:11.219064 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Fri Dec 16 10:16:11.221024 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00456: Server built: Jan 28 2016 09:58:25
+[Fri Dec 16 10:16:11.222000 2022] [core:notice] [pid 2204:tid 424] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Fri Dec 16 10:16:11.250314 2022] [mpm_winnt:notice] [pid 2204:tid 424] AH00418: Parent: Created child process 3188
+[Fri Dec 16 10:16:11.972659 2022] [ssl:warn] [pid 3188:tid 616] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Fri Dec 16 10:16:11.973660 2022] [ssl:warn] [pid 3188:tid 616] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name

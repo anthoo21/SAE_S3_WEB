@@ -39,3 +39,8 @@
 2022-12-15T10:00:28.463662Z 0 [Note] Event Scheduler: Loaded 0 events
 2022-12-15T10:00:28.463662Z 0 [Note] Z:\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: ready for connections.
 Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
+2022-12-15T10:41:16.821667Z 3 [Note] Aborted connection 3 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-15T10:41:16.821667Z 4 [Note] Aborted connection 4 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-15T10:41:16.821667Z 2 [Note] Aborted connection 2 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-15T10:41:16.821667Z 5 [Note] Aborted connection 5 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2022-12-15T10:41:16.821667Z 6 [Note] Aborted connection 6 to db: 'medsoft' user: 'root' host: 'localhost' (Got an error reading communication packets)

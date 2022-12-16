@@ -58,8 +58,13 @@
 			</div>
 			<?php					
 				} else if($check == false) {
+					if(isset($erreur)) {
+						echo "<h1 class='color'>Erreur PDO : </h1></br>";
+						echo $erreur;
+					}
 			?>
 			<!--Formulaire-->
+
 			<form action="index.php" method="post">
 				<div class="col-md-12 col-sm-12 col-xs-12 formPatient">
 					<!--Partie Gauche-->
@@ -79,12 +84,12 @@
 								<label for="prenom">Prénom : </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="prenom" class="form-control" value="<?php if(isset($prenom) && $prenom=="") { echo $prenom;}?>">
+								<input type="text" name="prenom" class="form-control" value="<?php if(isset($prenom) && $prenom!="") { echo $prenom;}?>">
 							</div>
 						</div>
 						<div class="row">
 							<!--Saisie du Genre-->
-							<div class="col-md-6 col-sm-6 col-xs-12  <?php if(isset($genre) && $genre=="null") { echo "enRouge";}?>">
+							<div class="col-md-6 col-sm-6 col-xs-12  <?php if(isset($genre) && $genre==null) { echo "enRouge";}?>">
 								<label for="genre">Genre : </label>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-6">
@@ -100,7 +105,7 @@
 								<label for="adresse">Adresse : </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="adresse" class="form-control" placeholder="Ex : 4 rue de Jarlard 81000 Albi" value="<?php if(isset($adresse) && $adresse=="") {echo $adresse;}?>">
+								<input type="text" name="adresse" class="form-control" placeholder="Ex : 4 rue de Jarlard 81000 Albi" value="<?php if(isset($adresse) && $adresse!="") {echo $adresse;}?>">
 							</div>
 						</div>
 						<div class="row">
@@ -109,7 +114,7 @@
 								<label for="portable">Portable : </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="tel" name="portable" class="form-control" placeholder="Ex : 0611223344" pattern="[0][0-9]{1}[0-9]{8}" value="<?php if(isset($portable) && $portable=="") {echo $portable;}?>">
+								<input type="tel" name="portable" class="form-control" placeholder="Ex : 0611223344" pattern="[0][0-9]{1}[0-9]{8}" value="<?php if(isset($portable) && $portable!="") {echo $portable;}?>">
 							</div>
 						</div>
 						<div class="row">
@@ -118,7 +123,7 @@
 								<label for="mail">Email : </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="email" name="mail" class="form-control" placeholder="Ex : prenom.nom@gmail.com" value="<?php if(isset($mail) && $mail=="") {echo $mail;}?>">
+								<input type="email" name="mail" class="form-control" placeholder="Ex : prenom.nom@gmail.com" value="<?php if(isset($mail) && $mail!="") {echo $mail;}?>">
 							</div>
 						</div>
 						<div class="row">
@@ -127,7 +132,7 @@
 								<label for="date">Date de naissance : </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="date" name="date" class="form-control" value="<?php if(isset($date) && $date=="") {echo $date;}?>">
+								<input type="date" name="date" class="form-control" value="<?php if(isset($date) && $date!="") {echo $date;}?>">
 							</div>
 						</div>
 					</div>
@@ -140,7 +145,7 @@
 								<label for="poids">Poids: </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="poids" class="form-control" placeholder="Ex : 112.500" value="<?php if(isset($poids) && $poids=="") {echo $poids;}?>">
+								<input type="text" name="poids" class="form-control" placeholder="Ex : 112.500" value="<?php if(isset($poids) && $poids!="") {echo $poids;}?>">
 							</div>
 						</div>
 						<div class="row">
@@ -149,7 +154,7 @@
 								<label for="noCV" >N° carte vitale: </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="noCV" class="form-control" value="<?php if(isset($noCV) && $noCV=="") {echo $noCV;}?>">
+								<input type="text" name="noCV" class="form-control" value="<?php if(isset($noCV) && $noCV!="") {echo $noCV;}?>">
 							</div>
 						</div>
 						<div class="row">
@@ -166,11 +171,11 @@
 						</div>
 						<div class="row">
 							<!--Saisie de commentaires-->
-							<div class="col-md-12 col-sm-7 col-xs-12  <?php if(isset($commentaires) && $commentaires=="") { echo "enRouge";}?>">
+							<div class="col-md-12 col-sm-7 col-xs-12">
 								<label for="commentaires">Commentaires: </label>
 							</div>
 							<div class="col-md-12 col-sm-6 col-xs-12">
-								<textarea name="commentaires" rows="7" cols="45"><?php if(isset($commentaires) && $commentaires=="") {echo $commentaires;}?></textarea>
+								<textarea name="commentaires" rows="7" cols="45"><?php if(isset($commentaires) && $commentaires!="") {echo $commentaires;}?></textarea>
 							</div>
 						</div>
 						<div class="row">
@@ -181,15 +186,15 @@
 							</div>
 						</div>
 					</div>
+					<input hidden name="medecin" value="<?php echo $id_medecin; ?>">
+					<input hidden name="controller" value="Patients">
+					<input hidden name="action" value="addPatient">
 					<!--Bouton Valider-->
 					<div class="col-md-12 col-sm-12 col-xs-12 divBouton">
 						<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 					</div>
 				</div>
 				<!--Envoi de l'id du medecin-->
-				<input hidden name="medecin" value="<?php echo $id_medecin; ?>">
-				<input hidden name="controller" value="Patients">
-				<input hidden name="action" value="addPatient">
 			</form>
 			<?php
 				}
