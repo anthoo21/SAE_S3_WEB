@@ -235,6 +235,32 @@ a:hover {
 	padding-left:30px;
 }
 
+/*  __________________________________________________________________________ */
+/* |                         PAGE DOSSIER PATIENT                             |*/
+/* |__________________________________________________________________________|*/
+
+.bordureD { 
+	border:1px solid #B4B8B9;
+	line-height:30px;
+	font-size:1.1em;
+}
+.entete {
+	text-decoration: underline black;
+}
+/* Titre création d'un patient*/
+.titreDossier {
+	text-decoration:none;
+	font-size:2em;
+	text-align:left;
+	padding-top: 30px;
+	padding-left: 30px;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.paddingDossier {
+	padding-left:20px;
+	padding-right:20px;
+}
 
 /*  __________________________________________________________________________ */
 /* |                         PAGE D'ACCUEIL ADMINISTRATEUR                    |*/
@@ -244,7 +270,7 @@ a:hover {
 	background-color: #E0EEF4;
 }
 .bleu {
-	background-color: #E0EEF4;
+	background-color: #A5DBF4;
 }
 /* Nom Admmin */
 .adminName {
