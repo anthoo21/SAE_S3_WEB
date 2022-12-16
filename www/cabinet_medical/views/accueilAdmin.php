@@ -3,9 +3,9 @@
   <head>
       <title>MEDSOFT - Accueil Medecin</title>
       <meta charset="utf-8">
-	  <link rel="stylesheet" href="css\style.css"> 
-	  <link rel="stylesheet" href="bootstrap\css\bootstrap.css">
-	  <link rel="stylesheet" href="fontawesome-free-5.10.2-web\css\all.css">
+	  <link rel="stylesheet" href="../css/style.css"> 
+	  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+	  <link rel="stylesheet" href="../fontawesome-free-5.10.2-web/css/all.css">
   </head>
   
   <body>
@@ -126,9 +126,11 @@
 			//	&& $_POST['cis5'] != "" && $_POST['cis6'] != "" && $_POST['cis7'] != "" && $_POST['cis8'] != ""
 			if(isset($_FILES['cis1'])) {
 				try {
-					$tabName = array('Part1.txt','CIS_CIP_bdpm.txt', 'CIS_COMPO_bdpm.txt', 'CIS_CPD_bdpm.txt', 'CIS_GENER_bdpm.txt','CIS_HAS_ASMR_bdpm','CIS_HAS_SMR_bdpm','CIS_InfoImportantes_bdpm','HAS_LiensPageCT_bdpm');
-					$target_dir = "../fichierImport/";
 					for($i = 1; $i <= 9; $i++) {
+						$tabName = array('CIS_bdpm.txt','CIS_CIP_bdpm.txt','CIS_COMPO_bdpm.txt',
+						'CIS_CPD_bdpm.txt', 'CIS_GENER_bdpm.txt','CIS_HAS_ASMR_bdpm.txt',
+						'CIS_HAS_SMR_bdpm.txt','CIS_InfoImportantes_bdpm.txt','HAS_LiensPageCT_bdpm.txt');
+						$target_dir = "../fichierImport/";
 						$uploadOk = 1;
 						$target_file = $target_dir.basename($_FILES["cis".strval($i)]["name"]);
 						$ficType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));			
@@ -144,18 +146,11 @@
 						if(htmlspecialchars(basename($_FILES["cis".strval($i)]["name"])) != $tabName[$i-1]) {
 							$uploadOk = 0;
 						}
-						// $listeMedic = basename($_FILES["cis".strval($i)]["name"]);
-						// $tabMedic = file($listeMedic,FILE_IGNORE_NEW_LINES);
-						// foreach ($tabMedic as $listeMedoc) {
-						// 	$tab = explode('	',$listeMedoc);
-						// 	echo $tab[0];
-						// }
 						//Si uploadOk = 0, c'est qu'il y a eu une erreur
 						if ($uploadOk == 0) {
 							echo "Le fichier n'a pas pu être traité.</br>";
 						// Sinon, essaye d'upload le fichier
 						} else {
-							echo $_FILES["cis1"]["size"];
 							if (move_uploaded_file($_FILES["cis".strval($i)]["tmp_name"], $target_file)) {
 								echo "Le fichier ".basename( $_FILES["cis".strval($i)]["name"])." a été correctement importé.</br>";
 							} else {
@@ -172,42 +167,346 @@
 					echo "erreur : ".$e->getMessage();
 				}
 			} 
-			
+			$verifFic = array();
+			if(isset($_POST['ValidationImport'])) {
+				try {
+					$tabName = array('CIS_bdpm.txt','CIS_CIP_bdpm.txt','CIS_COMPO_bdpm.txt',
+					'CIS_CPD_bdpm.txt', 'CIS_GENER_bdpm.txt','CIS_HAS_ASMR_bdpm.txt',
+					'CIS_HAS_SMR_bdpm.txt','CIS_InfoImportantes_bdpm.txt','HAS_LiensPageCT_bdpm.txt');
+					$target_dir = "../fichierImport/";
+					for($i = 0; $i <= 8; $i++) {
+						$file = $target_dir.$tabName[$i];
+						$tabFichier = file($file,FILE_IGNORE_NEW_LINES);
+						foreach($tabFichier as $ligne) { 
+							$tab = explode(chr(9), $ligne);	
+							if($i == 0) {
+								// $codeCis = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								// $denom = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								// $forme = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								// $voie = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								// $statut = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								// $typeProced = iconv(mb_detect_encoding($tab[5], mb_detect_order(), true), "UTF-8", $tab[5]);
+								// $etatCommerc = iconv(mb_detect_encoding($tab[6], mb_detect_order(), true), "UTF-8", $tab[6]);
+								// $dateAMM = iconv(mb_detect_encoding($tab[7], mb_detect_order(), true), "UTF-8", $tab[7]);
+								// $statutBdm = iconv(mb_detect_encoding($tab[8], mb_detect_order(), true), "UTF-8", $tab[8]);
+								// $numeroAutoUE = iconv(mb_detect_encoding($tab[9], mb_detect_order(), true), "UTF-8", $tab[9]);
+								// $titulaire = iconv(mb_detect_encoding($tab[10], mb_detect_order(), true), "UTF-8", $tab[10]);
+								// $surveillance = iconv(mb_detect_encoding($tab[11], mb_detect_order(), true), "UTF-8", $tab[11]);
+								// $insertMedic=$pdo->prepare('INSERT INTO CIS_bdpm (codeCis, denomination, forme, voieAdmin, statutAdmin, typeProcedure, etatCommerc, dateAMM, statutBdm, numeroAutoUE, titulaire, surveillance) VALUES (:codeCis , :denom, :forme, :voie, :statut, :typeProced, :etatCommerc, :dateAMM, :statutBdm, :numeroAutoUE, :titulaire, :surveillance)');
+								// $insertMedic->bindParam('codeCis', $codeCis);
+								// $insertMedic->bindParam('denom', $denom);
+								// $insertMedic->bindParam('forme', $forme);
+								// $insertMedic->bindParam('voie', $voie);
+								// $insertMedic->bindParam('statut', $statut);
+								// $insertMedic->bindParam('typeProced', $typeProced);
+								// $insertMedic->bindParam('etatCommerc', $etatCommerc);
+								// $insertMedic->bindParam('dateAMM', $dateAMM);
+								// $insertMedic->bindParam('statutBdm', $statutBdm);
+								// $insertMedic->bindParam('numeroAutoUE', $numeroAutoUE);
+								// $insertMedic->bindParam('titulaire', $titulaire);
+								// $insertMedic->bindParam('surveillance', $surveillance);
+								// $insertMedic->execute();
+							}
+							if($i == 1) {
+								// $codeCis_CIP = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								// $codeCip7 = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								// $libelle = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								// $statutAdmin = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								// $etatCommerc = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								// $dateDecla = iconv(mb_detect_encoding($tab[5], mb_detect_order(), true), "UTF-8", $tab[5]);
+								// $codeCip13 = iconv(mb_detect_encoding($tab[6], mb_detect_order(), true), "UTF-8", $tab[6]);
+								// $agrement = iconv(mb_detect_encoding($tab[7], mb_detect_order(), true), "UTF-8", $tab[7]);
+								// $tauxRemboursement = iconv(mb_detect_encoding($tab[8], mb_detect_order(), true), "UTF-8", $tab[8]);
+								// $prix = iconv(mb_detect_encoding($tab[10], mb_detect_order(), true), "UTF-8", $tab[10]);
+								// $droitRemboursement = iconv(mb_detect_encoding($tab[12], mb_detect_order(), true), "UTF-8", $tab[12]);
+								// $insertMedic=$pdo->prepare('INSERT INTO CIS_CIP_bdpm (codeCis_CIP, codeCip7, libelle, statutAdmin, etatCommerc, dateDecla, codeCip13, agrement, tauxRemboursement, prix, droitRemboursement) VALUES (:codeCis_CIP, :codeCip7, :libelle, :statutAdmin, :etatCommerc, :dateDecla, :codeCip13, :agrement, :tauxRemboursement, :prix, :droitRemboursement)');
+								// $insertMedic->bindParam('codeCis_CIP', $codeCis_CIP);
+								// $insertMedic->bindParam('codeCip7', $codeCip7);
+								// $insertMedic->bindParam('libelle', $libelle);
+								// $insertMedic->bindParam('statutAdmin', $statutAdmin);
+								// $insertMedic->bindParam('etatCommerc', $etatCommerc);
+								// $insertMedic->bindParam('dateDecla', $dateDecla);
+								// $insertMedic->bindParam('codeCip13', $codeCip13);
+								// $insertMedic->bindParam('agrement', $agrement);
+								// $insertMedic->bindParam('tauxRemboursement', $tauxRemboursement);
+								// $insertMedic->bindParam('prix', $prix);
+								// $insertMedic->bindParam('droitRemboursement', $droitRemboursement);
+								// $insertMedic->execute();
+							}
+							if($i == 2) {
+								$codeCis_COMPO = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$designation = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$codeSubstance = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								$denomSubstance = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								$dosage = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								$refDosage = iconv(mb_detect_encoding($tab[5], mb_detect_order(), true), "UTF-8", $tab[5]);
+								$natureCompo = iconv(mb_detect_encoding($tab[6], mb_detect_order(), true), "UTF-8", $tab[6]);
+								$numeroLier = iconv(mb_detect_encoding($tab[7], mb_detect_order(), true), "UTF-8", $tab[7]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_COMPO_bdpm (codeCis_COMPO, designation, codeSubstance, denomSubstance, dosage, refDosage, natureCompo, numeroLier) VALUES (:codeCis_COMPO, :designation, :codeSubstance, :denomSubstance, :dosage, :refDosage, :natureCompo, :numeroLier)');
+								$insertMedic->bindParam('codeCis_COMPO', $codeCis_COMPO);
+								$insertMedic->bindParam('designation', $designation);
+								$insertMedic->bindParam('codeSubstance', $codeSubstance);
+								$insertMedic->bindParam('denomSubstance', $denomSubstance);
+								$insertMedic->bindParam('dosage', $dosage);
+								$insertMedic->bindParam('refDosage', $refDosage);
+								$insertMedic->bindParam('natureCompo', $natureCompo);
+								$insertMedic->bindParam('numeroLier', $numeroLier);
+								$insertMedic->execute();
+							}
+							if($i == 3) {
+								$codeCis_CPD = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$conditionPrescri = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_CPD_bdpm (codeCis_CPD, conditionPrescri) VALUES (:codeCis_CPD, :conditionPrescri)');
+								$insertMedic->bindParam('codeCis_CPD', $codeCis_CPD);
+								$insertMedic->bindParam('conditionPrescri', $conditionPrescri);
+								$insertMedic->execute();
+							}
+							if($i == 4) {
+								$idGroupe = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$libelle = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$codeCis_GENER = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								$typeGener = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								$numTri = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_GENER_bdpm (idGroupe, libelle, codeCis_GENER, typeGener, numTri) VALUES (:idGroupe, :libelle, :codeCis_GENER, :typeGener, :numTri)');
+								$insertMedic->bindParam('idGroupe', $idGroupe);
+								$insertMedic->bindParam('libelle', $libelle);
+								$insertMedic->bindParam('codeCis_GENER', $codeCis_GENER);
+								$insertMedic->bindParam('typeGener', $typeGener);
+								$insertMedic->bindParam('numTri', $numTri);
+								$insertMedic->execute();
+							}
+							if($i == 5) {
+								$codeCis_HAS_ASMR = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$codeDossier = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$motifEval = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								$dateAvis = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								$valeurASMR = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								$libelle = iconv(mb_detect_encoding($tab[5], mb_detect_order(), true), "UTF-8", $tab[5]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_HAS_ASMR_bdpm (codeCis_HAS_ASMR, codeDossier, motifEval, dateAvis, valeurASMR, libelle) VALUES (:codeCis_HAS_ASMR, :codeDossier, :motifEval, :dateAvis, :valeurASMR, :libelle)');
+								$insertMedic->bindParam('codeCis_HAS_ASMR', $codeCis_HAS_ASMR);
+								$insertMedic->bindParam('codeDossier', $codeDossier);
+								$insertMedic->bindParam('motifEval', $motifEval);
+								$insertMedic->bindParam('dateAvis', $dateAvis);
+								$insertMedic->bindParam('valeurASMR', $valeurASMR);
+								$insertMedic->bindParam('libelle', $libelle);
+								$insertMedic->execute();
+							}
+							if($i == 6) {
+								$codeCis_HAS_SMR = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$codeDossier = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$motifEval = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								$dateAvis = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								$valeurSMR = iconv(mb_detect_encoding($tab[4], mb_detect_order(), true), "UTF-8", $tab[4]);
+								$libelle = iconv(mb_detect_encoding($tab[5], mb_detect_order(), true), "UTF-8", $tab[5]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_HAS_SMR_bdpm (codeCis_HAS_SMR, codeDossier, motifEval, dateAvis, valeurSMR, libelle) VALUES (:codeCis_HAS_SMR, :codeDossier, :motifEval, :dateAvis, :valeurSMR, :libelle)');
+								$insertMedic->bindParam('codeCis_HAS_SMR', $codeCis_HAS_SMR);
+								$insertMedic->bindParam('codeDossier', $codeDossier);
+								$insertMedic->bindParam('motifEval', $motifEval);
+								$insertMedic->bindParam('dateAvis', $dateAvis);
+								$insertMedic->bindParam('valeurSMR', $valeurSMR);
+								$insertMedic->bindParam('libelle', $libelle);
+								$insertMedic->execute();
+							}
+							if($i == 7) {
+								$codeCis_INFO = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$dateDebut = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$dateFin = iconv(mb_detect_encoding($tab[2], mb_detect_order(), true), "UTF-8", $tab[2]);
+								$texteLien = iconv(mb_detect_encoding($tab[3], mb_detect_order(), true), "UTF-8", $tab[3]);
+								$insertMedic=$pdo->prepare('INSERT INTO CIS_InfoImportantes_bdpm (codeCis_INFO, dateDebut, dateFin, texteLien) VALUES (:codeCis_INFO, :dateDebut, :dateFin, :texteLien)');
+								$insertMedic->bindParam('codeCis_INFO', $codeCis_INFO);
+								$insertMedic->bindParam('dateDebut', $dateDebut);
+								$insertMedic->bindParam('dateFin', $dateFin);
+								$insertMedic->bindParam('texteLien', $texteLien);
+								$insertMedic->execute();
+							}
+							if($i == 8) {
+								$codeHas = iconv(mb_detect_encoding($tab[0], mb_detect_order(), true), "UTF-8", $tab[0]);
+								$liensPage = iconv(mb_detect_encoding($tab[1], mb_detect_order(), true), "UTF-8", $tab[1]);
+								$insertMedic=$pdo->prepare('INSERT INTO HAS_LiensPageCT_bdpm (codeHas, liensPage) VALUES (:codeHas, :liensPage)');
+								$insertMedic->bindParam('codeHas', $codeHas);
+								$insertMedic->bindParam('liensPage', $liensPage);
+								$insertMedic->execute();
+							}
+
+						}
+						echo '<h3>Insert de '.$tabName[$i].' réussi.</h3>';
+					}
+				} catch(exception $e) {
+					var_dump($ligne);
+					var_dump($tab);
+					echo "erreur : ".$e->getMessage();
+				}
+			}
 			?>
-			<div class="col-md-12 col-xs-12 col-sm-12">
-				<form method="post" action="accueilAdmin.php" class="aaa2" enctype="multipart/form-data">
+			<div class="row">
+				<form method="post" action="accueilAdmin.php" enctype="multipart/form-data">
 					<input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis1" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis1" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis2" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis2" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_CIP_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_CIP_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis3" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis3" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_COMPO_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_COMPO_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis4" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis4" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_CPD_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_CPD_bdpm</label>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis5" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_GENER_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_GENER_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis5" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis6" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_HAS_ASMR_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_HAS_ASMR_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis6" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis7" accept=".txt">
+						</div>
+						<div class="col-md-3 col-xs-3 col-sm-3">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_HAS_SMR_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_HAS_SMR_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis7" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis8" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/CIS_InfoImportantes_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier CIS_InfoImportantes_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis8" accept=".txt">
+					<div class="row">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input type="file" name="cis9" accept=".txt">
+						</div>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<label class="<?php
+							if(!file_exists("../fichierImport/HAS_LiensPageCT_bdpm.txt")) {
+								echo 'enRouge';
+								array_push($verifFic, false);
+							} else {
+								echo 'enVert';
+								array_push($verifFic, true);
+							}
+							?>">Fichier HAS_LiensPageCT_bdpm</label>
+						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="file" name="cis9" accept=".txt">
+					<div class="col-md-6 col-xs-6 col-sm-6">
+						<input type="submit" value="Upload" name="btnImport" class="btnImport">
 					</div>
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<input type="submit" value="Importer" name="btnImport" class="btnImport">
-					</div>
-				</form>	
+					</form>	
+					<?php
+					$allVerifOk = true;
+					for($i = 0; $i < count($verifFic); $i++) {
+						if($verifFic[$i] == false) {
+							$allVerifOk = false;
+						}
+					}
+					if($allVerifOk) {
+						?>
+					<form action="accueilAdmin.php" method="post">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<input hidden value="ValidationImport" name="ValidationImport">
+							<input type="submit" value="Importer" name="btnImport2" class="btnImport">
+						</div>
+							<?php
+						}
+						?>
+					</form>
 			</div>
 		</div>
 	</div>
