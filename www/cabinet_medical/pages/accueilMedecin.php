@@ -1,19 +1,18 @@
 <?php
 session_start(); //démarrage d'une session
 
-//Vérification que les variables sessions de l'utilisateur existent
-if(isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-	$login = $_SESSION['login'];
-	$pwd = $_SESSION['pwd'];
-	$nom = $_SESSION['nom'];
-	$prenom = $_SESSION['prenom'];
-}
+	// Test si on est bien connecté (session existante et bon numéro de session
+	if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+		// Renvoi vers la page de connexion
+  		header('Location: ../index.php');
+  		exit();
+	}
 
-if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
-	session_destroy();
-	header('Location: ../index.php');
-  	exit();
-}
+	if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
+		session_destroy();
+		header('Location: ../index.php');
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="Fr">
@@ -62,10 +61,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			<!--Espace dans la navbar-->
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
-				<form action="accueilMedecin.php" method="post">
-					<button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button>				
-					<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
-					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+				<form action="accueilMedecin.php" method="post">				
+					<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button></a>
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
 				</form>
 			</div>	
 		</div>
@@ -126,6 +124,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							<th class="thMed">Email</th>
 							<th class="thMed">Date de naissance</th>
 							<th class="thMed">Dernière visite</th>
+							<th class="thMed"><span class="fas fa-eye"></th>
 						</tr>
 					<?php 
 						if((isset($_POST['rechercheNom']) && $_POST['rechercheNom'] != "" ) || (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "")) {
@@ -139,17 +138,19 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							} else if (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
 								$requeteSelect="WHERE numeroCarteVitale LIKE '".$nsecu."'";
 							}
-							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect);
+							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect." ORDER BY nom");
 							$resultats->bindParam('nom', $_POST['rechercheNom']);
 							$resultats->bindParam('nsecu', $_POST['rechercheNSecu']);
 							$resultats->execute();
 
 						} else {
-							$requeteSelectALL="SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale"; 
+							$requeteSelectALL="SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ORDER BY nom"; 
 							$resultats=$pdo->query($requeteSelectALL);
 						}
 						while($ligne = $resultats->fetch()) {
+							echo '<form action="dossierPatient.php" method="post">';
 							echo '<tr>';
+								echo '<input type="hidden" name="id" value="'.$ligne['numeroCarteVitale'].'">';
 								echo '<td>'.$ligne['nom'].'</td>';
 								echo '<td>'.$ligne['prenom'].'</td>';
 								echo '<td>'.$ligne['sexe'].'</td>';
@@ -157,7 +158,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								echo '<td>'.$ligne['email'].'</td>';
 								echo '<td>'.$ligne['dateNai'].'</td>';
 								echo '<td>'.$ligne['date_visite'].'</td>'; //affiche seulement une des visites qu'ils ont
+								echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
 							echo '</tr>';
+							echo '</form>';
 						}
 					?>
 				</div>
