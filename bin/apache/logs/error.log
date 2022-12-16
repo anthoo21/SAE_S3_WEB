@@ -1415,3 +1415,4 @@
 [Fri Dec 16 10:33:00.206780 2022] [ssl:warn] [pid 6260:tid 608] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
 [Fri Dec 16 10:33:00.250329 2022] [mpm_winnt:notice] [pid 6260:tid 608] AH00354: Child: Starting 64 worker threads.
 [Fri Dec 16 10:33:47.828600 2022] [:error] [pid 6260:tid 1316] [client ::1:55429] PHP Warning:  POST Content-Length of 11258474 bytes exceeds the limit of 8388608 bytes in Unknown on line 0, referer: http://localhost/cabinet_medical/views/accueilAdmin.php
+[Fri Dec 16 10:51:52.301740 2022] [mpm_winnt:crit] [pid 6260:tid 608] AH02538: Child: Parent process exited abruptly. Child process is ending
