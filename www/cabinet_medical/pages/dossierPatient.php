@@ -7,7 +7,7 @@ session_start(); //démarrage d'une session
   		header('Location: ../index.php');
   		exit();
 	}
-
+	
 // Déconnexion
 if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	session_destroy();
@@ -26,7 +26,16 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
   </head>
   
   <body>
-  
+	<!-- Fonction permettant d'afficher un message lors du clic sur le bouton "supprimer" 
+	 <script>
+		// function myFunction() {
+		  // if (confirm("En supprimant ce patient, vous supprimez aussi ses visites, ordonnances et visites. Voulez-vous continnuer ?")) {
+			// document.getElementById("sup").innerHTML = "ok";
+		  // } else {
+			// document.getElementById("sup").innerHTML = "Nok";
+		  // }
+		// }
+	// </script>-->
 	<?php
 		// Gestion de la connexion à la base de données
 		$host = 'localhost';
@@ -47,18 +56,21 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
 
+		$_SESSION['idPatient'] = $_POST['id'];
+		
 		// Récupération des données relatives au patient
 		try {
-			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, genres.sexe, patients.tel,
+			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, genres.sexe, patients.adresse, patients.tel,
 			patients.email, patients.dateNai, patients.poids, patients.allergies, patients.commentaires, medecins.nom nomMedecin, medecins.prenom prenomMedecin
 			FROM patients JOIN medecins ON id_medecin = id_med JOIN genres ON patients.id_genre = genres.id_genre
 			WHERE patients.numeroCarteVitale = :id";
 			$resultats = $pdo->prepare($requeteP);
-			$resultats->bindParam('id', $_POST['id']);
+			$resultats->bindParam('id', $_SESSION['idPatient']);
 			$resultats->execute();
 			while($ligne = $resultats->fetch()) {
 				$nom = $ligne['nom'];
 				$prenom = $ligne['prenom'];
+				$adresse = $ligne['adresse'];
 				$noCV = $ligne['numeroCarteVitale'];
 				$tel = $ligne['tel'];
 				$email = $ligne['email'];
@@ -73,9 +85,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			echo $e->getMessage();
 		}
 		
-		if(!isset($_POST['id'])) {
+		// Si le bouton "Voir le dossier" depuis "accueilMedecin.php" n'est pas activé
+		if(!isset($_SESSION['idPatient'])) {
 			header('Location: accueilMedecin.php');
-		}
+		}// PB : Si j'appuie sur n'importe quel bouton 'submit', il me renvoie à l'accueilMedecin :(
 		
 		?>		
 		<div class="container">
@@ -113,15 +126,38 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
 						Dossier de : <?php echo $nom.' '.$prenom;?> 
 					</div>
-					<div class="col-md-3 hidden-sm hidden-xs">
+					<div class="col-md-2 hidden-sm hidden-xs">
 					</div>
 					
-					<!-- Boutons de modification, suppression et retour -->
-					<div class="col-md-2 col-sm-12 col-xs-12 titreDossier">
-							<button type="button" class="btn btn-success btn-circle btn-xl" name="modifPatient" value="true" title="Modifier ce patient"><span class="fas fa-pencil"></span></button></a>				
-							<button type="button" class="btn btn-success btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button></a>
-							<a href="accueilMedecin.php"><button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à la liste des patients"><span class="fas fa-arrow-left"></span></button></a>
+					<!-- Boutons de modification -->
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="modificationPatient.php" method="post">
+							<button type="submit" class="btn btn-success btn-circle btn-xl" name="modifPatient" value="true" title="Modifier ce patient"><span class="fas fa-pencil"></span></button>		
+							<input type="hidden" name="idCV" value="<?php echo $noCV;?>">
+						</form>
 					</div>
+					<!-- Boutons de suppression TODO-->
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="dossierPatient.php" method="post">
+							<button type="submit" onclick="myFunction()" class="btn btn-success btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
+							<input type="hidden" id="sup" name="okSup" value="true">
+						</form>
+					</div>
+					<!-- Boutons de retour -->
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="accueilMedecin.php" method="post">
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à la liste des patients"><span class="fas fa-arrow-left"></span></button>
+						</form>
+					</div>
+					
+					<?php
+						// Si le bouton "Suppression d'un patient" est activé
+						// if(isset($_POST['supprimePatient']) and $_POST['supprimePatient']){			// PB => dès que j'appuie sur un bouton, cela me renvoit sur l'accueil médecin
+							// $requeteSup='DELETE FROM patient WHERE numeroCarteVitale = ?';
+							// $stmtSup = $pdo->prepare($requeteSup);
+							// $stmtSup->execute($_SESSION['idPatient']);
+						// }
+						?>
 					
 					<!-- Affichage des informations générales du patient-->
 					<div class="col-md-7 col-sm-12 col-xs-12 paddingDossier">
@@ -132,6 +168,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									echo '<p>Nom : '.$nom.'</p>';
 									echo '<p>Prénom : '.$prenom.'</p>';
 									echo '<p>Genre : '.$genre.'</p>';
+									echo '<p>Adresse : '.$adresse.'</p>';
 									echo '<p>Portable : '.$tel.'</p>';
 									echo '<p>Email : '.$email.'</p>';
 									echo '<p>Date de naissance : '.$date.'</p>';
@@ -143,7 +180,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							</div>
 						</div>
 					</div>
-					
 					<!-- Affichage des commentaires sur le patient -->
 					<div class="col-md-5 col-sm-12 col-xs-12 paddingForm">
 						<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
@@ -171,7 +207,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 										<?php 		
 											// Récupération des données relatives aux visites du patient
 											try {
-												$requeteV="SELECT visites.date_visite, medecins.nom, medecins.prenom, visites.motif, ordonnances.id_ordo
+												$requeteV="SELECT visites.id_visite, visites.date_visite, medecins.nom, medecins.prenom, visites.motif, ordonnances.id_ordo
 												FROM visites 
 												JOIN ordonnances ON visites.id_visite = ordonnances.id_visite 
 												JOIN patients ON numeroCarteVitale = id_patient
@@ -182,17 +218,22 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 												$resultatV->bindParam('patient', $noCV);
 												$resultatV->execute();
 												while($visite = $resultatV->fetch()) {
+													echo '<form action="visitePatient.php" method="post">';
 													echo '<tr>';
-													echo '<td><button type="submit" class="btn btn-secondary" title="Voir la visite"><span class="fas fa-eye"></button>';
+													echo '<td><button type="submit" class="btn btn-secondary" title="Voir la visite"><span class="fas fa-eye"></span></button></td>';
+													echo '<input type="hidden" name="idVisite" value="'.$visite['id_visite'].'">';
 													echo '<td>'.$visite['date_visite'].'</td>';
 													echo '<td>'.$visite['nom'].' '.$visite['prenom'].'</td>';
 													echo '<td>'.$visite['motif'].'</td>';
 													echo '<td>'.$visite['id_ordo'].'</td>';
 													echo '</tr>';
+													echo '</form>';
 												}
 											} catch (PDOException $e) {
 												echo $e->getMessage();
 											}
+											
+											
 										?>
 									</div>
 								</table>
