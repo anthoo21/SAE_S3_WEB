@@ -1,18 +1,18 @@
 <?php
 session_start(); //démarrage d'une session
 
+	// Test si on est bien connecté (session existante et bon numéro de session
+	if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+		// Renvoi vers la page de connexion
+  		header('Location: ../index.php');
+  		exit();
+	}
 
-//Vérification que les variables sessions de l'utilisateur existent
-if(isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-	$login = $_SESSION['login'];
-	$pwd = $_SESSION['pwd'];
-}
-
-if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
-	session_destroy();
-	header('Location: ../index.php');
-  	exit();
-}
+	if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
+		session_destroy();
+		header('Location: ../index.php');
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="Fr">
@@ -24,7 +24,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body>
+  <body class="bleu">
 		<?php 
 
 			$host='localhost';	// Serveur de BD
@@ -50,7 +50,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			}
 
 		?>
-	<div class="container bleu">
+	<div class="container">
 		<!-- Nav-bar -->
 		<div class="row nav">
 			<div class="col-md-4 col-sm-4 col-xs-4">
@@ -62,7 +62,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
 				<form action="accueilAdmin.php" method="post">
-					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
 				</form>
 			</div>	
 		</div>
@@ -98,7 +98,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<p>Nombres de médecins : <?php echo $compteMed ?></p>
 					<p>Nombres de patients : <?php echo $comptePatients ?></p>
 
-
 				</div>
 			</div>
 			<div class="col-md-8 col-xs-8 col-sm-8">
@@ -111,17 +110,22 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								<th class="thAdm">Email</th>
 								<th class="thAdm">Identifiant</th>
 								<th class="thAdm">Mot de passe</th>
+								<th class="thAdm"><span class="fas fa-eye"></th>
 							</tr>
 							<?php 
 							$selectAllMedecins = $pdo->query('SELECT * FROM medecins JOIN utilisateurs ON id_util = identifiant');
 							while($ligne = $selectAllMedecins->fetch()) {
-								echo '<tr class="ligneMed">';
-									echo '<td>'.$ligne['nom'].'</td>';
-									echo '<td>'.$ligne['prenom'].'</td>';
-									echo '<td>'.$ligne['email'].'</td>';
-									echo '<td>'.$ligne['id_util'].'</td>';
-									echo '<td>'.$ligne['motDePasse'].'</td>';
-								echo '</tr>';
+								echo '<form action="dossierMedecin.php" method="post">';
+									echo '<tr class="ligneMed">';
+										echo '<input type="hidden" name="idMed" value="'.$ligne['id_med'].'">';
+										echo '<td>'.$ligne['nom'].'</td>';
+										echo '<td>'.$ligne['prenom'].'</td>';
+										echo '<td>'.$ligne['email'].'</td>';
+										echo '<td>'.$ligne['id_util'].'</td>';
+										echo '<td>'.$ligne['motDePasse'].'</td>';
+										echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
+									echo '</tr>';
+								echo '</form>';
 							}
 							?>
 						</table>
@@ -531,34 +535,3 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
   </body>
 </html>
 
-<?php 
-// if(isset($_FILES['fichierUpload']))
-// {
-// 	$dossier = '../images/Produits/';
-// 	var_dump($_FILES);
-// 	$fichier = basename($_FILES['fichierUpload']['name']);
-
-// 	$extensions = array('.PNG', '.GIF', '.JPG', '.JPEG');
-// 	// récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
-// 	$extension = strtoupper(strrchr($_FILES['fichierUpload']['name'], '.'));
-// 	//Test si l'extension est prise en charge
-// 	if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-// 	{
-// 		$OKfichier=false ;
-// 		$messageFichier="(Vous devez uploader un fichier de type png, gif, jpg, jpeg)" ;
-// 	} else {
-// 		$nouveauNomImage="img_".time().$extension ; // Renommage du fichier pour qu'il soit unique
-
-// 		if(move_uploaded_file($_FILES['fichierUpload']['tmp_name'], $dossier . $nouveauNomImage)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-// 		{
-// 			echo 'Upload effectué avec succès !';
-// 		}
-// 		else //Sinon (la fonction renvoie FALSE).
-// 		{
-// 			echo 'Echec de l\'upload !';
-// 			$OKfichier=false ;
-// 			$messageFichier="(Probleme chargement fichier)" ;
-// 		}
-// 	}
-// }
-?>

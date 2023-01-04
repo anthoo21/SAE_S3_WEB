@@ -225,7 +225,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 													echo '<td>'.$visite['date_visite'].'</td>';
 													echo '<td>'.$visite['nom'].' '.$visite['prenom'].'</td>';
 													echo '<td>'.$visite['motif'].'</td>';
-													echo '<td>'.$visite['id_ordo'].'</td>';
+													echo '<td>ORDO n°'.$visite['id_ordo'].'</td>';
 													echo '</tr>';
 													echo '</form>';
 												}

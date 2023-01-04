@@ -123,7 +123,7 @@ session_start(); //démarrage d'une session
 							<th class="thMed">Téléphone</th>
 							<th class="thMed">Email</th>
 							<th class="thMed">Date de naissance</th>
-							<th class="thMed">Dernière visite</th>
+							<th class="thMed">N° Sécu sociale</th>
 							<th class="thMed"><span class="fas fa-eye"></th>
 						</tr>
 					<?php 
@@ -138,26 +138,26 @@ session_start(); //démarrage d'une session
 							} else if (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
 								$requeteSelect="WHERE numeroCarteVitale LIKE '".$nsecu."'";
 							}
-							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect." ORDER BY nom");
+							$resultats = $pdo->prepare("SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect." ORDER BY nom");
 							$resultats->bindParam('nom', $_POST['rechercheNom']);
 							$resultats->bindParam('nsecu', $_POST['rechercheNSecu']);
 							$resultats->execute();
 
 						} else {
-							$requeteSelectALL="SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ORDER BY nom"; 
+							$requeteSelectALL="SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai FROM patients P JOIN genres G ON P.id_genre = G.id_genre ORDER BY nom"; 
 							$resultats=$pdo->query($requeteSelectALL);
 						}
 						while($ligne = $resultats->fetch()) {
 							echo '<form action="dossierPatient.php" method="post">';
 							echo '<tr>';
-								echo '<input type="hidden" name="id" value="'.$ligne['numeroCarteVitale'].'">';
+								echo '<input type="hidden" name="id" value="'.$ligne['numeroCarteVitale'].'">'; // Problème affichage recherche par critères
 								echo '<td>'.$ligne['nom'].'</td>';
 								echo '<td>'.$ligne['prenom'].'</td>';
 								echo '<td>'.$ligne['sexe'].'</td>';
 								echo '<td>'.$ligne['tel'].'</td>';
 								echo '<td>'.$ligne['email'].'</td>';
 								echo '<td>'.$ligne['dateNai'].'</td>';
-								echo '<td>'.$ligne['date_visite'].'</td>'; //affiche seulement une des visites qu'ils ont
+								echo '<td>'.$ligne['numeroCarteVitale'].'</td>';
 								echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
 							echo '</tr>';
 							echo '</form>';
