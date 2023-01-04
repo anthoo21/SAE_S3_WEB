@@ -24,6 +24,7 @@ class MedecinsController {
      *  the view in charge of displaying the patients
      */
     public function index($pdo) {
+        var_dump($pdo);
         $searchStmt = $this->medecinsService->findAllPatients($pdo);
         $view = new View('cabinet_medical/views/accueilMedecin');
         $view->setVar('searchStmt', $searchStmt);

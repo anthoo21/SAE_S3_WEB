@@ -11,6 +11,13 @@
   </head>
   
   <body class="body">
+	<?php
+		spl_autoload_extensions(".php");
+		spl_autoload_register();
+
+		use yasmf\HttpHelper;
+
+	?>
 	<div class="container 1">
 		<!-- Nav-bar -->
 		<div class="row nav">
@@ -32,7 +39,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<form action="index.php" method="post">
 				<input hidden name="action" value="index">
-    			<input hidden name="controller" value="Medecins">
+    			<input hidden name="controller" value="Admins">
 					<p class="titre">Connexion à mon compte : </p>
 					<div class="row">
 						<!--Identifiant correct (non vide): apparaît en vert sinon en rouge-->

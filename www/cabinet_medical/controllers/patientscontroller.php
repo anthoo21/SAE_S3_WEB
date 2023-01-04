@@ -24,6 +24,7 @@ class PatientsController {
      *  the view in charge of displaying the form to add a patient
      */
     public function index($pdo) {
+        var_dump($pdo);
         $view = new View('cabinet_medical/views/creationPatient');
         $view->setVar('check', false);
         return $view;

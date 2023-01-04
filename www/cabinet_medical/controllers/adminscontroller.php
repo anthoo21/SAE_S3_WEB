@@ -1,5 +1,5 @@
 <?php
-namespace controller;
+namespace controllers;
 
 use services\AdminsService;
 use yasmf\HttpHelper;
@@ -12,7 +12,8 @@ class AdminsController {
     /**
      * Create and initialize an AdminsController object
      */
-    public function __contruct() {
+    public function __construct() {
+
         $this->adminsService = AdminsService::getDefaultService();
     }
 
@@ -26,9 +27,9 @@ class AdminsController {
         $nomsCabinets = $this->adminsService->findAllCabinets($pdo); //renvoi tout les cabinets
         $medecins = $this->adminsService->findAllMedecins($pdo); //renvoi tout les medecins
         $nbMedecins = $medecins->rowCount(); //compte le nombre de medecins
-        $patients = $adminsService->findAllPatients($pdo);
+        $patients = $this->adminsService->findAllPatients($pdo);
         $nbpatients = $patients->rowCount();
-        $view = new View('cabinet_medical/views/acceuilAdmin');
+        $view = new View('cabinet_medical\views\accueilAdmin');
         $view->setVar('requeteCabinet', $nomsCabinets);
         $view->setVar('selectAllMedecins', $medecins);
         $view->setVar('compteMed', $nbMedecins);
