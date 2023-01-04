@@ -10,7 +10,7 @@ class MedecinsController {
     private $medecinsService;
 
     /**
-    * Create and initialize an ArticlesController object
+    * Create and initialize an MedecinsController object
     */
     public function __construct()
     {
