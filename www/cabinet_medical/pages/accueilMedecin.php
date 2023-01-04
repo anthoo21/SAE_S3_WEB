@@ -138,7 +138,7 @@ session_start(); //démarrage d'une session
 							} else if (isset($_POST['rechercheNSecu']) && $_POST['rechercheNSecu'] != "") {
 								$requeteSelect="WHERE numeroCarteVitale LIKE '".$nsecu."'";
 							}
-							$resultats = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect." ORDER BY nom");
+							$resultats = $pdo->prepare("SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$requeteSelect." ORDER BY nom");
 							$resultats->bindParam('nom', $_POST['rechercheNom']);
 							$resultats->bindParam('nsecu', $_POST['rechercheNSecu']);
 							$resultats->execute();
