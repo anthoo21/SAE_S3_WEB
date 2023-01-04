@@ -111,8 +111,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$ToutOK = false;
 		}
 
-		$role = 'ADM';
-		$id = '004'; // A retirer une fois la BDD modifiée en Auto incrément		
+		$role = 'ADM';		
 		$erreur = '';
 
 		if($ToutOK) {
@@ -123,9 +122,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				$stmt = $pdo->prepare($requete);
 				$stmt->execute([$identifiant, $motDePasse, $role]);
 
-				$requete2 = "INSERT INTO medecins ( id_med, nom, prenom, dateNai, adresse, tel, email, id_util) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+				$requete2 = "INSERT INTO medecins (nom, prenom, dateNai, adresse, tel, email, id_util) VALUES (?, ?, ?, ?, ?, ?, ?);";
 				$stmt2 = $pdo->prepare($requete2);
-				$stmt2->execute([ $id, $nom, $prenom, $date, $adresse, $portable, $mail, $identifiant]);
+				$stmt2->execute([$nom, $prenom, $date, $adresse, $portable, $mail, $identifiant]);
 
 				$pdo->commit();
 			} catch (PDOException $e) {
@@ -136,7 +135,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 
 		if ($ToutOK && $erreur == '') {
 		?>
-			<div class="container bleu">
+			<div class="container">
 				<!-- Nav-bar -->
 				<div class="row nav">
 					<div class="col-md-4 col-sm-4 col-xs-4">
@@ -176,7 +175,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		<?php					
 		} elseif ($ToutOK && $erreur != '') {
 		?>
-			<div class="container bleu">
+			<div class="container">
 				<!-- Nav-bar -->
 				<div class="row nav">
 					<div class="col-md-4 col-sm-4 col-xs-4">
@@ -235,9 +234,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="creationMedecin.php" method="post">
-							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
-							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" title="Revenir à l'accueil" name="medecin" value="true"><span class="fas fa-user"></button></a>
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" title="Déconnexion" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
 				</div>
@@ -320,10 +318,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								
 									<!--Partie Droite-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
-										<div class="row entete">
-											Coordonnées de connexion :
+										<div class="row paddingForm center">
+											<h3 class="entete">Coordonnées de connexion :</h3>
 										</div>
-										<div class="row">
+										<div class="row paddingForm">
 											<!--Saisie de l'identifiant -->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($identifiant=="") { echo "enRouge";}?>">
 												<label for="identifiant">Identifiant : </label>
@@ -332,7 +330,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 												<input type="text" name="identifiant" class="form-control" value="<?php echo $identifiant;?>">
 											</div>
 										</div>
-										<div class="row">
+										<div class="row paddingForm">
 											<!--Saisie du mot de passe -->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($motDePasse=="") { echo "enRouge";}?>">
 												<label for="motDePasse" >Mot de passe : </label>
@@ -344,7 +342,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									</div>
 									
 									<!--Bouton Valider-->
-									<div class="col-md-12 col-sm-12 col-xs-12 divBouton">
+									<div class="col-md-12 col-sm-12 col-xs-12 divBouton center">
 										<div class="row divBouton">
 										<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
