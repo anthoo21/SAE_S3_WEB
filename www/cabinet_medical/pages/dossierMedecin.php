@@ -105,7 +105,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			<div class="row paddingForm">
 				<div class="row formPatient">
 					<!--Titre "Dossier du patient"-->
-					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
+					<div class="col-md-9 col-sm-12 col-xs-12 titreDossier">
 						Dossier du médecin : <?php echo $nom.' '.$prenom;?> 
 					</div>
 					<div class="col-md-2 hidden-sm hidden-xs">
@@ -121,7 +121,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 
 					<!-- Boutons de retour -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="accueilMedecin.php" method="post">
+						<form action="accueilAdmin.php" method="post">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à l'accueil administrateur"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
@@ -139,7 +139,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									echo '<p>Telephone : '.$tel.'</p>';
 									echo '<p>Email : '.$email.'</p>';
 									echo '<p>Identifiant : '.$identifiant.'</p>';
-									echo '<p>Mot de passe : '.$mdp.'kg </p>';
+									echo '<p>Mot de passe : '.$mdp.'</p>';
 								?>
 							</div>
 						</div>

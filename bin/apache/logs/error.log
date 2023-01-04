@@ -7263,3 +7263,15 @@
 [Wed Jan 04 11:09:48.611588 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:51181] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188, referer: http://localhost/cabinet_medical/pages/accueilMedecin.php
 [Wed Jan 04 11:09:48.611588 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:51181] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/accueilMedecin.php
 [Wed Jan 04 11:09:48.612587 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:51181] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/accueilMedecin.php
+[Wed Jan 04 11:38:54.981808 2023] [ssl:warn] [pid 32464:tid 640] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 11:38:54.982837 2023] [ssl:warn] [pid 32464:tid 640] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 11:38:55.040030 2023] [core:warn] [pid 32464:tid 640] AH00098: pid file D:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Jan 04 11:38:55.138766 2023] [ssl:warn] [pid 32464:tid 640] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 11:38:55.139764 2023] [ssl:warn] [pid 32464:tid 640] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 11:38:55.139764 2023] [ssl:warn] [pid 32464:tid 640] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 11:38:55.896141 2023] [mpm_winnt:notice] [pid 32464:tid 640] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Wed Jan 04 11:38:55.896141 2023] [mpm_winnt:notice] [pid 32464:tid 640] AH00456: Server built: Jan 28 2016 09:58:25
+[Wed Jan 04 11:38:55.896141 2023] [core:notice] [pid 32464:tid 640] AH00094: Command line: 'D:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d D:/SAE_S3_WEB/bin/apache -f D:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Wed Jan 04 11:38:55.900133 2023] [mpm_winnt:notice] [pid 32464:tid 640] AH00418: Parent: Created child process 24368
+[Wed Jan 04 11:38:56.834982 2023] [ssl:warn] [pid 24368:tid 632] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 11:38:56.835980 2023] [ssl:warn] [pid 24368:tid 632] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
