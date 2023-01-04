@@ -123,7 +123,7 @@ session_start(); //démarrage d'une session
 							<th class="thMed">Téléphone</th>
 							<th class="thMed">Email</th>
 							<th class="thMed">Date de naissance</th>
-							<th class="thMed">Dernière visite</th>
+							<th class="thMed">N° Sécu sociale</th>
 							<th class="thMed"><span class="fas fa-eye"></th>
 						</tr>
 					<?php 
@@ -144,7 +144,7 @@ session_start(); //démarrage d'une session
 							$resultats->execute();
 
 						} else {
-							$requeteSelectALL="SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ORDER BY nom"; 
+							$requeteSelectALL="SELECT numeroCarteVitale, nom, prenom, sexe, tel, email, dateNai FROM patients P JOIN genres G ON P.id_genre = G.id_genre ORDER BY nom"; 
 							$resultats=$pdo->query($requeteSelectALL);
 						}
 						while($ligne = $resultats->fetch()) {
@@ -157,7 +157,7 @@ session_start(); //démarrage d'une session
 								echo '<td>'.$ligne['tel'].'</td>';
 								echo '<td>'.$ligne['email'].'</td>';
 								echo '<td>'.$ligne['dateNai'].'</td>';
-								echo '<td>'.$ligne['date_visite'].'</td>'; //affiche seulement une des visites qu'ils ont
+								echo '<td>'.$ligne['numeroCarteVitale'].'</td>';
 								echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
 							echo '</tr>';
 							echo '</form>';
