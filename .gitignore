@@ -1,2 +1,2 @@
-*.log
+/bin/apache/logs/*.log
 *.err
