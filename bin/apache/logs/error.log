@@ -172,3 +172,72 @@
 [Tue Dec 06 16:09:51.319551 2022] [ssl:warn] [pid 12248:tid 664] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
 [Tue Dec 06 16:09:51.341504 2022] [mpm_winnt:notice] [pid 12248:tid 664] AH00354: Child: Starting 64 worker threads.
 [Tue Dec 06 16:48:07.171523 2022] [:error] [pid 12248:tid 1280] [client ::1:57229] PHP Parse error:  syntax error, unexpected end of file in C:\\Users\\USER01\\Documents\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\index.php on line 68, referer: http://localhost/
+[Wed Jan 04 09:39:56.894001 2023] [ssl:warn] [pid 4316:tid 632] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:39:56.894001 2023] [ssl:warn] [pid 4316:tid 632] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:39:57.099362 2023] [core:warn] [pid 4316:tid 632] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Jan 04 09:39:57.177154 2023] [ssl:warn] [pid 4316:tid 632] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:39:57.178151 2023] [ssl:warn] [pid 4316:tid 632] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:39:57.178745 2023] [ssl:warn] [pid 4316:tid 632] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:39:57.491413 2023] [mpm_winnt:notice] [pid 4316:tid 632] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Wed Jan 04 09:39:57.492079 2023] [mpm_winnt:notice] [pid 4316:tid 632] AH00456: Server built: Jan 28 2016 09:58:25
+[Wed Jan 04 09:39:57.492414 2023] [core:notice] [pid 4316:tid 632] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Wed Jan 04 09:39:57.500313 2023] [mpm_winnt:notice] [pid 4316:tid 632] AH00418: Parent: Created child process 564
+[Wed Jan 04 09:39:58.250265 2023] [ssl:warn] [pid 564:tid 556] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:39:58.261259 2023] [ssl:warn] [pid 564:tid 556] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:39:58.577851 2023] [ssl:warn] [pid 564:tid 556] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:39:58.578849 2023] [ssl:warn] [pid 564:tid 556] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:39:58.578849 2023] [ssl:warn] [pid 564:tid 556] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:39:58.642346 2023] [mpm_winnt:notice] [pid 564:tid 556] AH00354: Child: Starting 64 worker threads.
+[Wed Jan 04 09:48:58.954853 2023] [mpm_winnt:crit] [pid 564:tid 556] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Wed Jan 04 09:49:01.997119 2023] [ssl:warn] [pid 11868:tid 572] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:01.997119 2023] [ssl:warn] [pid 11868:tid 572] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:02.178634 2023] [core:warn] [pid 11868:tid 572] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Jan 04 09:49:02.249432 2023] [ssl:warn] [pid 11868:tid 572] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:02.250431 2023] [ssl:warn] [pid 11868:tid 572] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:02.251364 2023] [ssl:warn] [pid 11868:tid 572] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:02.529343 2023] [mpm_winnt:notice] [pid 11868:tid 572] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Wed Jan 04 09:49:02.529343 2023] [mpm_winnt:notice] [pid 11868:tid 572] AH00456: Server built: Jan 28 2016 09:58:25
+[Wed Jan 04 09:49:02.530340 2023] [core:notice] [pid 11868:tid 572] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Wed Jan 04 09:49:02.539331 2023] [mpm_winnt:notice] [pid 11868:tid 572] AH00418: Parent: Created child process 6412
+[Wed Jan 04 09:49:03.286649 2023] [ssl:warn] [pid 6412:tid 460] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:03.287647 2023] [ssl:warn] [pid 6412:tid 460] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:03.656024 2023] [ssl:warn] [pid 6412:tid 460] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:03.657029 2023] [ssl:warn] [pid 6412:tid 460] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:03.657880 2023] [ssl:warn] [pid 6412:tid 460] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:03.720101 2023] [mpm_winnt:notice] [pid 6412:tid 460] AH00354: Child: Starting 64 worker threads.
+[Wed Jan 04 09:49:13.679942 2023] [mpm_winnt:crit] [pid 6412:tid 460] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Wed Jan 04 09:49:16.087394 2023] [ssl:warn] [pid 2508:tid 584] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:16.088391 2023] [ssl:warn] [pid 2508:tid 584] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:20.191686 2023] [ssl:warn] [pid 7720:tid 576] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:20.192149 2023] [ssl:warn] [pid 7720:tid 576] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:20.366646 2023] [core:warn] [pid 7720:tid 576] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Jan 04 09:49:20.438519 2023] [ssl:warn] [pid 7720:tid 576] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:20.439242 2023] [ssl:warn] [pid 7720:tid 576] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:20.440037 2023] [ssl:warn] [pid 7720:tid 576] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:20.762302 2023] [mpm_winnt:notice] [pid 7720:tid 576] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Wed Jan 04 09:49:20.762495 2023] [mpm_winnt:notice] [pid 7720:tid 576] AH00456: Server built: Jan 28 2016 09:58:25
+[Wed Jan 04 09:49:20.762755 2023] [core:notice] [pid 7720:tid 576] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Wed Jan 04 09:49:20.770940 2023] [mpm_winnt:notice] [pid 7720:tid 576] AH00418: Parent: Created child process 2536
+[Wed Jan 04 09:49:21.654225 2023] [ssl:warn] [pid 2536:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:21.655050 2023] [ssl:warn] [pid 2536:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:21.883578 2023] [ssl:warn] [pid 2536:tid 588] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:21.884557 2023] [ssl:warn] [pid 2536:tid 588] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:21.884557 2023] [ssl:warn] [pid 2536:tid 588] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:21.935179 2023] [mpm_winnt:notice] [pid 2536:tid 588] AH00354: Child: Starting 64 worker threads.
+[Wed Jan 04 09:49:39.511379 2023] [mpm_winnt:crit] [pid 2536:tid 588] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Wed Jan 04 09:49:42.487570 2023] [ssl:warn] [pid 4124:tid 424] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:42.488170 2023] [ssl:warn] [pid 4124:tid 424] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:42.678192 2023] [core:warn] [pid 4124:tid 424] AH00098: pid file Z:/SAE_S3_WEB/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Jan 04 09:49:42.743445 2023] [ssl:warn] [pid 4124:tid 424] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:42.744674 2023] [ssl:warn] [pid 4124:tid 424] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:42.745698 2023] [ssl:warn] [pid 4124:tid 424] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:43.046144 2023] [mpm_winnt:notice] [pid 4124:tid 424] AH00455: Apache/2.4.18 (Win32) OpenSSL/1.0.2f PHP/7.0.3 configured -- resuming normal operations
+[Wed Jan 04 09:49:43.046144 2023] [mpm_winnt:notice] [pid 4124:tid 424] AH00456: Server built: Jan 28 2016 09:58:25
+[Wed Jan 04 09:49:43.047142 2023] [core:notice] [pid 4124:tid 424] AH00094: Command line: 'Z:\\SAE_S3_WEB\\bin\\apache\\bin\\httpd.exe -d Z:/SAE_S3_WEB/bin/apache -f Z:\\SAE_S3_WEB\\bin\\apache\\conf\\httpd.conf'
+[Wed Jan 04 09:49:43.056118 2023] [mpm_winnt:notice] [pid 4124:tid 424] AH00418: Parent: Created child process 2440
+[Wed Jan 04 09:49:43.752528 2023] [ssl:warn] [pid 2440:tid 604] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:43.753525 2023] [ssl:warn] [pid 2440:tid 604] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:44.517881 2023] [ssl:warn] [pid 2440:tid 604] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 09:49:44.518315 2023] [ssl:warn] [pid 2440:tid 604] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 09:49:44.519052 2023] [ssl:warn] [pid 2440:tid 604] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 09:49:44.596723 2023] [mpm_winnt:notice] [pid 2440:tid 604] AH00354: Child: Starting 64 worker threads.

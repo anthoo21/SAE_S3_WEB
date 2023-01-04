@@ -219,6 +219,9 @@ a:hover {
 .enRouge {
 	color:red;
 }
+.enVert {
+	color: green;
+}
 .formGD {
 	padding-top:20px;
 }
@@ -270,7 +273,7 @@ a:hover {
 	background-color: #E0EEF4;
 }
 .bleu {
-	background-color: #A5DBF4;
+	background-color: #E0EEF4;
 }
 /* Nom Admmin */
 .adminName {
