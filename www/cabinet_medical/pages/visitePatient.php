@@ -46,9 +46,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
 
-		$_SESSION['idPatient'] = $_POST['id'];
+		// $_SESSION['idPatient'] = $_POST['id'];
 		$_SESSION['idVisite'] = $_POST['idVisite'];
-		var_dump($_SESSION['idVisite']);
 		
 		// Récupération des données relatives au patient
 		try {
@@ -65,13 +64,13 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$resultats->execute();
 			while($ligne = $resultats->fetch()) {
 				$nomPrenomPatient = $ligne['np'].$ligne['pp'];
-				$nomPrenomMedecin = $ligne['nm'].$ligne['pm'];
+				$nomPrenomMedecin = $ligne['nm']." ".$ligne['pm'];
 				$dateVisite = $ligne['date_visite'];
 				$poids = $ligne['poids'];
 				$commentaires = $ligne['commentaires'];
 				$dateNaissance = $ligne['dateNai'];
 				$motif = $ligne['motif'];
-				$observations = $lignes['observations'];
+				$observations = $ligne['observations'];
 			}
 		} catch (PDOException $e) {
 			echo $e->getMessage();
