@@ -24,7 +24,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	  <link rel="stylesheet" href="../css/style.css"> 
   </head>
   
-  <body>
+  <body class="bleu">
   
 	<?php
 		$host = 'localhost';
@@ -148,8 +148,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="creationMedecin.php" method="post">
-							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
@@ -321,7 +320,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								
 									<!--Partie Droite-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
-										<div class="row">
+										<div class="row entete">
 											Coordonnées de connexion :
 										</div>
 										<div class="row">

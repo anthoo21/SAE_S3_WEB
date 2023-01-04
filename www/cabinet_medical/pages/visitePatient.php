@@ -63,12 +63,12 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$resultats->bindParam('idVisite', $_SESSION['idVisite']);
 			$resultats->execute();
 			while($ligne = $resultats->fetch()) {
-				$nomPrenomPatient = $ligne['np'].$ligne['pp'];
+				$nomPrenomPatient = $ligne['np'].' '.$ligne['pp'];
 				$nomPrenomMedecin = $ligne['nm']." ".$ligne['pm'];
-				$dateVisite = $ligne['date_visite'];
+				$dateVisite = date("d/m/Y", strtotime($ligne['date_visite']));
 				$poids = $ligne['poids'];
 				$commentaires = $ligne['commentaires'];
-				$dateNaissance = $ligne['dateNai'];
+				$dateNaissance = date("d/m/Y", strtotime($ligne['dateNai']));
 				$motif = $ligne['motif'];
 				$observations = $ligne['observations'];
 			}
@@ -117,7 +117,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
 						Visite du : <?php echo $dateVisite;?> 
 					</div>
-					<div class="col-md-2 hidden-sm hidden-xs">
+					<div class="col-md-4 hidden-sm hidden-xs">
 					</div>
 					
 					<!-- Boutons de retour -->
