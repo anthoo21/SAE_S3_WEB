@@ -151,6 +151,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					
 					<?php
+						// TODO
 						// Si le bouton "Suppression d'un patient" est activé
 						// if(isset($_POST['supprimePatient']) and $_POST['supprimePatient']){			// PB => dès que j'appuie sur un bouton, cela me renvoit sur l'accueil médecin
 							// $requeteSup='DELETE FROM patient WHERE numeroCarteVitale = ?';

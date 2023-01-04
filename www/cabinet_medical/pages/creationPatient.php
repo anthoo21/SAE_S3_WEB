@@ -357,7 +357,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									</div>
 									
 									<!--Bouton Valider-->
-									<div class="col-md-12 col-sm-12 col-xs-12 divBouton">
+									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="row divBouton">
 										<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>

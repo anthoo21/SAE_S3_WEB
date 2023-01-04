@@ -118,8 +118,10 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 								<input type="password" name="password" class="form-control saisie fond">
 							</div>
 						</div>
-						<!--Identifiant et mot de passe dans la BDD : affichage page d'accueil-->
-						<input type="submit" name="connexion" value="Me connecter" class="buttonConnect">
+						<div class="row divBouton">
+							<!--Identifiant et mot de passe dans la BDD : affichage page d'accueil-->
+							<input type="submit" name="connexion" value="Me connecter" class="buttonConnect">
+						</div>
 					</form>
 					<?php
 					if(isset($authOK)) {
