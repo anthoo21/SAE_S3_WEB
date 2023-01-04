@@ -24,6 +24,6 @@ Participants au projet : Anthony, Armand, Charlie, Julie et Marion
 
 Drive du projet : https://drive.google.com/drive/folders/1eyT1nG3F1uZ4uPYA2eOnnl3to1CRWDOC?usp=share_link
 
-Zenhub : https://app.zenhub.com/workspaces/sae-s3-anglais-634527b957e772df0c60f1e9/board?invite=true
+Zenhub : https://app.zenhub.com/workspaces/sae-s3-web-63452734e50ddc5541e033ae?invite=1KJfUSqehBSqThJiVct6EVko
 
-GitHub : https://github.com/Wailtran08/SAE_S3_ANGLAIS.git
+GitHub : https://github.com/anthoo21/SAE_S3_WEB.git
