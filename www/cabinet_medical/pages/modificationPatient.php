@@ -46,7 +46,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			echo $e->getMessage();
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
-
 		
 		// Récupération des données relatives au patient
 		try {
@@ -208,7 +207,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						  WHERE numeroCarteVitale = ?";
 				$stmt = $pdo->prepare($requete);
 				$stmt->execute([$newNom, $newPrenom, $genre, $newAdresse, $newPortable, $mail, $newDate, $newPoids, $newAllergies, $newCom, $_SESSION['idPatient']]);
-				var_dump($requete);
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}

@@ -6440,3 +6440,529 @@
 [Wed Jan 04 10:51:34.881171 2023] [mpm_winnt:notice] [pid 5436:tid 688] AH00418: Parent: Created child process 1564
 [Wed Jan 04 10:51:35.784755 2023] [ssl:warn] [pid 1564:tid 620] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Wed Jan 04 10:51:35.784755 2023] [ssl:warn] [pid 1564:tid 620] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 10:51:36.130826 2023] [ssl:warn] [pid 1564:tid 620] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Wed Jan 04 10:51:36.130826 2023] [ssl:warn] [pid 1564:tid 620] AH01906: main-serveur:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Jan 04 10:51:36.132036 2023] [ssl:warn] [pid 1564:tid 620] AH01909: main-serveur:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Jan 04 10:51:36.175858 2023] [mpm_winnt:notice] [pid 1564:tid 620] AH00354: Child: Starting 64 worker threads.
+[Wed Jan 04 10:52:00.679848 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:00.680875 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:00.681843 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:00.794518 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP Notice:  Undefined variable: lignes in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 74, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:00.795514 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:00.795514 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53904] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:52.995393 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59
+[Wed Jan 04 10:52:52.996051 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:52.997326 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.076793 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:52:53.077199 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.077199 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.078099 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:52:53.078535 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.079014 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.079423 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136
+[Wed Jan 04 10:52:53.079825 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.080196 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.080575 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168
+[Wed Jan 04 10:52:53.080976 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.081344 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.081726 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169
+[Wed Jan 04 10:52:53.081726 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.081726 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.082727 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170
+[Wed Jan 04 10:52:53.082727 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.083724 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.083724 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171
+[Wed Jan 04 10:52:53.083724 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.084724 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.084724 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172
+[Wed Jan 04 10:52:53.085739 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.085994 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.086448 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173
+[Wed Jan 04 10:52:53.087103 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.087425 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.087672 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174
+[Wed Jan 04 10:52:53.088089 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.088345 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.088606 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175
+[Wed Jan 04 10:52:53.088939 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.089239 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.089502 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176
+[Wed Jan 04 10:52:53.089781 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.090206 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.090550 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177
+[Wed Jan 04 10:52:53.090939 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.091278 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.091623 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178
+[Wed Jan 04 10:52:53.091984 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.092314 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:53.092655 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188
+[Wed Jan 04 10:52:53.093032 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP Stack trace:
+[Wed Jan 04 10:52:53.093356 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53934] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:52:59.469228 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:59.469228 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:59.470459 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:59.570619 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP Notice:  Undefined variable: lignes in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 74, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:59.571616 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:52:59.571616 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53937] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:54:54.271772 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49
+[Wed Jan 04 10:54:54.271772 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.271772 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.272768 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined index: idVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 50
+[Wed Jan 04 10:54:54.272768 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.273751 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.359872 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: dateVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 119
+[Wed Jan 04 10:54:54.359872 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.360845 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.360845 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: nomPrenomPatient in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 136
+[Wed Jan 04 10:54:54.361867 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.361867 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.361867 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: dateNaissance in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 137
+[Wed Jan 04 10:54:54.362840 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.362840 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.362840 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 138
+[Wed Jan 04 10:54:54.363837 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.363837 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.365831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 139
+[Wed Jan 04 10:54:54.365831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.365831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.366829 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: motif in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 140
+[Wed Jan 04 10:54:54.366829 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.367826 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.368823 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: nomPrenomMedecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 141
+[Wed Jan 04 10:54:54.368823 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.368823 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.369821 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Notice:  Undefined variable: observations in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 151
+[Wed Jan 04 10:54:54.369821 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP Stack trace:
+[Wed Jan 04 10:54:54.370818 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53991] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:54:54.387772 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59
+[Wed Jan 04 10:54:54.387772 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.388770 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.462572 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:54:54.463569 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.463569 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.463569 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:54:54.464568 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.464568 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.466591 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136
+[Wed Jan 04 10:54:54.466591 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.466591 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.467560 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168
+[Wed Jan 04 10:54:54.467560 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.467560 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.468558 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169
+[Wed Jan 04 10:54:54.468558 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.469555 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.469555 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170
+[Wed Jan 04 10:54:54.470552 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.470552 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.473544 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171
+[Wed Jan 04 10:54:54.473544 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.474571 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.474571 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172
+[Wed Jan 04 10:54:54.474571 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.475538 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.475538 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173
+[Wed Jan 04 10:54:54.476535 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.476535 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.477532 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174
+[Wed Jan 04 10:54:54.477532 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.477532 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.478530 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175
+[Wed Jan 04 10:54:54.478530 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.478530 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.479527 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176
+[Wed Jan 04 10:54:54.479527 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.479527 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.480524 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177
+[Wed Jan 04 10:54:54.480524 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.480524 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.481521 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178
+[Wed Jan 04 10:54:54.481521 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.481521 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:54.481521 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188
+[Wed Jan 04 10:54:54.482519 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP Stack trace:
+[Wed Jan 04 10:54:54.482519 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:53993] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:54:59.309517 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53995] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:54:59.310518 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53995] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:54:59.310518 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:53995] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:55:45.944071 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49
+[Wed Jan 04 10:55:45.944819 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:45.945354 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:45.945918 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined index: idVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 50
+[Wed Jan 04 10:55:45.945918 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:45.946921 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.035626 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: dateVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 119
+[Wed Jan 04 10:55:46.035626 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.036623 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.036623 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: nomPrenomPatient in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 136
+[Wed Jan 04 10:55:46.036623 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.037621 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.037621 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: dateNaissance in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 137
+[Wed Jan 04 10:55:46.038619 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.038619 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.039615 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 138
+[Wed Jan 04 10:55:46.039615 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.039615 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.040614 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 139
+[Wed Jan 04 10:55:46.040614 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.040614 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.041611 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: motif in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 140
+[Wed Jan 04 10:55:46.041611 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.042607 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.042607 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: nomPrenomMedecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 141
+[Wed Jan 04 10:55:46.043606 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.045633 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.046505 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Notice:  Undefined variable: observations in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 151
+[Wed Jan 04 10:55:46.046505 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP Stack trace:
+[Wed Jan 04 10:55:46.047506 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54018] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:55:46.081813 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59
+[Wed Jan 04 10:55:46.082770 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.082770 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.155085 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:55:46.155517 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.155857 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.156214 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:55:46.156214 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.156214 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.157214 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136
+[Wed Jan 04 10:55:46.157214 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.158211 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.158211 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168
+[Wed Jan 04 10:55:46.158211 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.159208 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.159734 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169
+[Wed Jan 04 10:55:46.159853 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.159853 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.160852 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170
+[Wed Jan 04 10:55:46.160852 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.161850 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.161850 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171
+[Wed Jan 04 10:55:46.161850 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.161850 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.162847 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172
+[Wed Jan 04 10:55:46.163416 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.163714 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.164148 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173
+[Wed Jan 04 10:55:46.164522 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.165028 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.165337 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174
+[Wed Jan 04 10:55:46.165639 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.166049 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.166353 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175
+[Wed Jan 04 10:55:46.166637 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.166968 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.167227 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176
+[Wed Jan 04 10:55:46.167522 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.167522 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.168153 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177
+[Wed Jan 04 10:55:46.168563 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.168908 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.169249 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178
+[Wed Jan 04 10:55:46.169614 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.169943 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:46.170282 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188
+[Wed Jan 04 10:55:46.170633 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP Stack trace:
+[Wed Jan 04 10:55:46.170970 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54019] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:55:50.635212 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54022] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:55:50.636218 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54022] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:55:50.636218 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54022] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:56:39.825197 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49
+[Wed Jan 04 10:56:39.825197 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.826194 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.829188 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined index: idVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 50
+[Wed Jan 04 10:56:39.830184 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.830184 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.831181 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: dateVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 119
+[Wed Jan 04 10:56:39.832177 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.832177 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.833175 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: nomPrenomPatient in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 136
+[Wed Jan 04 10:56:39.833175 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.833175 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.834172 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: dateNaissance in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 137
+[Wed Jan 04 10:56:39.834172 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.835170 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.835170 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 138
+[Wed Jan 04 10:56:39.835170 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.836167 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.836167 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 139
+[Wed Jan 04 10:56:39.836167 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.837164 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.837164 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: motif in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 140
+[Wed Jan 04 10:56:39.837164 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.838162 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.839159 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: nomPrenomMedecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 141
+[Wed Jan 04 10:56:39.839159 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.839159 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.840156 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Notice:  Undefined variable: observations in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 151
+[Wed Jan 04 10:56:39.840156 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP Stack trace:
+[Wed Jan 04 10:56:39.840156 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54051] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:39.856114 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59
+[Wed Jan 04 10:56:39.857112 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.857112 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.858108 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:56:39.858108 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.859106 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.859106 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:56:39.859106 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.860103 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.860103 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136
+[Wed Jan 04 10:56:39.861101 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.861101 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.862101 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168
+[Wed Jan 04 10:56:39.862101 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.863096 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.863096 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169
+[Wed Jan 04 10:56:39.863096 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.864093 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.865090 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170
+[Wed Jan 04 10:56:39.866087 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.866087 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.866087 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171
+[Wed Jan 04 10:56:39.867085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.867085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.867085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172
+[Wed Jan 04 10:56:39.868082 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.868082 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.868082 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173
+[Wed Jan 04 10:56:39.869080 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.869080 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.869080 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174
+[Wed Jan 04 10:56:39.870077 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.870077 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.870077 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175
+[Wed Jan 04 10:56:39.870077 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.871074 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.871074 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176
+[Wed Jan 04 10:56:39.872071 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.872071 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.872071 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177
+[Wed Jan 04 10:56:39.873068 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.873068 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.873068 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178
+[Wed Jan 04 10:56:39.874066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.874066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:39.874066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188
+[Wed Jan 04 10:56:39.875063 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP Stack trace:
+[Wed Jan 04 10:56:39.875063 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54053] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:44.091542 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54055] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 49, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:56:44.092759 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54055] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:56:44.092890 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54055] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0, referer: http://localhost/cabinet_medical/pages/dossierPatient.php
+[Wed Jan 04 10:56:59.858156 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined index: idVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 50
+[Wed Jan 04 10:56:59.859154 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.859154 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.860151 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: dateVisite in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 119
+[Wed Jan 04 10:56:59.861148 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.861148 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.861148 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: nomPrenomPatient in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 136
+[Wed Jan 04 10:56:59.862146 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.862146 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.862146 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: dateNaissance in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 137
+[Wed Jan 04 10:56:59.865139 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.866136 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.866136 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 138
+[Wed Jan 04 10:56:59.867132 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.867132 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.867132 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 139
+[Wed Jan 04 10:56:59.868130 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.868130 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.869127 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: motif in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 140
+[Wed Jan 04 10:56:59.870125 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.870125 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.871122 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: nomPrenomMedecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 141
+[Wed Jan 04 10:56:59.871122 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.871122 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.872120 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Notice:  Undefined variable: observations in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php on line 151
+[Wed Jan 04 10:56:59.872120 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP Stack trace:
+[Wed Jan 04 10:56:59.873116 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54072] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\visitePatient.php:0
+[Wed Jan 04 10:56:59.881095 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59
+[Wed Jan 04 10:56:59.882098 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.883090 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.884089 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:56:59.884089 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.885085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.885085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127
+[Wed Jan 04 10:56:59.885085 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.886081 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.886081 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136
+[Wed Jan 04 10:56:59.887079 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.887079 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.887079 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168
+[Wed Jan 04 10:56:59.888076 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.888076 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.888076 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169
+[Wed Jan 04 10:56:59.889074 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.889074 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.890072 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170
+[Wed Jan 04 10:56:59.891069 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.891069 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.891069 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171
+[Wed Jan 04 10:56:59.892066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.892066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.892066 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172
+[Wed Jan 04 10:56:59.893063 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.893063 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.893063 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173
+[Wed Jan 04 10:56:59.894060 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.894060 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.894060 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174
+[Wed Jan 04 10:56:59.895058 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.895058 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.896055 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175
+[Wed Jan 04 10:56:59.896055 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.896055 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.897053 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176
+[Wed Jan 04 10:56:59.897053 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.898050 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.898050 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177
+[Wed Jan 04 10:56:59.899054 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.900049 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.900049 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178
+[Wed Jan 04 10:56:59.901042 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.901042 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:56:59.901042 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188
+[Wed Jan 04 10:56:59.902039 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP Stack trace:
+[Wed Jan 04 10:56:59.902039 2023] [:error] [pid 1564:tid 1264] [client 127.0.0.1:54074] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0
+[Wed Jan 04 10:58:01.938918 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.938918 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.939915 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.940912 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.940912 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.941910 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.941910 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.942907 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.942907 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.943905 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.943905 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.943905 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.944902 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.944902 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.945899 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.945899 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.945899 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.946897 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.946897 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.947894 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.947894 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.947894 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.948891 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.948891 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.948891 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.949888 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.949888 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.949888 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.949888 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.950885 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.950885 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.950885 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.951883 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.951883 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.951883 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.952880 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.952880 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.952880 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.952880 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.953878 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.953878 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.953878 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.954875 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.954875 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.954875 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.955872 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.955872 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:01.955872 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54112] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.344005 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.344503 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.344893 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.345284 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.346313 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.346313 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.347170 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.347170 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.347848 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.347848 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.347848 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.348848 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.349402 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.349402 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.349402 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.350604 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.350604 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.351604 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.351604 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.351604 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.352896 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.353222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.353222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.353222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.354222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.354222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.354222 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.355219 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.355219 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.355219 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.355219 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.356412 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.356665 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.356665 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.357255 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.357548 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.357871 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.357871 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.358453 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.358771 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.359201 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.359550 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.359911 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.360278 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.360625 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.360931 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.361338 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:13.361675 2023] [:error] [pid 1564:tid 1304] [client 127.0.0.1:54114] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.610873 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined index: id in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 59, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.610873 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.611871 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.612868 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.613865 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.613865 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.614863 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 127, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.614863 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.615892 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.615892 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 136, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.616886 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.616886 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.617855 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: nom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 168, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.617855 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.618852 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.618852 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: prenom in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 169, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.619876 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.619876 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.620846 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: genre in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 170, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.620846 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.620846 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.621844 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: adresse in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 171, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.621844 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.621844 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.622841 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: tel in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 172, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.622841 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.622841 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.623839 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: email in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 173, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.623839 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.623839 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.623839 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: date in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 174, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.624836 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.624836 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.624836 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: poids in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 175, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.625834 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.625834 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.625834 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: noCV in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 176, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.626831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.626831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.626831 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: medecin in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 177, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.627828 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.627828 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.627828 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: allergies in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 178, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.628825 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.628825 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.628825 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Notice:  Undefined variable: commentaires in Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php on line 188, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.629822 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP Stack trace:, referer: http://localhost/cabinet_medical/pages/visitePatient.php
+[Wed Jan 04 10:58:23.629822 2023] [:error] [pid 1564:tid 1276] [client 127.0.0.1:54127] PHP   1. {main}() Z:\\SAE\\SAE_S3_WEB\\www\\cabinet_medical\\pages\\dossierPatient.php:0, referer: http://localhost/cabinet_medical/pages/visitePatient.php

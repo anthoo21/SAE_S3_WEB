@@ -150,7 +150,7 @@ session_start(); //démarrage d'une session
 						while($ligne = $resultats->fetch()) {
 							echo '<form action="dossierPatient.php" method="post">';
 							echo '<tr>';
-								echo '<input type="hidden" name="id" value="'.$ligne['numeroCarteVitale'].'">';
+								echo '<input type="hidden" name="id" value="'.$ligne['numeroCarteVitale'].'">'; // Problème affichage recherche par critères
 								echo '<td>'.$ligne['nom'].'</td>';
 								echo '<td>'.$ligne['prenom'].'</td>';
 								echo '<td>'.$ligne['sexe'].'</td>';

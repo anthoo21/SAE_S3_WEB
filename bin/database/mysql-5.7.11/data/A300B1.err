@@ -20,3 +20,22 @@
 2023-01-04T09:51:33.611624Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 3655370
 2023-01-04T09:51:33.611624Z 0 [Note] InnoDB: Database was not shutdown normally!
 2023-01-04T09:51:33.612621Z 0 [Note] InnoDB: Starting crash recovery.
+2023-01-04T09:51:36.257498Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2023-01-04T09:51:36.257498Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2023-01-04T09:51:36.261257Z 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2023-01-04T09:51:36.400540Z 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2023-01-04T09:51:36.434553Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2023-01-04T09:51:36.435550Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2023-01-04T09:51:36.436575Z 0 [Note] InnoDB: Waiting for purge to start
+2023-01-04T09:51:36.497228Z 0 [Note] InnoDB: 5.7.11 started; log sequence number 3655370
+2023-01-04T09:51:36.502215Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2023-01-04T09:51:36.503213Z 0 [Note] InnoDB: Loading buffer pool(s) from Z:\SAE\SAE_S3_WEB\bin\database\mysql-5.7.11\data\ib_buffer_pool
+2023-01-04T09:51:36.618903Z 0 [Warning] Failed to set up SSL because of the following SSL library error: SSL context is not usable without certificate and private key
+2023-01-04T09:51:36.621894Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2023-01-04T09:51:36.622892Z 0 [Note] IPv6 is available.
+2023-01-04T09:51:36.622892Z 0 [Note]   - '::' resolves to '::';
+2023-01-04T09:51:36.623890Z 0 [Note] Server socket created on IP: '::'.
+2023-01-04T09:51:36.916108Z 0 [Note] InnoDB: Buffer pool(s) load completed at 230104 10:51:36
+2023-01-04T09:51:37.193923Z 0 [Note] Event Scheduler: Loaded 0 events
+2023-01-04T09:51:37.193923Z 0 [Note] Z:\SAE\SAE_S3_WEB\bin\database\mysql-5.7.11\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
