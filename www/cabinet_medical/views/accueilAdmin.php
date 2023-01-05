@@ -279,7 +279,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -293,7 +293,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_CIP_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_CIP_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -307,7 +307,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_COMPO_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_COMPO_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -321,7 +321,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_CPD_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_CPD_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -335,7 +335,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_GENER_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_GENER_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -349,7 +349,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_HAS_ASMR_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_HAS_ASMR_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -363,7 +363,7 @@
 						</div>
 						<div class="col-md-3 col-xs-3 col-sm-3">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_HAS_SMR_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_HAS_SMR_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -377,7 +377,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/CIS_InfoImportantes_bdpm.txt")) {
+							if(!file_exists("fichierImport\CIS_InfoImportantes_bdpm.txt")) {
 								echo 'enRouge';								
 							} else {
 								echo 'enVert';								
@@ -391,7 +391,7 @@
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
-							if(!file_exists("../fichierImport/HAS_LiensPageCT_bdpm.txt")) {
+							if(!file_exists("fichierImport\HAS_LiensPageCT_bdpm.txt")) {
 								echo 'enRouge';
 							} else {
 								echo 'enVert';
