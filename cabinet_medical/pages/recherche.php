@@ -29,7 +29,7 @@ session_start(); //démarrage d'une session
   
 	<?php
 		// Gestion de la connexion à la base de données
-		$host = 'localhost';
+		$host = '127.0.0.1';
 		$db = 'medsoft';
 		$user = 'root';
 		$pass = 'root';
@@ -46,6 +46,42 @@ session_start(); //démarrage d'une session
 			echo $e->getMessage();
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
+		$requeteT="SELECT DISTINCT(forme) FROM cis_bdpm ORDER BY forme ASC";	
+		$resultatsT=$pdo->query($requeteT); 
+		$requeteD="SELECT DISTINCT(denomSubstance) FROM cis_compo_bdpm ORDER BY denomSubstance ASC";	
+		$resultatsD=$pdo->query($requeteD);  
+		$requete = "";
+            if(isset($_POST['designation']) && isset($_POST['Type']) && isset($_POST['substance'])) {
+                if($_POST['designation'] != "") {
+                    $medicament = "%".$_POST['designation']."%";
+                    $un = "WHERE denomination like :medicamentDes";
+                    $requete = $requete.$un;
+                    if($_POST['Type'] != 'TOUS') {
+                        $deux = ' AND forme = "'.$_POST["Type"].'"';
+                        $requete = $requete.$deux;
+                    }
+                    if($_POST['substance'] != 'TOUS') {
+                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
+                        $requete = $requete.$trois;
+                    }
+                } else if ($_POST['Type'] != 'TOUS') {
+                    $deux = 'WHERE forme = "'.$_POST["Type"].'"';
+                    $requete = $requete.$deux;
+                    if($_POST['substance'] != 'TOUS') {
+                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
+                        $requete = $requete.$trois;
+                    }
+                } else if ($_POST['substance'] != 'TOUS') {
+                    $trois = 'WHERE denomSubstance = "'.$_POST["substance"].'"';
+                    $requete = $requete.$trois;
+                }  
+                    $resultatsAllMedic = $pdo->prepare("SELECT denomination, forme, titulaire, denomSubstance, natureCompo, libelle FROM cis_bdpm JOIN cis_compo_bdpm ON codeCis = codeCis_COMPO JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
+                    $resultatsAllMedic->bindParam("medicamentDes", $medicament);
+                    $resultatsAllMedic->execute();
+                } else {
+					$requeteAllMedic="SELECT denomination, forme, titulaire, denomSubstance, natureCompo, libelle FROM cis_bdpm JOIN cis_compo_bdpm ON codeCis = codeCis_COMPO JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ORDER BY denomination ASC";
+					$resultatsAllMedic=$pdo->query($requeteAllMedic); 
+            }
 
 		//Récupération des données
 		$ToutOK=true; //Savoir si toutes les données ont été rentrées
@@ -98,7 +134,7 @@ session_start(); //démarrage d'une session
 						<!--Recherche par critères-->
 						<div class="row espaceB">
 							<div class="row rechCri">
-								<form class="rechercheCriteres" method="post" action="accueilMedecin.php">
+								<form class="rechercheCriteres" method="post" action="recherche.php">
 									<!--Recherche par désignation -->
 									<div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
 										<p class="text"><b>Désignation :</b></p>
@@ -117,6 +153,15 @@ session_start(); //démarrage d'une session
 										<!-- Liste type médicament -->
 										<select class="form-control" name="Type" id="type">
 											<option value="TOUS">TOUS</option>
+											<?php
+											while($ligne = $resultatsT->fetch()) {
+												echo '<option';
+												if(isset($_POST['Type']) && $_POST['Type'] == $ligne['forme']) {
+													echo " selected";
+												} 
+												echo '>'.$ligne['forme'].'</option>';
+											}
+											?>
 										</select>
 									</div>
 									
@@ -126,6 +171,15 @@ session_start(); //démarrage d'une session
 										<!-- Liste es substances -->
 										<select class="form-control" name="substance" id="sub">
 											<option value="TOUS">TOUTES</option>
+											<?php
+											while($ligne = $resultatsD->fetch()) {
+												echo '<option';
+												if(isset($_POST['substance']) && $_POST['substance'] == $ligne['denomSubstance']) {
+													echo " selected";
+												} 
+												echo '>'.$ligne['denomSubstance'].'</option>';
+											}
+											?>
 										</select>
 									</div>
 									
@@ -160,8 +214,8 @@ session_start(); //démarrage d'une session
 					<div class="col-md-12 col-sm-12 col-xs-12 titre">
 						Résultat de la recherche
 					</div>
-					<div class="row divTable">
-						<table class="table table-bordered table-striped">
+					<div class="row paddingForm">
+						<table class="table table-bordered table-striped specialTable">
 							<div class="col-md-12">
 								<tr>
 									<th>Désignation</th>
@@ -171,9 +225,23 @@ session_start(); //démarrage d'une session
 									<th>Substances</th>
 									<th>Génériques</th>
 								</tr>
-								<!-- TODO : médicaments -->
+								<?php 
+									while($ligne = $resultatsAllMedic->fetch()) {
+										echo '<tr>';
+											echo '<td>'.$ligne['denomination'].'</td>';
+											echo '<td>'.$ligne['forme'].'</td>';
+											echo '<td>'.$ligne['titulaire'].'</td>';
+											echo '<td>'.$ligne['natureCompo'].'</td>';
+											echo '<td>'.$ligne['denomSubstance'].'</td>';
+											echo '<td>'.$ligne['libelle'].'</td>';
+										echo '</tr>';
+									}
+								?>
 							</div>
 						</table>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 titre">
+						Nombre de médicaments : <?php echo $resultatsAllMedic->rowCount(); ?>
 					</div>
 				</div>
 			</div>
