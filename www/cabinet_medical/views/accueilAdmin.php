@@ -274,9 +274,11 @@
 				<form method="post" action="index.php" enctype="multipart/form-data">
 					<input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis1" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis1" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_bdpm.txt")) {
@@ -288,9 +290,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis2" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_CIP_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis2" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_CIP_bdpm.txt")) {
@@ -302,9 +306,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis3" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_COMPO_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis3" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_COMPO_bdpm.txt")) {
@@ -316,9 +322,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis4" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_CPD_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis4" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_CPD_bdpm.txt")) {
@@ -330,9 +338,11 @@
 						</div>
 					</div>	
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis5" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_GENER_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis5" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_GENER_bdpm.txt")) {
@@ -344,9 +354,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis6" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_HAS_ASMR_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis6" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_HAS_ASMR_bdpm.txt")) {
@@ -358,9 +370,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis7" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_HAS_SMR_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis7" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-3 col-xs-3 col-sm-3">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_HAS_SMR_bdpm.txt")) {
@@ -372,9 +386,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis8" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\CIS_InfoImportantes_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis8" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\CIS_InfoImportantes_bdpm.txt")) {
@@ -386,9 +402,11 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input type="file" name="cis9" accept=".txt">
-						</div>
+						<?php if (!file_exists("fichierImport\HAS_LiensPageCT_bdpm.txt")) {?>
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input type="file" name="cis9" accept=".txt">
+							</div>
+						<?php } ?>
 						<div class="col-md-6 col-xs-6 col-sm-6">
 							<label class="<?php
 							if(!file_exists("fichierImport\HAS_LiensPageCT_bdpm.txt")) {

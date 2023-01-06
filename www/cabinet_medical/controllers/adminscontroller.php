@@ -66,30 +66,26 @@ class AdminsController {
 
         for($i = 1; $i <= 9; $i++) {
             $fich = $tabFich[$i-1];
+            var_dump($fich);
             $target_file = $target_dir.basename($fich["name"]);
-            $ficType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));			
-            // Regarder si le fichier existe déjà
-            if (file_exists($target_file)) {
-                $check = false;
-            }
-            // Accepter que les .txt
-            if($ficType != "txt") {
-                $check = false;
-            }
-            // Vérifie si le fichier est le bon
-            if(htmlspecialchars(basename($fich["name"])) != $tabName[$i-1]) {
-                $check = false;
-            }
-            //Si check == false, c'est qu'il y a eu une erreur
-            if ($check == false) {
-                echo "Le fichier n'a pas pu être traité.</br>";
-            // Sinon, essaye d'upload le fichier
-            } else {
-                if (move_uploaded_file($fich["tmp_name"], $target_file)) {
-                    echo "Le fichier ".basename($fich["name"])." a été correctement importé.</br>";
+            $ficType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));	
+            $baseName = htmlspecialchars(basename($fich["name"]));
+            echo $baseName." et ".$tabName[$i-1]."</br>";
+            // verif si $fich est set, si c'est un txt ou si son nom ne correspond pas au nom voulu
+            if ($baseName != "" or $baseName != null) {
+                if (isset($fich) and $ficType == "txt" and $baseName == $tabName[$i-1]) {
+                    if (!file_exists($target_file)) {
+                        AdminsController::uploadFich($fich, $target_file);
+                    } else {
+                        $check = false;
+                    }
                 } else {
-                    echo "Le fichier ".basename($fich["name"])." provoque une erreur, merci d'importer le bon fichier.</br>";
+                    echo "Le fichier ".$baseName." n'as pas été entré dans le bon champ ou est invalide !</br>";
+                    $check = false;
                 }
+            } else {
+                echo "Le fichier ".$tabName[$i-1]." n'a pas été entré !</br>";
+                $check = false;
             }
         }
 
@@ -108,6 +104,21 @@ class AdminsController {
         return $view;
     } 
 
+    /**
+     * @param $fich
+     * fich is the file the user wants to upload in fichierImport/
+     * @return boolean
+     * true if the file was uploaded, false if not
+     */
+    public function uploadFich($fich, $target_file) {
+        if (move_uploaded_file($fich["tmp_name"], $target_file)) {
+            echo "Le fichier ".basename($fich["name"])." a été correctement importé.</br>";
+            return true;
+        } else {
+            echo "Le fichier ".basename($fich["name"])." provoque une erreur, merci d'importer le bon fichier.</br>";
+            return false;
+        }
+    }
 }
 
 ?>
