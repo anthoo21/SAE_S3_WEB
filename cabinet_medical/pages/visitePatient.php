@@ -123,6 +123,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!-- Boutons de retour -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="dossierPatient.php" method="post">
+							<input type="hidden" name="id" value="<?php echo $_SESSION['idPatient'];?>">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à la liste des patients"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
