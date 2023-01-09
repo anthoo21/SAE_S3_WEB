@@ -47,7 +47,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 
 		// $_SESSION['idPatient'] = $_POST['id'];
-		$_SESSION['idVisite'] = $_POST['idVisite'];
+		$_SESSION['idVisite'] = $_POST['idOrdonnance'];
 		
 		// Récupération des données relatives au patient
 		try {
@@ -76,6 +76,20 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		//Récupération des données relatives au prescriptions
+		//Récupération des données relatives au prescriptions
+		try {
+			$requeteP="SELECT cis_bdpm.*, prescriptions.posologie
+					   FROM cis_bdpm
+					   JOIN prescriptions ON prescriptions.id_medicaments = cis_bdpm.codeCis
+					   JOIN ordonnances ON ordonnances.id_ordo = prescriptions.id_ordonnance
+					   JOIN visites ON visites.id_visite = ordonnances.id_visite
+					   WHERE visites.id_visite = :idVisite";
+			$resultatP = $pdo->prepare($requeteP);
+			$resultatP->bindParam('idVisite', $_SESSION['idVisite']);
+			$resultatP->execute();
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
 		
 		// Si le bouton "Voir la visite" depuis "dossierPatient.php" n'est pas activé
 		if(!isset($_SESSION['idVisite']) and !$_SESSION['idVisite']) {
@@ -124,6 +138,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!-- Boutons de retour -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="dossierPatient.php" method="post">
+							<input type="hidden" name="id" value="<?php echo $_SESSION['idPatient'];?>">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à la liste des patients"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
@@ -148,7 +163,13 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
 							<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 								<h3 class="entete">Prescriptions</h3>
-								<?php echo $observations;?>
+								<?php
+								while($lignes = $resultatP->fetch()) {
+									echo '<ul>';
+									echo '<li>'.$lignes['denomination'].' ('.$lignes['posologie'].')</li>';
+									echo '</ul>';
+								}
+								?>
 							</div>
 						</div>
 					</div>

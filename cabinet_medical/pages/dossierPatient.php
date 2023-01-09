@@ -226,7 +226,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 													echo '<td>'.$visite['date_visite'].'</td>';
 													echo '<td>'.$visite['nom'].' '.$visite['prenom'].'</td>';
 													echo '<td>'.$visite['motif'].'</td>';
-													echo '<td>ORDO n°'.$visite['id_ordo'].'</td>';
+													echo '</form>';
+													echo '<form action="ordonnancePatient.php" method="post">';
+													echo '<td><button type="submit" class="btn btn-secondary" title="Voir l\'ordonnance"><span class="fas fa-prescription"></span></button></td>';
+													echo '<input type="hidden" name="idOrdonnance" value="'.$visite['id_visite'].'">';
 													echo '</tr>';
 													echo '</form>';
 												}
