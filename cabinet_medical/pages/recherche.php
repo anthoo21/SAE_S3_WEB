@@ -29,7 +29,7 @@ session_start(); //démarrage d'une session
   
 	<?php
 		// Gestion de la connexion à la base de données
-		$host = 'localhost';
+		$host = '127.0.0.1';
 		$db = 'medsoft';
 		$user = 'root';
 		$pass = 'root';
@@ -46,6 +46,52 @@ session_start(); //démarrage d'une session
 			echo $e->getMessage();
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
+		$requeteT="SELECT DISTINCT(forme) FROM cis_bdpm ORDER BY forme ASC";	
+		$resultatsT=$pdo->query($requeteT); 
+		$requeteD="SELECT DISTINCT(denomSubstance) FROM cis_compo_bdpm ORDER BY denomSubstance ASC";	
+		$resultatsD=$pdo->query($requeteD);  
+		$requeteNatCompo="SELECT DISTINCT(natureCompo) FROM cis_compo_bdpm";
+		$resultatsNatCompo=$pdo->query($requeteNatCompo);  
+		$requete = "";
+            if(isset($_POST['designation']) && isset($_POST['Type']) && isset($_POST['substance'])) {
+                if($_POST['designation'] != "") {
+                    $medicament = "%".$_POST['designation']."%";
+                    $un = "WHERE denomination like :medicamentDes";
+                    $requete = $requete.$un;
+                    if($_POST['Type'] != 'TOUS') {
+                        $deux = ' AND forme = "'.$_POST["Type"].'"';
+                        $requete = $requete.$deux;
+                    }
+                    if($_POST['substance'] != 'TOUS') {
+                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
+                        $requete = $requete.$trois;
+                    }
+					// if($_POST['principes'] != 'TOUS') {
+					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
+					// 	$requete = $requete.$quatre;
+					// }
+                } else if ($_POST['Type'] != 'TOUS') {
+                    $deux = 'WHERE forme = "'.$_POST["Type"].'"';
+                    $requete = $requete.$deux;
+                    if($_POST['substance'] != 'TOUS') {
+                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
+                        $requete = $requete.$trois;
+                    }
+					// if($_POST['principes'] != 'TOUS') {
+					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
+					// 	$requete = $requete.$quatre;
+					// }
+                } else if ($_POST['substance'] != 'TOUS') {
+                    $trois = 'WHERE denomSubstance = "'.$_POST["substance"].'"';
+                    $requete = $requete.$trois;
+				}
+                    $resultatsAllMedic = $pdo->prepare("SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
+                    $resultatsAllMedic->bindParam("medicamentDes", $medicament);
+                    $resultatsAllMedic->execute();
+                } else {
+					$requeteAllMedic="SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ORDER BY denomination ASC";
+					$resultatsAllMedic=$pdo->query($requeteAllMedic); 
+            	}
 
 		//Récupération des données
 		$ToutOK=true; //Savoir si toutes les données ont été rentrées
@@ -98,7 +144,7 @@ session_start(); //démarrage d'une session
 						<!--Recherche par critères-->
 						<div class="row espaceB">
 							<div class="row rechCri">
-								<form class="rechercheCriteres" method="post" action="accueilMedecin.php">
+								<form class="rechercheCriteres" method="post" action="recherche.php">
 									<!--Recherche par désignation -->
 									<div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
 										<p class="text"><b>Désignation :</b></p>
@@ -117,6 +163,15 @@ session_start(); //démarrage d'une session
 										<!-- Liste type médicament -->
 										<select class="form-control" name="Type" id="type">
 											<option value="TOUS">TOUS</option>
+											<?php
+											while($ligne = $resultatsT->fetch()) {
+												echo '<option';
+												if(isset($_POST['Type']) && $_POST['Type'] == $ligne['forme']) {
+													echo " selected";
+												} 
+												echo '>'.$ligne['forme'].'</option>';
+											}
+											?>
 										</select>
 									</div>
 									
@@ -126,6 +181,15 @@ session_start(); //démarrage d'une session
 										<!-- Liste es substances -->
 										<select class="form-control" name="substance" id="sub">
 											<option value="TOUS">TOUTES</option>
+											<?php
+											while($ligne = $resultatsD->fetch()) {
+												echo '<option';
+												if(isset($_POST['substance']) && $_POST['substance'] == $ligne['denomSubstance']) {
+													echo " selected";
+												} 
+												echo '>'.$ligne['denomSubstance'].'</option>';
+											}
+											?>
 										</select>
 									</div>
 									
@@ -135,12 +199,15 @@ session_start(); //démarrage d'une session
 										<!-- Liste des principes actifs -->
 										<select class="form-control" name="principes" id="pa">
 											<option value="TOUS">TOUS</option>
+											<option value="SA" name="SA" <?php if(isset($_POST['SA'])) echo 'selected';?>>SA</option>
+											<option value="FT" name="FT" <?php if(isset($_POST['FT'])) echo 'selected';?>>FT</option>
 										</select>
 									</div>
 									
 									<!--Recherche par médicaments génériques -->
 									<div class="col-md-12 col-sm-12 col-xs-12 inputCritere">
 										<p class="text"><b>Génériques ?</b></p>
+
 										<input type="radio" name="generiques" id="generiqueOui" value="Oui">
 										<label for="generiqueOui">Oui</label>
 										<input type="radio" name="generiques" id="generiqueNon" value="Non">
@@ -160,20 +227,40 @@ session_start(); //démarrage d'une session
 					<div class="col-md-12 col-sm-12 col-xs-12 titre">
 						Résultat de la recherche
 					</div>
-					<div class="row divTable">
-						<table class="table table-bordered table-striped">
+					<div class="row paddingForm">
+						<table class="table table-bordered table-striped specialTable">
 							<div class="col-md-12">
 								<tr>
 									<th>Désignation</th>
 									<th>Types</th>
 									<th>Laboratoire</th>
-									<th>Principes actifs</th>
-									<th>Substances</th>
 									<th>Génériques</th>
+									<th><span class="fas fa-eye"></th>
 								</tr>
-								<!-- TODO : médicaments -->
+								<?php 
+									while($ligne = $resultatsAllMedic->fetch()) {
+										echo '<form action="ficheMedicament.php" method="post">';
+											echo '<tr>';
+												echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">'; // Problème affichage recherche par critères
+												echo '<td>'.$ligne['denomination'].'</td>';
+												echo '<td>'.$ligne['forme'].'</td>';
+												echo '<td>'.$ligne['titulaire'].'</td>';
+												if($ligne['libelle'] != "") {
+													$gener = 'Oui';
+												} else {
+													$gener = 'Non';
+												}
+												echo '<td>'.$gener.'</td>';
+												echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament"><span class="fas fa-eye"></button>';
+											echo '</tr>';
+										echo '</form>';
+									}
+								?>
 							</div>
 						</table>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 titre">
+						Nombre de médicaments : <?php echo $resultatsAllMedic->rowCount(); ?>
 					</div>
 				</div>
 			</div>

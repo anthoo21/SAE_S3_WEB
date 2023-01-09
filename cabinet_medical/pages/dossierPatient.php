@@ -30,9 +30,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	 <script>
 		// function myFunction() {
 		  // if (confirm("En supprimant ce patient, vous supprimez aussi ses visites, ordonnances et visites. Voulez-vous continnuer ?")) {
-			// document.getElementById("sup").innerHTML = "ok";
+			// alert("Ce patient sera supprimé !");
 		  // } else {
-			// document.getElementById("sup").innerHTML = "Nok";
+			// alert("Ce patient ne sera pas supprimé !");
 		  // }
 		// }
 	// </script>-->
@@ -138,7 +138,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					<!-- Boutons de suppression TODO-->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="dossierPatient.php" method="post">
+						<form action="suppressionPatient.php" method="post">
 							<button type="submit" onclick="myFunction()" class="btn btn-success btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
 							<input type="hidden" id="sup" name="okSup" value="true">
 						</form>
@@ -199,7 +199,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								<table class="table table-bordered table-striped">
 									<div class="col-md-12">
 										<tr>
-											<th><span class="fas fa-eye"></th>
+											<th>Visite</th>
 											<th>Date</th>
 											<th>Médecin</th>
 											<th>Motif</th>
@@ -226,7 +226,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 													echo '<td>'.$visite['date_visite'].'</td>';
 													echo '<td>'.$visite['nom'].' '.$visite['prenom'].'</td>';
 													echo '<td>'.$visite['motif'].'</td>';
-													echo '<td>ORDO n°'.$visite['id_ordo'].'</td>';
+													echo '</form>';
+													echo '<form action="ordonnancePatient.php" method="post">';
+													echo '<td><button type="submit" class="btn btn-secondary" title="Voir l\'ordonnance"><span class="fas fa-eye"></span></button></td>';
+													echo '<input type="hidden" name="idOrdonnance" value="'.$visite['id_visite'].'">';
 													echo '</tr>';
 													echo '</form>';
 												}

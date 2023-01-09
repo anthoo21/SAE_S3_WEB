@@ -47,7 +47,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 
 		// $_SESSION['idPatient'] = $_POST['id'];
-		$_SESSION['idVisite'] = $_POST['idVisite'];
+		$_SESSION['idVisite'] = $_POST['idOrdonnance'];
 		
 		// Récupération des données relatives au patient
 		try {
@@ -70,8 +70,23 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				$commentaires = $ligne['commentaires'];
 				$dateNaissance = date("d/m/Y", strtotime($ligne['dateNai']));
 				$motif = $ligne['motif'];
-				$observations = $ligne['observations'];
 			}
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+		
+		//Récupération des données relatives au prescriptions
+		//Récupération des données relatives au prescriptions
+		try {
+			$requeteP="SELECT cis_bdpm.*, prescriptions.posologie
+					   FROM cis_bdpm
+					   JOIN prescriptions ON prescriptions.id_medicaments = cis_bdpm.codeCis
+					   JOIN ordonnances ON ordonnances.id_ordo = prescriptions.id_ordonnance
+					   JOIN visites ON visites.id_visite = ordonnances.id_visite
+					   WHERE visites.id_visite = :idVisite";
+			$resultatP = $pdo->prepare($requeteP);
+			$resultatP->bindParam('idVisite', $_SESSION['idVisite']);
+			$resultatP->execute();
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
@@ -115,7 +130,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				<div class="row formPatient">
 					<!--Titre "Dossier du patient"-->
 					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
-						Visite du : <?php echo $dateVisite;?> 
+						Ordonnance du : <?php echo $dateVisite;?> 
 					</div>
 					<div class="col-md-4 hidden-sm hidden-xs">
 					</div>
@@ -147,8 +162,14 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<div class="col-md-5 col-sm-12 col-xs-12 paddingForm">
 						<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
 							<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
-								<h3 class="entete">Observation</h3>
-								<?php echo $observations;?>
+								<h3 class="entete">Prescriptions</h3>
+								<?php
+								while($lignes = $resultatP->fetch()) {
+									echo '<ul>';
+									echo '<li>'.$lignes['denomination'].' ('.$lignes['posologie'].')</li>';
+									echo '</ul>';
+								}
+								?>
 							</div>
 						</div>
 					</div>
