@@ -53,7 +53,7 @@ session_start(); //démarrage d'une session
 		$requeteNatCompo="SELECT DISTINCT(natureCompo) FROM cis_compo_bdpm";
 		$resultatsNatCompo=$pdo->query($requeteNatCompo);  
 		$requete = "";
-            if(isset($_POST['designation']) && isset($_POST['Type']) && isset($_POST['substance']) && isset($_POST['principes'])) {
+            if(isset($_POST['designation']) && isset($_POST['Type']) && isset($_POST['substance'])) {
                 if($_POST['designation'] != "") {
                     $medicament = "%".$_POST['designation']."%";
                     $un = "WHERE denomination like :medicamentDes";
@@ -66,10 +66,10 @@ session_start(); //démarrage d'une session
                         $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
                         $requete = $requete.$trois;
                     }
-					if($_POST['principes'] != 'TOUS') {
-						$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
-						$requete = $requete.$quatre;
-					}
+					// if($_POST['principes'] != 'TOUS') {
+					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
+					// 	$requete = $requete.$quatre;
+					// }
                 } else if ($_POST['Type'] != 'TOUS') {
                     $deux = 'WHERE forme = "'.$_POST["Type"].'"';
                     $requete = $requete.$deux;
@@ -77,28 +77,21 @@ session_start(); //démarrage d'une session
                         $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
                         $requete = $requete.$trois;
                     }
-					if($_POST['principes'] != 'TOUS') {
-						$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
-						$requete = $requete.$quatre;
-					}
+					// if($_POST['principes'] != 'TOUS') {
+					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
+					// 	$requete = $requete.$quatre;
+					// }
                 } else if ($_POST['substance'] != 'TOUS') {
                     $trois = 'WHERE denomSubstance = "'.$_POST["substance"].'"';
                     $requete = $requete.$trois;
-					if($_POST['principes'] != 'TOUS') {
-						$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
-						$requete = $requete.$quatre;
-					}
-                } else if($_POST['principes'] != 'TOUS') {
-					$quatre = 'WHERE natureCompo = "'.$_POST["principes"].'"';
-					$requete = $requete.$quatre;
 				}
-                    $resultatsAllMedic = $pdo->prepare("SELECT idGeneral, denomination, forme, titulaire, denomSubstance, natureCompo, libelle FROM cis_bdpm RIGHT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER JOIN cis_compo_bdpm ON codeCis = codeCis_COMPO ".$requete." ORDER BY denomination ASC LIMIT 100");
+                    $resultatsAllMedic = $pdo->prepare("SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
                     $resultatsAllMedic->bindParam("medicamentDes", $medicament);
                     $resultatsAllMedic->execute();
                 } else {
-					$requeteAllMedic="SELECT idGeneral, denomination, forme, titulaire, denomSubstance, natureCompo, libelle FROM cis_bdpm RIGHT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER JOIN cis_compo_bdpm ON codeCis = codeCis_COMPO WHERE idGeneral = 1";
+					$requeteAllMedic="SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ORDER BY denomination ASC";
 					$resultatsAllMedic=$pdo->query($requeteAllMedic); 
-            }
+            	}
 
 		//Récupération des données
 		$ToutOK=true; //Savoir si toutes les données ont été rentrées
@@ -241,8 +234,6 @@ session_start(); //démarrage d'une session
 									<th>Désignation</th>
 									<th>Types</th>
 									<th>Laboratoire</th>
-									<th>Nature du composant</th>
-									<th>Substances</th>
 									<th>Génériques</th>
 									<th><span class="fas fa-eye"></th>
 								</tr>
@@ -254,8 +245,6 @@ session_start(); //démarrage d'une session
 												echo '<td>'.$ligne['denomination'].'</td>';
 												echo '<td>'.$ligne['forme'].'</td>';
 												echo '<td>'.$ligne['titulaire'].'</td>';
-												echo '<td>'.$ligne['natureCompo'].'</td>';
-												echo '<td>'.$ligne['denomSubstance'].'</td>';
 												if($ligne['libelle'] != "") {
 													$gener = 'Oui';
 												} else {

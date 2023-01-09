@@ -70,12 +70,51 @@ session_start(); //démarrage d'une session
             $resultats->bindParam('idGeneral', $idMedoc);
             $resultats->execute();
 			while($ligne = $resultats->fetch()) {
-                $libelle = $ligne['libelle'];
+                $libelleCIP = $ligne['libelle'];
                 $dateDecla = $ligne['dateDecla'];
 				$agrement = $ligne['agrement'];
 				$tauxRemboursement = $ligne['tauxRemboursement'];
 				$prix = $ligne['prix'];
 				$droitRemboursement = $ligne['droitRemboursement'];
+            }
+			$requeteMedCOMPO="SELECT denomSubstance, dosage, refDosage, natureCompo FROM cis_bdpm JOIN cis_compo_bdpm ON codeCis = codeCis_COMPO WHERE idGeneral = :idGeneral";
+			$resultats=$pdo->prepare($requeteMedCOMPO);
+            $resultats->bindParam('idGeneral', $idMedoc);
+            $resultats->execute();
+			while($ligne = $resultats->fetch()) {
+                $denomSubstance = $ligne['denomSubstance'];
+                $dosage = $ligne['dosage'];
+				$refDosage = $ligne['refDosage'];
+				$natureCompo = $ligne['natureCompo'];
+            }
+			$requeteMedHASASMR="SELECT motifEval, dateAvis, valeurAsmr, libelle FROM cis_bdpm JOIN cis_has_asmr_bdpm ON codeCis = codeCis_HAS_ASMR WHERE idGeneral = :idGeneral";
+			$resultatsASMR=$pdo->prepare($requeteMedHASASMR);
+            $resultatsASMR->bindParam('idGeneral', $idMedoc);
+            $resultatsASMR->execute();
+			while($ligne = $resultatsASMR->fetch()) {
+                $motifEval = $ligne['motifEval'];
+                $dateAvis = $ligne['dateAvis'];
+				$valeurAsmr = $ligne['valeurAsmr'];
+				$libelleASMR = $ligne['libelle'];
+            }
+			$requeteMedHASSMR="SELECT motifEval, dateAvis, valeurSmr, libelle FROM cis_bdpm JOIN cis_has_smr_bdpm ON codeCis = codeCis_HAS_SMR WHERE idGeneral = :idGeneral";
+			$resultatsSMR=$pdo->prepare($requeteMedHASSMR);
+            $resultatsSMR->bindParam('idGeneral', $idMedoc);
+            $resultatsSMR->execute();
+			while($ligne = $resultatsSMR->fetch()) {
+                $motifEval = $ligne['motifEval'];
+                $dateAvis = $ligne['dateAvis'];
+				$valeurSmr = $ligne['valeurSmr'];
+				$libelleSMR = $ligne['libelle'];
+            }
+			$requeteMedINFO="SELECT dateDebut, dateFin, texteLien FROM cis_bdpm JOIN cis_infoimportantes_bdpm ON codeCis = codeCis_INFO WHERE idGeneral = :idGeneral";
+			$resultatsINFO=$pdo->prepare($requeteMedINFO);
+            $resultatsINFO->bindParam('idGeneral', $idMedoc);
+            $resultatsINFO->execute();
+			while($ligne = $resultatsINFO->fetch()) {
+                $dateDebut = $ligne['dateDebut'];
+                $dateFin = $ligne['dateFin'];
+				$texteLien = $ligne['texteLien'];
             }
 		} catch (PDOException $e) {
 			echo $e->getMessage();
@@ -104,7 +143,7 @@ session_start(); //démarrage d'une session
 					<div class="col-md-7 col-sm-12 col-xs-12 titreMedoc">
 						<?php echo $denomination ?>
 					</div>
-					<div class="col-md-2 hidden-sm hidden-xs">
+					<div class="col-md-5 hidden-sm hidden-xs">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">
@@ -131,17 +170,98 @@ session_start(); //démarrage d'une session
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Présentation(boîte de médicaments) :</u></h3>
 							<?php
+							if(!isset($libelleCIP)) {
+								$libelleCIP = "";
+							}
+							if(!isset($dateDecla)) {
+								$dateDecla = "";
+							}
+							if(!isset($statutAdmin)) {
+								$statutAdmin = "";
+							}
+							if(!isset($tauxRemboursement)) {
+								$tauxRemboursement = "";
+							}
+							if(!isset($prix)) {
+								$prix = "";
+							}
+							if(!isset($droitRemboursement)) {
+								$droitRemboursement = "";
+							}
 							if($prix != "") {
 								$symb = "€";
 							} else {
 								$symb = "";
 							}
-							echo '<p>Libellée : '.$libelle.'</p>';
+							echo '<p>Libellé : '.$libelleCIP.'</p>';
 							echo '<p>Date déclaration : '.$dateDecla.'</p>';
 							echo '<p>Agrément : '.$statutAdmin.'</p>';
 							echo '<p>Taux de remboursement : '.$tauxRemboursement.'</p>';
 							echo '<p>Prix : '.$prix.$symb.'</p>';
 							echo '<p>Droit de remboursement : '.$droitRemboursement.'</p>';
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">
+					<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<h3><u>Composition :</u></h3>
+							<?php
+							echo '<p>Dénomination substance : '.$denomSubstance.'</p>';
+							echo '<p>Dosage : '.$dosage.'</p>';
+							echo '<p>Référence dosage : pour '.$refDosage.'</p>';
+							echo '<p>Nature composition : '.$natureCompo.' (SA : principe actif | FT : fraction thérapeutique)</p>';
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">
+					<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<h3><u>Avis ASMR de la HAS :</u></h3>
+							<?php
+							if($resultatsASMR->rowCount() != 0) {
+								echo '<p>Motif d\'évaluation : '.$motifEval.'</p>';
+								echo '<p>Date de l\'avis : '.$dateAvis.'</p>';
+								echo '<p>Valeur de l\'ASMR : '.$valeurAsmr.'</p>';
+								echo '<p>Libellé de l\'ASMR : '.$libelleASMR.'</p>';
+							} else {
+								echo '<p>Pas de données</p>';
+							}
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">
+					<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<h3><u>Avis SMR de la HAS :</u></h3>
+							<?php
+							if($resultatsSMR->rowCount() != 0) {
+								echo '<p>Motif d\'évaluation : '.$motifEval.'</p>';
+								echo '<p>Date de l\'avis : '.$dateAvis.'</p>';
+								echo '<p>Valeur de l\'ASMR : '.$valeurSmr.'</p>';
+								echo '<p>Libellé de l\'ASMR : '.$libelleSMR.'</p>';
+							} else {
+								echo '<p>Pas de données</p>';
+							}
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">
+					<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<h3><u>Informations importantes :</u></h3>
+							<?php
+							if($resultatsINFO->rowCount() != 0) {
+								echo '<p>Date de début de l\'information : '.$dateDebut.'</p>';
+								echo '<p>Date de fin de l\'information : '.$dateFin.'</p>';
+								echo '<p>Lien vers l\'information : '.$texteLien.'</p>';
+							} else {
+								echo '<p>Pas de données</p>';
+							}
 							?>
 						</div>
 					</div>
