@@ -63,18 +63,29 @@
 								<th class="thAdm">Email</th>
 								<th class="thAdm">Identifiant</th>
 								<th class="thAdm">Mot de passe</th>
+								<th class="thAdm"><span class="fas fa-eye"></th>
 							</tr>
-							<?php 
-							while($ligne = $selectAllMedecins->fetch()) {
-								echo '<tr class="ligneMed">';
-									echo '<td>'.$ligne['nom'].'</td>';
-									echo '<td>'.$ligne['prenom'].'</td>';
-									echo '<td>'.$ligne['email'].'</td>';
-									echo '<td>'.$ligne['id_util'].'</td>';
-									echo '<td>'.$ligne['motDePasse'].'</td>';
-								echo '</tr>';
-							}
-							?>
+								
+								
+								
+								<?php 
+								while($ligne = $selectAllMedecins->fetch()) {
+									echo '<tr class="ligneMed">';
+										echo '<form action="index.php" method="post">';
+										echo '<input hidden name="controller" value="Admins">';
+										echo '<input hidden name="action" value="goDossMedecin">';
+										echo '<input type="hidden" name="idMed" value="'.$ligne['id_med'].'">';
+										echo '<td>'.$ligne['nom'].'</td>';
+										echo '<td>'.$ligne['prenom'].'</td>';
+										echo '<td>'.$ligne['email'].'</td>';
+										echo '<td>'.$ligne['id_util'].'</td>';
+										echo '<td>'.$ligne['motDePasse'].'</td>';
+										echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
+										echo '</form>';
+									echo '</tr>';
+								}
+								?>
+							
 						</table>
 					<!--Bouton "Ajouter un médecin" -->
 					<div class="row divBtnA left">

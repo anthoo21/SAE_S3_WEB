@@ -101,6 +101,29 @@ class AdminsController {
     } 
 
     /**
+     * @param $pdo
+     * the pdo object used to connect to the database
+     * @return View
+     * view that shows the infos of the selected doctor
+     */
+    public function goDossMedecin($pdo) {
+        $idMed = HttpHelper::getParam('idMed');
+        $dossMedecin = $this->adminsService->getInfoDoctor($pdo, $idMed);
+        $view = new View('cabinet_medical\views\dossierMedecin');
+        while($ligne = $dossMedecin->fetch()) {
+            $view->setVar('nom', $ligne['nom']);
+            $view->setVar('prenom', $ligne['prenom']);
+            $view->setVar('adresse', $ligne['adresse']);
+            $view->setVar('tel', $ligne['tel']);
+            $view->setVar('email', $ligne['email']);
+            $view->setVar('date', $ligne['dateNai']);
+            $view->setVar('identifiant', $ligne['identifiant']);
+            $view->setVar('mdp', $ligne['motDePasse']);
+        }
+        return $view;
+    }
+
+    /**
      * @param $fich
      * fich is the file the user wants to upload in fichierImport/
      * @return boolean

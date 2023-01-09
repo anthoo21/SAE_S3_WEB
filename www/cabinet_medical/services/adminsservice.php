@@ -47,6 +47,25 @@ class AdminsService
         return $searchStmt;
     }
 
+    /**
+     * @param $pdo
+     * the pdo object used to connect to the database
+     * @param $idMed
+     * Id of the selected doctor
+     * @return $searchStmt
+     * to get the info of the selected doctor
+     */
+    public function getInfoDoctor($pdo, $idMed) {
+        $sql = "SELECT medecins.*, utilisateurs.identifiant, utilisateurs.motDePasse
+        FROM medecins
+        JOIN utilisateurs ON id_util = identifiant
+        WHERE id_med = :id";
+        $searchStmt = $pdo->prepare($sql);
+        $searchStmt->bindParam('id', $idMed);
+        $searchStmt->execute();
+        return $searchStmt;
+    }
+
 
     private static $defaultService;
 

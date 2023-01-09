@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="Fr">
   <head>
-      <title>MEDSOFT - Accueil Medecin</title>
+      <title>MEDSOFT - Accueil Admin</title>
       <meta charset="utf-8">
 	  <link rel="stylesheet" href="bootstrap\css\bootstrap.css">
 	  <link rel="stylesheet" href="fontawesome-free-5.10.2-web\css\all.css">
