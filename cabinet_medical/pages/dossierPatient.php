@@ -30,9 +30,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	 <script>
 		// function myFunction() {
 		  // if (confirm("En supprimant ce patient, vous supprimez aussi ses visites, ordonnances et visites. Voulez-vous continnuer ?")) {
-			// document.getElementById("sup").innerHTML = "ok";
+			// alert("Ce patient sera supprimé !");
 		  // } else {
-			// document.getElementById("sup").innerHTML = "Nok";
+			// alert("Ce patient ne sera pas supprimé !");
 		  // }
 		// }
 	// </script>-->
@@ -138,7 +138,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					<!-- Boutons de suppression TODO-->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="dossierPatient.php" method="post">
+						<form action="suppressionPatient.php" method="post">
 							<button type="submit" onclick="myFunction()" class="btn btn-success btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
 							<input type="hidden" id="sup" name="okSup" value="true">
 						</form>
