@@ -91,14 +91,6 @@
 				<p style="color: darkred">Importer les 9 fichiers de la base de données dans la bonne ligne</p>
 			</div>
 			<?php 
-			if(isset($_FILES['cis1'])) {
-				try {
-					
-				} catch (exception $e) {
-					echo "erreur : ".$e->getMessage();
-				}
-			} 
-			$verifFic = array();
 			// INSERT DES DONNEES
 			// if(isset($_POST['ValidationImport'])) {
 			// 	try {
@@ -426,16 +418,16 @@
 					<?php
 						if($allVerifOk) {
 					?>
-					<form action="accueilAdmin.php" method="post">
-						<div class="col-md-6 col-xs-6 col-sm-6">
-							<input hidden value="ValidationImport" name="ValidationImport">
+						<form action="accueilAdmin.php" method="post">
+							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input hidden value="ValidationImport" name="ValidationImport">
 
-							<input type="submit" value="Importer" name="btnImport2" class="btnImport">
-						</div>
+								<input type="submit" value="Importer" name="btnImport2" class="btnImport">
+							</div>
+						</form>
 					<?php
 						}
 					?>
-					</form>
 			</div>
 		</div> 
 	</div>
