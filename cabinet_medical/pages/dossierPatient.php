@@ -199,7 +199,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 								<table class="table table-bordered table-striped">
 									<div class="col-md-12">
 										<tr>
-											<th><span class="fas fa-eye"></th>
+											<th>Visite</th>
 											<th>Date</th>
 											<th>Médecin</th>
 											<th>Motif</th>
@@ -228,7 +228,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 													echo '<td>'.$visite['motif'].'</td>';
 													echo '</form>';
 													echo '<form action="ordonnancePatient.php" method="post">';
-													echo '<td><button type="submit" class="btn btn-secondary" title="Voir l\'ordonnance"><span class="fas fa-prescription"></span></button></td>';
+													echo '<td><button type="submit" class="btn btn-secondary" title="Voir l\'ordonnance"><span class="fas fa-eye"></span></button></td>';
 													echo '<input type="hidden" name="idOrdonnance" value="'.$visite['id_visite'].'">';
 													echo '</tr>';
 													echo '</form>';
