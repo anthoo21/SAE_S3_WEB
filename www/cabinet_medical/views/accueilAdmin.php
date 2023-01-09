@@ -88,9 +88,13 @@
 							
 						</table>
 					<!--Bouton "Ajouter un médecin" -->
-					<div class="row divBtnA left">
-						<a href="#"><img class="logo7" src="assets\ajouterM.png" alt="logo ajouter">Ajouter un médecin</a>
-					</div>
+					<form action="index.php" method="post">
+						<input hidden name="controller" value="AjoutMedecin">
+						<input hidden name="action" value="index">
+						<div class="row divBtnA left">
+							<button type="submit" class="btn btn-secondary" title="Ajouter un médecin"><img class="logo7" src="assets\ajouterM.png" alt="logo ajouter"></button>
+						</div>
+					</form>
 				</div>	
 			</div>
 		</div>

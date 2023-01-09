@@ -9,7 +9,12 @@
   	</head>
   
   	<body>
-  
+	<?php 
+		spl_autoload_extensions(".php");
+		spl_autoload_register();
+
+		use yasmf\HttpHelper;
+	?>
 		<div class="container">
 			<!-- Nav-bar -->
 			<div class="row nav">
