@@ -326,3 +326,20 @@ a:hover {
 .specialTable {
 	max-width:fit-content;
 }
+
+/*  __________________________________________________________________________ */
+/* |                         PAGE FICHE MÉDICAMENT                            |*/
+/* |__________________________________________________________________________|*/
+
+.titreMedoc {
+	text-decoration:none;
+	font-size:1.2em;
+	text-align:left;
+	padding-top: 30px;
+	padding-left: 30px;
+	font-weight:bold;
+}
+
+.paddingFiche {
+	padding-left:20px;
+}
