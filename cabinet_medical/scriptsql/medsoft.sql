@@ -51,7 +51,7 @@ INSERT INTO utilisateurs VALUES ('chaber90', 'apM#é!Kp', 'MED');
 
 -- 3 Structure table medecins
 CREATE TABLE `medecins` (
-  `id_med` CHAR(3) NOT NULL AUTO_INCREMENT,
+  `id_med` INT(3) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(25) NOT NULL,
   `prenom` VARCHAR(25) NOT NULL,
   `dateNai` DATE NOT NULL, 
@@ -79,7 +79,7 @@ CREATE TABLE `patients` (
   `email` VARCHAR(40),
   `dateNai` DATE NOT NULL,
   `poids` NUMERIC(6,3) NOT NULL,
-  `id_medecin` CHAR(3) NOT NULL,
+  `id_medecin` INT(3) NOT NULL,
   `allergies` CHAR(3) NOT NULL,
   `commentaires` LONGBLOB,
   PRIMARY KEY(numeroCarteVitale),
@@ -98,7 +98,7 @@ CREATE TABLE `visites` (
   `id_visite` INT(4) NOT NULL AUTO_INCREMENT,
   `date_visite` DATE NOT NULL,
   `id_patient` CHAR(15) NOT NULL,
-  `id_medecin` CHAR(3) NOT NULL,
+  `id_medecin` INT(3) NOT NULL,
   `motif` VARCHAR(50) NOT NULL,
   `observations` LONGBLOB,
   PRIMARY KEY(id_visite),
