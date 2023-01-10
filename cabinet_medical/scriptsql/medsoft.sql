@@ -57,7 +57,7 @@ CREATE TABLE `medecins` (
   `dateNai` DATE NOT NULL, 
   `adresse` VARCHAR(50) NOT NULL,
   `tel` CHAR(10) NOT NULL,
-  `email` VARCHAR(25),
+  `email` VARCHAR(40),
   `id_util` CHAR(8),
   PRIMARY KEY(id_med),
   CONSTRAINT fk_medecin_utilisateurs FOREIGN KEY(id_util) REFERENCES utilisateurs(identifiant)
@@ -91,7 +91,7 @@ CREATE TABLE `patients` (
 INSERT INTO patients VALUES ('180088100412100', 'DUPOND', 'Patrick', '02', '4 avenue Colonel Teyssier 81000 Albi','0636465666', 'patrickdupond@gmail.com', '1980-08-12', '082.500', '001', 'non', 
 'Atteint de diabète de type II depuis l age de 6 ans. Consultation tous les 2 mois maximum pour les prescriptions du diabète. Fracture de la cheville gauche en 2020. Non-fumeur.');
 INSERT INTO patients VALUES ('203118100403710', 'BONNET', 'Julie', '01', '31 avenue de Bordeaux 12000 Rodez','0611223344', 'juliebonnet@gmail.com', '2003-11-01', '071.658', '003', 'non', 'Petits problemes respiratoire. Antécédents de diabète et de cancer dans la famille. 3 doses anticovid.');
-INSERT INTO patients VALUES ('103068002154853', 'MONCZEWSKI', 'Gabriel', '02', '17 rue Béteille 12000 Rodez','0781828384', 'gabrielmonczewski@gmail.com', '2003-06-14', '088.432', '002', 'non', 'Ablation des végétations et des amygdales. 3 doses anticovid + covid');
+INSERT INTO patients VALUES ('103068002154853', 'MONCZEWSKI', 'Gabriel', '02', '17 rue Béteille 12000 Rodez', '0781828384', 'gabrielmonczewski@gmail.com', '2003-06-14', '088.432', '002', 'non', 'Ablation des végétations et des amygdales. 3 doses anticovid + covid');
 
 -- 5 Structure table visites
 CREATE TABLE `visites` (
@@ -126,9 +126,9 @@ INSERT INTO ordonnances VALUES ('00003', '0003');
 
 -- 7 Structure table prescriptions
 CREATE TABLE `prescriptions` (
-	`id_prescriptions` INT(6) NOT NULL,
-	`id_ordonnance` INT(5) NOT NULL,
-	`id_medicaments` CHAR(3) NOT NULL,
+	`id_prescriptions` INT(6) NOT NULL AUTO_INCREMENT,
+	`id_ordonnance` INT(5) NOT NULL AUTO_INCREMENT,
+	`id_medicaments` INT(8) NOT NULL,
 	`posologie` VARCHAR(50) NOT NULL,
 	PRIMARY KEY(id_prescriptions),
 	CONSTRAINT fk_prescriptions_ordonnances FOREIGN KEY(id_ordonnance) REFERENCES ordonnances(id_ordo)
@@ -136,6 +136,11 @@ CREATE TABLE `prescriptions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Insertion des prescriptions
-INSERT INTO prescriptions VALUES ('000001', '00001', 'AB1', '3 fois par jour');
-INSERT INTO prescriptions VALUES ('000002', '00002', 'AB2', '1 comprimé toutes les 4h');
-INSERT INTO prescriptions VALUES ('000003', '00002', 'AB3', '1 comprimé tous les soirs');
+INSERT INTO prescriptions VALUES ('000001', '00001', '65089833', '3 fois par jour');
+INSERT INTO prescriptions VALUES ('000002', '00002', '60904643', '1 comprimé toutes les 4h');
+INSERT INTO prescriptions VALUES ('000003', '00002', '66796142', '1 comprimé tous les soirs');
+
+CREATE TABLE `prescriptionsTemp` (
+	`id_medicaments` INT(8) NOT NULL,
+	`posologie` VARCHAR(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

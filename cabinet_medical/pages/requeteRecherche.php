@@ -63,11 +63,11 @@ $requete = "";
                 $requete = $requete.$quatre;
             }
         }
-        $resultatsAllMedic = $pdo->prepare("SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
+        $resultatsAllMedic = $pdo->prepare("SELECT codeCis, idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
         $resultatsAllMedic->bindParam("medicamentDes", $medicament);
         $resultatsAllMedic->execute();
     } else {
-        $requeteAllMedic="SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER WHERE idGeneral IN (1,2,3,4,5,6,7,8,9,10) ORDER BY denomination ASC";
+        $requeteAllMedic="SELECT codeCis, idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER WHERE idGeneral BETWEEN 1 AND 100 ORDER BY denomination ASC";
         $resultatsAllMedic=$pdo->query($requeteAllMedic); 
     }
 ?>

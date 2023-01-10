@@ -75,7 +75,7 @@ session_start(); //démarrage d'une session
 					?>
 				</div>	
 			</div>
-			
+		<div class="container">
 			<div class="row paddingForm">
 				<div class="row">
 					<!--Titre "Recherche de médicaments"-->
