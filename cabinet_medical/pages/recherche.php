@@ -46,66 +46,8 @@ session_start(); //démarrage d'une session
 			echo $e->getMessage();
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
-		$requeteT="SELECT DISTINCT(forme) FROM cis_bdpm ORDER BY forme ASC";	
-		$resultatsT=$pdo->query($requeteT); 
-		$requeteD="SELECT DISTINCT(denomSubstance) FROM cis_compo_bdpm ORDER BY denomSubstance ASC";	
-		$resultatsD=$pdo->query($requeteD);  
-		$requeteNatCompo="SELECT DISTINCT(natureCompo) FROM cis_compo_bdpm";
-		$resultatsNatCompo=$pdo->query($requeteNatCompo);  
-		$requete = "";
-            if(isset($_POST['designation']) && isset($_POST['Type']) && isset($_POST['substance'])) {
-                if($_POST['designation'] != "") {
-                    $medicament = "%".$_POST['designation']."%";
-                    $un = "WHERE denomination like :medicamentDes";
-                    $requete = $requete.$un;
-                    if($_POST['Type'] != 'TOUS') {
-                        $deux = ' AND forme = "'.$_POST["Type"].'"';
-                        $requete = $requete.$deux;
-                    }
-                    if($_POST['substance'] != 'TOUS') {
-                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
-                        $requete = $requete.$trois;
-                    }
-					// if($_POST['principes'] != 'TOUS') {
-					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
-					// 	$requete = $requete.$quatre;
-					// }
-                } else if ($_POST['Type'] != 'TOUS') {
-                    $deux = 'WHERE forme = "'.$_POST["Type"].'"';
-                    $requete = $requete.$deux;
-                    if($_POST['substance'] != 'TOUS') {
-                        $trois = ' AND denomSubstance = "'.$_POST["substance"].'"';
-                        $requete = $requete.$trois;
-                    }
-					// if($_POST['principes'] != 'TOUS') {
-					// 	$quatre = ' AND natureCompo = "'.$_POST["principes"].'"';
-					// 	$requete = $requete.$quatre;
-					// }
-                } else if ($_POST['substance'] != 'TOUS') {
-                    $trois = 'WHERE denomSubstance = "'.$_POST["substance"].'"';
-                    $requete = $requete.$trois;
-				}
-                    $resultatsAllMedic = $pdo->prepare("SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
-                    $resultatsAllMedic->bindParam("medicamentDes", $medicament);
-                    $resultatsAllMedic->execute();
-                } else {
-					$requeteAllMedic="SELECT idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ORDER BY denomination ASC";
-					$resultatsAllMedic=$pdo->query($requeteAllMedic); 
-            	}
-
-		//Récupération des données
-		$ToutOK=true; //Savoir si toutes les données ont été rentrées
-		
-		
-		// Toutes les données sont correctes
-		if($ToutOK) {
-			try {
-			} catch (PDOException $e) {
-				echo $e->getMessage();
-			}
-		}
+		include('requeteRecherche.php');
 		?>
-		<div class="container">
 			<!-- Nav-bar -->
 			<div class="row nav">
 				<div class="col-md-4 col-sm-4 col-xs-4">
@@ -173,44 +115,39 @@ session_start(); //démarrage d'une session
 											}
 											?>
 										</select>
-									</div>
-									
-									<!--Recherche par substances -->
-									<div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
-										<p class="text"><b>Substances :</b></p>
-										<!-- Liste es substances -->
-										<select class="form-control" name="substance" id="sub">
-											<option value="TOUS">TOUTES</option>
-											<?php
-											while($ligne = $resultatsD->fetch()) {
-												echo '<option';
-												if(isset($_POST['substance']) && $_POST['substance'] == $ligne['denomSubstance']) {
-													echo " selected";
-												} 
-												echo '>'.$ligne['denomSubstance'].'</option>';
-											}
-											?>
-										</select>
-									</div>
+									</div>		
 									
 									<!--Recherche par principes actifs -->
-									<div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
-										<p class="text"><b>Principes actifs :</b></p>
+									<!-- <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
+										<p class="text"><b>Laboratoire :</b></p> -->
 										<!-- Liste des principes actifs -->
-										<select class="form-control" name="principes" id="pa">
-											<option value="TOUS">TOUS</option>
-											<option value="SA" name="SA" <?php if(isset($_POST['SA'])) echo 'selected';?>>SA</option>
-											<option value="FT" name="FT" <?php if(isset($_POST['FT'])) echo 'selected';?>>FT</option>
-										</select>
+										<!-- <select class="form-control" name="labo" id="labo">
+											<option value="TOUS">TOUS</option> -->
+											<?php
+											// while($ligne = $resultatsL->fetch()) {
+											// 	echo '<option';
+											// 	if(isset($_POST['labo']) && $_POST['labo'] == $ligne['titulaire']) {
+											// 		echo " selected";
+											// 	} 
+											// 	echo '>'.$ligne['titulaire'].'</option>';
+											// }
+											?>
+										<!-- </select>
 									</div>
-									
+									 -->
 									<!--Recherche par médicaments génériques -->
-									<div class="col-md-12 col-sm-12 col-xs-12 inputCritere">
+									<div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
 										<p class="text"><b>Génériques ?</b></p>
 
-										<input type="radio" name="generiques" id="generiqueOui" value="Oui">
+										<input type="radio" name="generiques" id="generiqueOui" value="Oui" 
+										<?php if(isset($_POST['generiques']) && $_POST['generiques'] == "Oui") {
+												echo "checked";
+											}?>>
 										<label for="generiqueOui">Oui</label>
-										<input type="radio" name="generiques" id="generiqueNon" value="Non">
+										<input type="radio" name="generiques" id="generiqueNon" value="Non" 
+										<?php if(isset($_POST['generiques']) && $_POST['generiques'] == "Non") {
+												echo "checked";
+											}?>>
 										<label for="generiqueNon">Non</label>
 									</div>
 									
@@ -221,13 +158,17 @@ session_start(); //démarrage d'une session
 								</form>
 							</div>
 						</div>
-					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12 titre">
 						Résultat de la recherche
 					</div>
 					<div class="row paddingForm">
+						<?php if($resultatsAllMedic->rowCount() == 0) {
+									echo '<div class="col-md-12 col-sm-12 col-xs-12 titre">';
+										echo 'Aucun médicament trouvé.';
+									echo '</div>';
+							  } else {?>
 						<table class="table table-bordered table-striped specialTable">
 							<div class="col-md-12">
 								<tr>
@@ -258,6 +199,7 @@ session_start(); //démarrage d'une session
 								?>
 							</div>
 						</table>
+						<?php } ?>
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12 titre">
 						Nombre de médicaments : <?php echo $resultatsAllMedic->rowCount(); ?>
