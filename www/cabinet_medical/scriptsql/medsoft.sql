@@ -57,7 +57,7 @@ CREATE TABLE `medecins` (
   `dateNai` DATE NOT NULL, 
   `adresse` VARCHAR(50) NOT NULL,
   `tel` CHAR(10) NOT NULL,
-  `email` VARCHAR(25),
+  `email` VARCHAR(40),
   `id_util` CHAR(8),
   PRIMARY KEY(id_med),
   CONSTRAINT fk_medecin_utilisateurs FOREIGN KEY(id_util) REFERENCES utilisateurs(identifiant)
