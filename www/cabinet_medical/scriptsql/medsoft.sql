@@ -126,7 +126,7 @@ INSERT INTO ordonnances VALUES ('00003', '0003');
 
 -- 7 Structure table prescriptions
 CREATE TABLE `prescriptions` (
-	`id_prescriptions` INT(6) NOT NULL,
+	`id_prescriptions` INT(6) NOT NULL AUTO_INCREMENT,
 	`id_ordonnance` INT(5) NOT NULL,
 	`id_medicaments` INT(8) NOT NULL,
 	`posologie` VARCHAR(50) NOT NULL,
