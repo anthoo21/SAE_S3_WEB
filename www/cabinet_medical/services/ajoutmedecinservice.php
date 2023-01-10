@@ -8,7 +8,7 @@ use PDOException;
 class AjoutMedecinService
 {
 
-    public function addMedecin($pdo, $nom, $prenom, $adresse, $date, $portable, $mail, $identifiant, $motDePasse) {
+    public static function addMedecin($pdo, $nom, $prenom, $adresse, $date, $portable, $mail, $identifiant, $motDePasse, $role) {
         try {
             $pdo->beginTransaction(); // N'exécute pas si problème dans une des deux insersions
 
@@ -22,13 +22,13 @@ class AjoutMedecinService
 
             $pdo->commit();
         } catch (PDOException $e) {
-            $erreur = $e->getMessage();
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
             $pdo->rollBack();
         }
     }
 
 
-
+    private static $defaultService;
 
     /**
     * @return mixed

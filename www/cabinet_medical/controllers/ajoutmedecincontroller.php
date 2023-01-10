@@ -23,7 +23,7 @@ class AjoutMedecinController {
      *  the view in charge of displaying the admin interface
      */
     public function index($pdo) {
-        $view = new View('cabinet_medical/views/creationPatient');
+        $view = new View('cabinet_medical/views/creationMedecin');
         $view->setVar('check', false);
         return $view;
     }
@@ -40,7 +40,7 @@ class AjoutMedecinController {
         $prenom = HttpHelper::getParam('prenom');
         $adresse = HttpHelper::getParam('adresse');
         $portable = HttpHelper::getParam('portable');
-        $email = HttpHelper::getParam('email');
+        $mail = HttpHelper::getParam('mail');
         $date = HttpHelper::getParam('date');
         $identifiant = HttpHelper::getParam('identifiant');
         $motDePasse = HttpHelper::getParam('motDePasse');
@@ -107,15 +107,28 @@ class AjoutMedecinController {
 			$ToutOK = false;
 		}
 
-        $role = 'MED';		
-		if($ToutOK) {
-			$this->ajoutMedecinService->addMedecin($pdo, $nom, $prenom, $adresse, $date, $portable, $mail, $identifiant, $motDePasse);
-            $view = new View('cabinet_medical/views/creationPatient');
-            $view->setVar('check', $ToutOK);
-            return $view;
-        } else {
-            $view = new View('cabinet_medical/views/creationPatient');
-            $view->setVar('check', $ToutOK);
+        $role = "MED";	
+		$view = new View('cabinet_medical/views/creationMedecin');
+		if ($ToutOK == false) {
+			$view->setVar('check', $ToutOK);
+        } else if ($ToutOK == true){
+            try {
+                $this->ajoutMedecinService->addMedecin($pdo, $nom, $prenom, $adresse, $date, $portable, $mail, $identifiant, $motDePasse, $role);
+                $view->setVar('check', $ToutOK);
+            } catch (\PDOException $e) {
+				echo $e;
+				$view->setVar('check', false);
+            }
         }
+		$view->setVar('nom', $nom);
+		$view->setVar('prenom', $prenom);
+		$view->setVar('adresse', $adresse);
+		$view->setVar('portable', $portable);
+		$view->setVar('mail', $mail);
+		$view->setVar('date', $date);
+		$view->setVar('identifiant', $identifiant);
+		$view->setVar('motDePasse', $motDePasse);
+		var_dump($view);
+		return $view;
     }
 }
