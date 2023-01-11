@@ -1,4 +1,5 @@
 <?php
+session_start();
 namespace controllers;
 
 use services\AdminsService;

@@ -37,7 +37,7 @@
 		<div class="row">
 		</br>
 			<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
-				Docteur Calin TORGE <!--A générer depuis l'authentification-->
+				Docteur <?php echo $_SESSION['nom']." ".$_SESSION['prenom']; ?>
 			</div>	
 		</div></br>
 		<!--Recherche par critères-->

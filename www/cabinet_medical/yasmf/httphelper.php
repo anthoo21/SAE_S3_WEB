@@ -26,6 +26,7 @@ class HttpHelper
         if (isset($_GET[$name])) return $_GET[$name];
         if (isset($_POST[$name])) return $_POST[$name];
         if (isset($_FILES[$name])) return $_FILES[$name];
+        if (isset($_SESSION[$name])) return $_SESSION[$name];
         return null;
     }
 }

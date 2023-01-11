@@ -1,4 +1,5 @@
 <?php
+session_start();
 namespace controllers;
 
 use services\PatientsService;
@@ -18,12 +19,10 @@ class PatientsController {
     }
 
     /**
-     * @param $pdo
-     *  the pdo object used to connect to the database
      * @return View
      *  the view in charge of displaying the form to add a patient
      */
-    public function index($pdo) {
+    public function index() {
         $view = new View('cabinet_medical/views/creationPatient');
         $view->setVar('check', false);
         return $view;

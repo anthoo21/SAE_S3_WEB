@@ -66,8 +66,6 @@
 								<th class="thAdm"><span class="fas fa-eye"></th>
 							</tr>
 								
-								
-								
 								<?php 
 								while($ligne = $selectAllMedecins->fetch()) {
 									echo '<tr class="ligneMed">';
