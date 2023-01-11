@@ -172,7 +172,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							</form>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 center">
-							<form action="suppressionPatient.php" method="post">
+							<form action="dossierPatient.php" method="post">
 								<input type="hidden" name="id" value="<?php echo $_SESSION['idPatient'];?>">
 								<input type="submit" name="Annuler" class="btn btn-secondary btn-xl" value="ANNULER">
 							</form>
