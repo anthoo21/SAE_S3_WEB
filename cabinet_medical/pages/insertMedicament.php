@@ -51,9 +51,8 @@ if(isset($_POST['posologie'])) {
     try {
     $maxIdOrdo = "SELECT MAX(id_ordo) FROM ordonnances";
     $maxIdOrdoResultat = $pdo->query($maxIdOrdo);
-    $requeteInsert=$pdo->prepare('INSERT INTO prescriptions (id_ordonnance, id_medicaments, posologie) VALUES (:idOrdo, :idMedoc, :posologie)');
+    $requeteInsert=$pdo->prepare('INSERT INTO prescriptionsTemp (id_medicaments, posologie) VALUES (:idMedoc, :posologie)');
     $result = $maxIdOrdoResultat->fetchColumn();
-    $requeteInsert->bindParam('idOrdo', $result);
     $requeteInsert->bindParam('idMedoc', $_POST['idMedoc2']);
     $requeteInsert->bindParam('posologie', $_POST['posologie']);
     $requeteInsert->execute();

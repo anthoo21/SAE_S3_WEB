@@ -51,7 +51,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		
 		//Récupération des infos du patient
 		try {
-			$requeteOrdo='SELECT denomination, posologie FROM cis_bdpm JOIN prescriptions ON codeCis = id_medicaments WHERE id_ordonnance = MAX(id_ordonnance)';
+			$requeteOrdo='SELECT C.denomination, P.posologie FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments';
 			$resultatsOrdo = $pdo->query($requeteOrdo);
 			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, patients.dateNai, patients.poids
 			FROM patients 
@@ -97,12 +97,39 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		// Toutes les données sont correctes
-		if($ToutOK) {
+		if($ToutOK && isset($_POST['valideInsertion'])) {
 			try {
 				$requete="INSERT INTO visites (date_visite, id_patient, id_medecin, motif, observations)
 					VALUES (?, ?, ?, ?, ?);";
 				$stmt = $pdo->prepare($requete);
 				$stmt->execute([$dateVisite, $idP, $_SESSION['idMed'], $motif, $observation]);
+				//--------------------------------------------------------------------------
+				$requeteInsertVisite="INSERT INTO ordonnances (id_visite) VALUES (:idVisite)";
+				$reqMaxVis="SELECT MAX(id_visite) FROM visites";
+				$result=$pdo->query($reqMaxVis);
+				$result = $result->fetchColumn();
+				$stmt=$pdo->prepare($requeteInsertVisite);
+				$stmt->bindParam('idVisite', $result);
+				$stmt->execute();
+				//---------------------------------------------------------------------------
+				$reqMaxOrdo="SELECT MAX(id_ordo) FROM ordonnances";
+				$resultOrdo=$pdo->query($reqMaxOrdo);
+				$resultOrdo = $resultOrdo->fetchColumn();
+				$selectPrescri="SELECT * FROM prescriptionstemp";
+				$result = $pdo->query($selectPrescri);
+				while($ligne = $result->fetch()) {
+					$requete="INSERT INTO prescriptions (id_ordonnance, id_medicaments, posologie) VALUES(:idOrdo, :idMedoc, :posologie)";
+					$stmt=$pdo->prepare($requete);
+					$stmt->bindParam('idOrdo', $resultOrdo);
+					$stmt->bindParam('idMedoc', $ligne['id_medicaments']);
+					$stmt->bindParam('posologie', $ligne['posologie']);
+					$stmt->execute();
+				}
+				//----------------------------------------------------------------------------
+				$reqDelete="DELETE FROM prescriptionsTemp";
+				$stmt=$pdo->prepare($reqDelete);
+				$stmt->execute();
+
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}
@@ -303,6 +330,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 									<!--Bouton Valider-->
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton buttonVert">
 										<div class="row divBouton">
+											<input type="hidden" name="valideInsertion">
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>
