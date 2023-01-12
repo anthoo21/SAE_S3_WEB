@@ -143,7 +143,22 @@ session_start(); //démarrage d'une session
 					<div class="col-md-7 col-sm-12 col-xs-12 titreMedoc">
 						<?php echo $denomination ?>
 					</div>
-					<div class="col-md-5 hidden-sm hidden-xs">
+					<div class="col-md-4 hidden-sm hidden-xs">
+					</div>
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="<?php 
+						if(isset($_POST['OrdoToFiche'])) {
+							echo 'creationVisite.php';
+							$title = "création de visite";
+						} else {
+							echo 'recherche.php';
+							$title = "recherche";
+						}
+						?>" method="post">
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="<?php 
+							echo 'Retour à la page de '.$title;
+							?>"><span class="fas fa-arrow-left"></span></button>
+						</form>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12 paddingFiche">

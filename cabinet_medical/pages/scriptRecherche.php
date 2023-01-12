@@ -9,7 +9,7 @@
                 <!--Recherche par critères-->
                 <div class="row espaceB">
                     <div class="row rechCri">
-                        <form class="rechercheCriteres" method="post" action="creationVisite.php#openModal">
+                        <form class="rechercheCriteres" method="post" action="recherche.php">
                             <!--Recherche par désignation -->
                             <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
                                 <p class="text"><b>Désignation :</b></p>
@@ -72,6 +72,11 @@
                                         echo "checked";
                                     }?>>
                                 <label for="generiqueNon">Non</label>
+                                <input type="radio" name="generiques" id="generiqueNon" value="Both"
+                                <?php if(!isset($_POST['generiques']) || $_POST['generiques'] == "Both") {
+                                        echo "checked";
+                                    }?>>
+                                <label for="generiqueNon">Les deux</label> 
                             </div>
                             
                             <!--Bouton rechercher -->
@@ -104,17 +109,17 @@
                         </tr>
                         <?php 
                             while($ligne = $resultatsAllMedic->fetch()) {
+                                if($ligne['libelle'] != "") {
+                                    $gener = 'Oui';
+                                } else {
+                                    $gener = 'Non';
+                                }
                                 echo '<form action="ficheMedicament.php" method="post">';
                                     echo '<tr>';
-                                        echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">'; // Problème affichage recherche par critères
+                                        echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">';
                                         echo '<td>'.$ligne['denomination'].'</td>';
                                         echo '<td>'.$ligne['forme'].'</td>';
                                         echo '<td>'.$ligne['titulaire'].'</td>';
-                                        if($ligne['libelle'] != "") {
-                                            $gener = 'Oui';
-                                        } else {
-                                            $gener = 'Non';
-                                        }
                                         echo '<td>'.$gener.'</td>';
                                         echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament"><span class="fas fa-eye"></button>';
                                     echo '</tr>';

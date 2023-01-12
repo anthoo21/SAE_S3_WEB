@@ -72,6 +72,11 @@
                                         echo "checked";
                                     }?>>
                                 <label for="generiqueNon">Non</label>
+                                <input type="radio" name="generiques" id="generiqueNon" value="Both"
+                                <?php if(!isset($_POST['generiques']) || $_POST['generiques'] == "Both") {
+                                        echo "checked";
+                                    }?>>
+                                <label for="generiqueNon">Les deux</label> 
                             </div>
                             
                             <!--Bouton rechercher -->
@@ -105,18 +110,19 @@
                         </tr>
                         <?php 
                             while($ligne = $resultatsAllMedic->fetch()) {
+                                if($ligne['libelle'] != "") {
+                                    $gener = 'Oui';
+                                } else {
+                                    $gener = 'Non';
+                                }
                                 echo '<tr>';
                                     echo '<td>'.$ligne['denomination'].'</td>';
                                     echo '<td>'.$ligne['forme'].'</td>';
                                     echo '<td>'.$ligne['titulaire'].'</td>';
-                                    if($ligne['libelle'] != "") {
-                                        $gener = 'Oui';
-                                    } else {
-                                        $gener = 'Non';
-                                    }
                                     echo '<td>'.$gener.'</td>';          
                                     echo '<form action="ficheMedicament.php" method="post">';
                                         echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">';
+                                        echo '<input type="hidden" name="OrdoToFiche">';
                                         echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament" name="voir"><span class="fas fa-eye"></button>';
                                     echo '</form>';
                                     echo '<form action="insertMedicament.php" method="post">';

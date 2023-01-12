@@ -47,11 +47,21 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
 		
+                                
+        if(isset($_POST['recupId'])) {
+            $idMed = $_POST['recupId'];
+            $requete="DELETE FROM prescriptionsTemp WHERE id_medicaments = :idMed";
+            $stmt=$pdo->prepare($requete);
+            $stmt->bindParam('idMed',$idMed);
+            $stmt->execute();
+        }
+        
+
 		$idP = $_SESSION['idPatient'];
 		
 		//Récupération des infos du patient
 		try {
-			$requeteOrdo='SELECT C.denomination, P.posologie FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments';
+			$requeteOrdo='SELECT C.denomination, P.posologie, P.id_medicaments FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments';
 			$resultatsOrdo = $pdo->query($requeteOrdo);
 			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, patients.dateNai, patients.poids
 			FROM patients 
@@ -277,7 +287,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 									</div>
-								
 									<!--Partie Droite-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
 										<div class="row paddingForm">
@@ -294,13 +303,18 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 																<tr>
 																	<th>Désignation</th>
 																	<th>Posologie</th>
+                                                                    <th>Supprimer</th>
 																</tr>
 																<?php 
 																while($ligne = $resultatsOrdo->fetch()) {
-																	echo '<tr>';
-																		echo '<td>'.$ligne['denomination'].'</td>';
-																		echo '<td>'.$ligne['posologie'].'</td>';
-																	echo '</tr>';
+                                                                    echo '<form action="creationVisite.php" method="post">';
+                                                                        echo '<tr>';
+                                                                            echo '<input type="hidden" name="recupId" value="'.$ligne['id_medicaments'].'">';
+                                                                            echo '<td>'.$ligne['denomination'].'</td>';
+                                                                            echo '<td>'.$ligne['posologie'].'</td>';
+                                                                            echo '<td><button type="submit" class="btn btn-danger btn-circle" name="suppression" value="true" title="Supprimer un médicament"><span class="fas fa-trash"></button></td>';
+                                                                        echo '</tr>';
+                                                                    echo '</form>';
 																}
 																?>
 															</table>

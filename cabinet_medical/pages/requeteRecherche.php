@@ -21,10 +21,10 @@ $requete = "";
                 if($_POST['generiques'] == "Oui") {
                     $quatre = ' AND libelle IS NOT NULL';
                     $requete = $requete.$quatre;
-                } else {
+                } else if($_POST['generiques'] == "Non") {
                     $quatre = ' AND libelle IS NULL';
                     $requete = $requete.$quatre;
-                }
+                } 
             }
         } else if ($_POST['Type'] != 'TOUS') {
             $deux = 'WHERE forme = "'.$_POST["Type"].'"';
@@ -37,10 +37,10 @@ $requete = "";
                 if($_POST['generiques'] == "Oui") {
                     $quatre = ' AND libelle IS NOT NULL';
                     $requete = $requete.$quatre;
-                } else {
+                } else if($_POST['generiques'] == "Non") {
                     $quatre = ' AND libelle IS NULL';
                     $requete = $requete.$quatre;
-                }
+                } 
             }
         // } else if($_POST['labo'] != 'TOUS') {
         // 	$trois = 'WHERE titulaire = "'.$_POST["labo"].'"';
@@ -58,10 +58,10 @@ $requete = "";
             if($_POST['generiques'] == "Oui") {
                 $quatre = 'WHERE libelle IS NOT NULL';
                 $requete = $requete.$quatre;
-            } else {
-                $quatre = 'WHERE libelle IS NULL';
+            } else if($_POST['generiques'] == "Non") {
+                $quatre = ' WHERE libelle IS NULL';
                 $requete = $requete.$quatre;
-            }
+            } 
         }
         $resultatsAllMedic = $pdo->prepare("SELECT codeCis, idGeneral, denomination, forme, titulaire, libelle FROM cis_bdpm LEFT JOIN cis_gener_bdpm ON codeCis = codeCis_GENER ".$requete." ORDER BY denomination ASC");
         $resultatsAllMedic->bindParam("medicamentDes", $medicament);
