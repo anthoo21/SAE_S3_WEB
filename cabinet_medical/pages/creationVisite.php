@@ -51,6 +51,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		
 		//Récupération des infos du patient
 		try {
+			$requeteOrdo='SELECT C.denomination, P.posologie FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments';
+			$resultatsOrdo = $pdo->query($requeteOrdo);
 			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, patients.dateNai, patients.poids
 			FROM patients 
 			WHERE patients.numeroCarteVitale = :id";
@@ -95,12 +97,39 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		// Toutes les données sont correctes
-		if($ToutOK) {
+		if($ToutOK && isset($_POST['valideInsertion'])) {
 			try {
 				$requete="INSERT INTO visites (date_visite, id_patient, id_medecin, motif, observations)
 					VALUES (?, ?, ?, ?, ?);";
 				$stmt = $pdo->prepare($requete);
 				$stmt->execute([$dateVisite, $idP, $_SESSION['idMed'], $motif, $observation]);
+				//--------------------------------------------------------------------------
+				$requeteInsertVisite="INSERT INTO ordonnances (id_visite) VALUES (:idVisite)";
+				$reqMaxVis="SELECT MAX(id_visite) FROM visites";
+				$result=$pdo->query($reqMaxVis);
+				$result = $result->fetchColumn();
+				$stmt=$pdo->prepare($requeteInsertVisite);
+				$stmt->bindParam('idVisite', $result);
+				$stmt->execute();
+				//---------------------------------------------------------------------------
+				$reqMaxOrdo="SELECT MAX(id_ordo) FROM ordonnances";
+				$resultOrdo=$pdo->query($reqMaxOrdo);
+				$resultOrdo = $resultOrdo->fetchColumn();
+				$selectPrescri="SELECT * FROM prescriptionstemp";
+				$result = $pdo->query($selectPrescri);
+				while($ligne = $result->fetch()) {
+					$requete="INSERT INTO prescriptions (id_ordonnance, id_medicaments, posologie) VALUES(:idOrdo, :idMedoc, :posologie)";
+					$stmt=$pdo->prepare($requete);
+					$stmt->bindParam('idOrdo', $resultOrdo);
+					$stmt->bindParam('idMedoc', $ligne['id_medicaments']);
+					$stmt->bindParam('posologie', $ligne['posologie']);
+					$stmt->execute();
+				}
+				//----------------------------------------------------------------------------
+				$reqDelete="DELETE FROM prescriptionsTemp";
+				$stmt=$pdo->prepare($reqDelete);
+				$stmt->execute();
+
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}
@@ -266,9 +295,14 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 																	<th>Désignation</th>
 																	<th>Posologie</th>
 																</tr>
-																<tr><td></td></tr>
-																<tr><td></td></tr>
-																<tr><td></td></tr>
+																<?php 
+																while($ligne = $resultatsOrdo->fetch()) {
+																	echo '<tr>';
+																		echo '<td>'.$ligne['denomination'].'</td>';
+																		echo '<td>'.$ligne['posologie'].'</td>';
+																	echo '</tr>';
+																}
+																?>
 															</table>
 														</div>
 													</div>
@@ -279,16 +313,24 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 												<!--Médecin traitant-->
 												<div class="col-md-12 col-sm-12 col-xs-12">
 													<div class="row divBouton">
-														<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="rechercher" value="true" title="Rechercher un médicament"><span class="fas fa-search"></span></button>  Rechercher un médicament</a>
+														<a href="#openModal"><button type="button" class="btn btn-info btn-circle btn-xl" name="rechercher" value="true" title="Rechercher un médicament"><span class="fas fa-search"></span></button>Rechercher un médicament</a>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div>
+											<div id="openModal" class="modalDialog">
+   												<div><a href="#close" title="Close" class="close">X</a>
+													<?php
+													include('requeteRecherche.php');
+													include('scriptRechercheOrdo.php');
+													?>
+													
+												</div>
+											</div>
 									
 									<!--Bouton Valider-->
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton buttonVert">
 										<div class="row divBouton">
+											<input type="hidden" name="valideInsertion">
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>

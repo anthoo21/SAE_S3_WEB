@@ -5,7 +5,7 @@ session_start();	// démarrage d'une session
 if (isset($_POST['login']) && isset($_POST['password'])) {
 
 	$login = htmlspecialchars($_POST['login']);
-	$pwd = htmlspecialchars($_POST['password']);
+	$pwd = md5(htmlspecialchars($_POST['password']));
 	
 	// Gestion de la connexion à la base de données
 	$host = 'localhost';

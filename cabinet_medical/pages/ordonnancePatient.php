@@ -23,6 +23,16 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 	  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
 	  <link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.css">
 	  <link rel="stylesheet" href="../css/style.css"> 
+	  <script>
+	function imprimer(divName) {
+      	var printContents = document.getElementById(divName).innerHTML;    
+		var originalContents = document.body.innerHTML;      
+		document.body.innerHTML = printContents;     
+		window.print();     
+		document.body.innerHTML = originalContents;
+   }
+</script>
+	  </script>
   </head>
   
   <body>
@@ -126,15 +136,19 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				</div>	
 			</div>
 			
-			<div class="row paddingForm">
+			<div class="row paddingForm" id="divImprimer">
 				<div class="row formPatient">
 					<!--Titre "Dossier du patient"-->
 					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
 						Ordonnance du : <?php echo $dateVisite;?> 
 					</div>
-					<div class="col-md-4 hidden-sm hidden-xs">
+					<div class="col-md-3 hidden-sm hidden-xs">
 					</div>
 					
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<a href="#"><button type="button" class="btn btn-info btn-circle btn-xxl" title="Imprimer l'ordonnance" onclick="imprimer('divImprimer')"><span class="fa-solid fa-print"></span></button></a>
+					</div>
+
 					<!-- Boutons de retour -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="dossierPatient.php" method="post">
