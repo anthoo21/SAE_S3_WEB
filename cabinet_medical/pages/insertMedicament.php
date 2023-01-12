@@ -16,17 +16,24 @@ session_start(); //démarrage d'une session
     }
 
 ?>
+<!DOCTYPE html>
+<html lang="Fr">
+    <head>
+      <title>MEDSOFT - Accueil Medecin</title>
+      <meta charset="utf-8">
+	  <link rel="stylesheet" href="../css/style.css"> 
+    </head>
+    <body>
 <?php 
 if(isset($_POST['idMedoc'])) {
 $idMedoc = $_POST['idMedoc']?>
-<div id="openModal" class="modalDialog">
-    <div><a href="#close" title="Close" class="close">X</a>
-        <form action="insertMedicament.php" method="post">
-            <input type="text" name="posologie" value="1">
-            <input type="hidden" name="idMedoc2" value="<?php echo $idMedoc?>">
-            <input type="submit" value="Valider" onclick="history.go(-2)">
-        </form>
-    </div>
+<div class="row">
+    <h2>Ajouter posologie :</h2>
+    <form action="insertMedicament.php" method="post">
+        <input type="text" name="posologie" value="" placeholder="Ex: 1 fois par jour.">
+        <input type="hidden" name="idMedoc2" value="<?php echo $idMedoc?>">
+        <input type="submit" class="btnInsert" value="Valider">
+    </form>
 </div>
 <?php }?>
 <?php
@@ -62,3 +69,5 @@ if(isset($_POST['posologie'])) {
     }
 }
 ?>
+</body>
+</html>
