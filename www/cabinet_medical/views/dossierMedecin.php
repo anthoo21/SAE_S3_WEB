@@ -28,11 +28,6 @@
   <body class="bleu">
 	<?php
 
-		
-		// Si le bouton "Voir le dossier" depuis "accueilAdmin.php" n'est pas activé
-		// if(!isset($_SESSION['idMed'])) {
-		// 	header('Location: accueilAdmin.php');
-		// }
 		spl_autoload_extensions(".php");
 		spl_autoload_register();
 
@@ -49,7 +44,9 @@
 				<!--Espace dans la navbar-->
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
-					<form action="accueilAdmin.php" method="post">
+					<form action="index.php" method="post">
+						<input hidden name="controller" value="Admins">
+						<input hidden name="action" value="deconnexion">
 						<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
 					</form>
 				</div>	

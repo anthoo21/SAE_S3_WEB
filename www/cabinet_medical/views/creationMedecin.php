@@ -27,8 +27,12 @@
 			<!--Espace dans la navbar-->
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
-				<form action="creationMedecin.php" method="post">
-					<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>
+				<form action="index.php" method="post">
+					<input hidden name="controller" value="Admins">
+					<input hidden name="action" value="index">
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à l'accueil administrateur"><span class="fas fa-arrow-left"></span></button>
+				</form>
+				<form action="index.php" method="post">
 					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 				</form>
 			</div>	

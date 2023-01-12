@@ -14,9 +14,11 @@ class MedecinsService
      * @return $searchStmt
      *  to access to all patients
      */
-    public function findAllPatients($pdo) {
-        $sql = "SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale";
+    public function findAllPatients($pdo, $idMed) {
+        $sql = "SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale 
+        WHERE P.id_medecin = :id";
         $searchStmt = $pdo->prepare($sql);
+        $searchStmt->bindParam('id', $idMed);
         $searchStmt->execute();
         return $searchStmt;
     }
@@ -27,22 +29,23 @@ class MedecinsService
      * @return $searchStmt
      *  to access to all categories
      */
-    public function findSelectedPatients($pdo, $Rnom, $Rsecu) {
+    public function findSelectedPatients($pdo, $idMed, $Rnom, $Rsecu) {
         $searchStmt = null;
         if((isset($Rnom) && $Rnom != "" ) || (isset($Rsecu) && $Rsecu != "")) {
-            $sql="";
+            $sql="WHERE P.id_medecin = :id ";
             $nom = "%".$Rnom."%";
-            $nsecu = "%".$Rsecu."%";
+            $secu = "%".$Rsecu."%";
             if(isset($Rnom) && $Rnom != "" && isset($Rsecu) && $Rsecu != "") {
-                $sql="WHERE nom LIKE '".$nom."' AND numeroCarteVitale LIKE '".$nsecu."'";
+                $sql="AND nom LIKE '".$nom."' AND numeroCarteVitale LIKE '".$secu."'";
             } else if(isset($Rnom) && $Rnom != "") {
-                $sql="WHERE nom LIKE '".$nom."'";
+                $sql="AND nom LIKE '".$nom."'";
             } else if (isset($Rsecu) && $Rsecu != "") {
-                $sql="WHERE numeroCarteVitale LIKE '".$nsecu."'";
+                $sql="AND numeroCarteVitale LIKE '".$secu."'";
             }
             $searchStmt = $pdo->prepare("SELECT nom, prenom, sexe, tel, email, dateNai, date_visite FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale ".$sql);
-            $searchStmt->bindParam('nom', $Rnom);
-            $searchStmt->bindParam('nsecu', $Rsecu);
+            $searchStmt->bindParam('id', $idMed);
+            $searchStmt->bindParam('nom', $nom);
+            $searchStmt->bindParam('secu', $secu);
             $searchStmt->execute();
         }
         return $searchStmt;

@@ -26,26 +26,41 @@
 				<!--Espace dans la navbar-->
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
-					<a href="/cabinet_medical?controller=Medecins"><img class="logo3" src="assets\profil_patients.png" alt="logo patient"></a>
-					<img class="logo4" src="assets\recherche_medicaments.png" alt="logo recherche">
-					<img class="logo5" src="assets\deconnexion.png" alt="logo deconnexion">
+					<form action="accueilMedecin.php" method="post">
+						<input hidden name="controller" value="Medecin">		
+						<input hidden name="action" value="goToRecherche">			
+						<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+					</form>
+					<form action="index.php" method="post">
+						<input hidden name="controller" value="Patients">			
+						<input hidden name="action" value="deconnexion">			
+						<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
+					</form>
 				</div>	
 			</div>
-			<!--Nom du docteur-->
-			<div class="row">
-				</br>
-				<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
-					Docteur Calin TORGE <!--A générer depuis l'authentification-->
-				</div>	
+		<!--Nom du docteur-->
+		<div class="row">
+		</br>
+			<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
+				Docteur <?php echo $_SESSION['nom']." ".$_SESSION['prenom']; ?>
+			</div>	
+			<!-- Boutons de retour -->
+			<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+				<form action="index.php" method="post">
+					<input hidden name="controller" value="Medecins">
+					<input hidden name="action" value="index">
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à l'accueil medecin"><span class="fas fa-arrow-left"></span></button>
+				</form>
 			</div>
-			<div class="row paddingForm">
-				<div class="row formPatient">
-					<!--Titre "Création d'un patient"-->
-					<div class="col-md-12 col-sm-12 col-xs-12 titre titreCreation">
-						Création d'un patient
-					</div>
+		</div></br>
+		<div class="row paddingForm">
+			<div class="row formPatient">
+				<!--Titre "Création d'un patient"-->
+				<div class="col-md-12 col-sm-12 col-xs-12 titre titreCreation">
+					Création d'un patient
 				</div>
 			</div>
+		</div>
 			<?php
 				//Récupération de l'ID du médecin connecté => TODO
 				$id_medecin="001";
@@ -187,11 +202,11 @@
 							<!--Médecin traitant-->
 							<div class="col-md-6 col-sm-6 col-xs-6">
 								<label>Médecin traitant : </label>
-								TORGE Calin <!--TODO : automatisé depuis l'authentification-->
+								<?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> <!--TODO : automatisé depuis l'authentification-->
 							</div>
 						</div>
 					</div>
-					<input hidden name="medecin" value="<?php echo $id_medecin; ?>">
+					<input hidden name="medecin" value="<?php echo $_SESSION['idMed'];?>">
 					<input hidden name="controller" value="Patients">
 					<input hidden name="action" value="addPatient">
 					<!--Bouton Valider-->
@@ -199,7 +214,6 @@
 						<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 					</div>
 				</div>
-				<!--Envoi de l'id du medecin-->
 			</form>
 			<?php
 				}

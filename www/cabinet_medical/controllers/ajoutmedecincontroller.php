@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 
+session_start();
 use services\AjoutMedecinService;
 use yasmf\HttpHelper;
 use yasmf\View;
@@ -23,6 +24,14 @@ class AjoutMedecinController {
      *  the view in charge of displaying the admin interface
      */
     public function index($pdo) {
+		// Test si on est bien connecté (session existante et bon numéro de session
+        if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+            // Renvoi vers la page de connexion
+            $view = new View('cabinet_medical/views/accueil');
+            return $view;
+            exit();
+        }
+		
         $view = new View('cabinet_medical/views/creationMedecin');
         $view->setVar('check', false);
         return $view;

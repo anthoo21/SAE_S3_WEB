@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 
+session_start();
 use services\MedecinsService;
 use yasmf\HttpHelper;
 use yasmf\View;
@@ -24,7 +25,14 @@ class MedecinsController {
      *  the view in charge of displaying the patients
      */
     public function index($pdo) {
-        $searchStmt = $this->medecinsService->findAllPatients($pdo);
+        // Test si on est bien connecté (session existante et bon numéro de session
+        if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+            // Renvoi vers la page de connexion
+            $view = new View('cabinet_medical/views/accueil');
+            return $view;
+        }
+        
+        $searchStmt = $this->medecinsService->findAllPatients($pdo, $_SESSION['idMed']);
         $view = new View('cabinet_medical/views/accueilMedecin');
         $view->setVar('searchStmt', $searchStmt);
         return $view;
@@ -40,16 +48,22 @@ class MedecinsController {
         $nom = HttpHelper::getParam('rechercheNom');
         $secu = HttpHelper::getParam('rechercheNSecu');
         if ((isset($nom) && $nom != "" ) || (isset($secu) && $secu != "")) {
-            $searchStmt = $this->medecinsService->findSelectedPatients($pdo, $nom, $secu);
+            $searchStmt = $this->medecinsService->findSelectedPatients($pdo, $_SESSION['idMed'], $nom, $secu);
         } else {
-            $searchStmt = $this->medecinsService->findAllPatients($pdo);
+            $searchStmt = $this->medecinsService->findAllPatients($pdo, $_SESSION['idMed']);
         }
         $view = new View('cabinet_medical/views/accueilMedecin');
         $view->setVar('searchStmt', $searchStmt);
         return $view;
     }
 
-
+    public function deconnexion() {
+        session_destroy();
+        $view = new View('cabinet_medical/views/accueil');
+        $view->setVar('erreurLog', false);
+        return $view;
+		exit();
+    }
 }
 
 

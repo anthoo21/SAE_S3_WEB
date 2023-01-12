@@ -28,9 +28,16 @@
 			<!--Espace dans la navbar-->
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
-				<img class="logo3" src="assets\profil_patients.png" alt="logo patient">
-				<img class="logo4" src="assets\recherche_medicaments.png" alt="logo recherche">
-				<img class="logo5" src="assets\deconnexion.png" alt="logo deconnexion">
+				<form action="index.php" method="post">
+					<input hidden name="controller" value="Medecins">		
+					<input hidden name="action" value="goToRecherche">			
+					<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+				</form>
+				<form action="index.php" method="post">
+					<input hidden name="controller" value="Medecins">
+					<input hidden name="action" value="deconnexion">
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
+				</form>
 			</div>	
 		</div>
 		<!--Nom du docteur-->

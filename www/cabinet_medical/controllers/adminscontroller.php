@@ -1,7 +1,7 @@
 <?php
-session_start();
 namespace controllers;
 
+session_start();
 use services\AdminsService;
 use yasmf\HttpHelper;
 use yasmf\View;
@@ -25,6 +25,14 @@ class AdminsController {
      *  the view in charge of displaying the admin interface
      */
     public function index($pdo) {
+
+        // Test si on est bien connecté (session existante et bon numéro de session
+        if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+            // Renvoi vers la page de connexion
+            $view = new View('cabinet_medical/views/accueil');
+            return $view;
+            exit();
+        }
 
         $nomsCabinets = $this->adminsService->findAllCabinets($pdo); //renvoi tout les cabinets
         $medecins = $this->adminsService->findAllMedecins($pdo); //renvoi tout les medecins
@@ -137,6 +145,14 @@ class AdminsController {
             echo "Le fichier ".basename($fich["name"])." provoque une erreur, merci d'importer le bon fichier.</br>";
             return false;
         }
+    }
+
+    public function deconnexion() {
+        session_destroy();
+        $view = new View('cabinet_medical/views/accueil');
+        $view->setVar('erreurLog', false);
+        return $view;
+		exit();
     }
 }
 

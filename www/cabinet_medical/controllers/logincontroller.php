@@ -1,14 +1,18 @@
 <?php 
-session_start();
 namespace controllers;
 
+session_start();
 use services\LoginService;
+use services\MedecinsService;
+use services\AdminsService;
 use yasmf\HttpHelper;
 use yasmf\View;
 
 class LoginController {
 
     private $loginService;
+    private $medecinsService;
+    private $adminsService;
 
     /**
      * Create and initialize an LoginController object
@@ -16,6 +20,8 @@ class LoginController {
     public function __construct()
     {
         $this->loginService = LoginService::getDefaultService();
+        $this->medecinsService = MedecinsService::getDefaultService();
+        $this->adminsService = AdminsService::getDefaultService();
     }
 
     /**
@@ -23,6 +29,14 @@ class LoginController {
      *  the view in charge of displaying the form to log in 
      */
     public function index() {
+        // Test si on est bien connecté (session existante et bon numéro de session
+        if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+            // Renvoi vers la page de connexion
+            $view = new View('cabinet_medical/views/accueil');
+            return $view;
+            exit();
+        }
+
         $view = new View('cabinet_medical/views/acceuil');
         $view->setVar('erreurLog', false);
         return $view;
@@ -32,8 +46,6 @@ class LoginController {
         if (isset($_POST['login']) && isset($_POST['password'])) {
             $login = htmlspecialchars(HttpHelper::getParam('login'));
             $mdp = htmlspecialchars(HttpHelper::getParam('password'));
-            echo $login;
-            echo $mdp;
             $user = $this->loginService->getUser($pdo, $login, $mdp);
 
             if($user->rowCount() == 1) {
@@ -73,17 +85,17 @@ class LoginController {
     }
 
     public function goToMedecinAccueil($pdo) {
-        $searchStmt = $this->loginService->findAllPatients($pdo);
+        $searchStmt = $this->medecinsService->findAllPatients($pdo, $_SESSION["idMed"]);
         $view = new View('cabinet_medical/views/accueilMedecin');
         $view->setVar('searchStmt', $searchStmt);
         return $view;
     }
 
     public function goToAdminAccueil($pdo) {
-        $nomsCabinets = $this->loginService->findAllCabinets($pdo); //renvoi tout les cabinets
-        $medecins = $this->loginService->findAllMedecins($pdo); //renvoi tout les medecins
+        $nomsCabinets = $this->adminsService->findAllCabinets($pdo); //renvoi tout les cabinets
+        $medecins = $this->adminsService->findAllMedecins($pdo); //renvoi tout les medecins
         $nbMedecins = $medecins->rowCount(); //compte le nombre de medecins
-        $patients = $this->loginService->findAllPatients($pdo);
+        $patients = $this->adminsService->findAllPatients($pdo);
         $nbpatients = $patients->rowCount();
         $view = new View('cabinet_medical\views\accueilAdmin');
         $view->setVar('requeteCabinet', $nomsCabinets);

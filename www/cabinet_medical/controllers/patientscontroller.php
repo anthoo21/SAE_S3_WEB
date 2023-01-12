@@ -1,7 +1,7 @@
 <?php
-session_start();
 namespace controllers;
 
+session_start();
 use services\PatientsService;
 use yasmf\HttpHelper;
 use yasmf\View;
@@ -23,6 +23,14 @@ class PatientsController {
      *  the view in charge of displaying the form to add a patient
      */
     public function index() {
+        // Test si on est bien connecté (session existante et bon numéro de session
+        if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+            // Renvoi vers la page de connexion
+            $view = new View('cabinet_medical/views/accueil');
+            return $view;
+            exit();
+        }
+        
         $view = new View('cabinet_medical/views/creationPatient');
         $view->setVar('check', false);
         return $view;
@@ -179,6 +187,14 @@ class PatientsController {
                 return $view;
             }
         }
+    }
+
+    public function deconnexion() {
+        session_destroy();
+        $view = new View('cabinet_medical/views/accueil');
+        $view->setVar('erreurLog', false);
+        return $view;
+		exit();
     }
 }
 
