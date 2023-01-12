@@ -251,7 +251,7 @@ session_start(); //démarrage d'une session
 													$gener = 'Non';
 												}
 												echo '<td>'.$gener.'</td>';
-												echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament"><span class="fas fa-eye"></button>';
+												echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament" onclick="myFunction()"><span class="fas fa-eye"></button>';
 											echo '</tr>';
 										echo '</form>';
 									}
@@ -265,5 +265,10 @@ session_start(); //démarrage d'une session
 				</div>
 			</div>
 		</div>
+		<script>
+			function myFunction() {
+			window.open("http://localhost:81/SAE_S3_WEB/cabinet_medical/pages/ficheMedicament.php", "", "width=80%, height=80%");
+			}
+</script>
   </body>
 </html>
