@@ -88,7 +88,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		// Si le bouton "Voir le dossier" depuis "accueilMedecin.php" n'est pas activé
 		if(!isset($_SESSION['idPatient'])) {
 			header('Location: accueilMedecin.php');
-		}// PB : Si j'appuie sur n'importe quel bouton 'submit', il me renvoie à l'accueilMedecin :(
+		}
 		
 		?>		
 		<div class="container">
@@ -149,17 +149,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à la liste des patients"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
-					
-					<?php
-						// TODO
-						// Si le bouton "Suppression d'un patient" est activé
-						// if(isset($_POST['supprimePatient']) and $_POST['supprimePatient']){			// PB => dès que j'appuie sur un bouton, cela me renvoit sur l'accueil médecin
-							// $requeteSup='DELETE FROM patient WHERE numeroCarteVitale = ?';
-							// $stmtSup = $pdo->prepare($requeteSup);
-							// $stmtSup->execute($_SESSION['idPatient']);
-						// }
-						?>
-					
+
 					<!-- Affichage des informations générales du patient-->
 					<div class="col-md-7 col-sm-12 col-xs-12 paddingDossier">
 						<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
@@ -236,19 +226,6 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											} catch (PDOException $e) {
 												echo $e->getMessage();
 											}
-											
-											// A BIDOUILLER pour afficher les visites avec ET sans ordonnances
-											// SELECT * FROM visites WHERE EXISTS (
-                                                // SELECT *
-												// FROM visites 
-												// JOIN ordonnances ON visites.id_visite = ordonnances.id_visite
-                                                // JOIN patients ON numeroCarteVitale = id_patient
-												// JOIN medecins ON visites.id_medecin = medecins.id_med 
-												// WHERE id_patient = 180088100412100
-												// ORDER BY visites.date_visite) 
-                                            // AND id_patient = 180088100412100
-											
-											// PB : Sélectionnez les visites avec et sans visites en 1 requêtes ou alors en 2 requêtes mais sans doublons
 										?>
 									</div>
 								</table>
