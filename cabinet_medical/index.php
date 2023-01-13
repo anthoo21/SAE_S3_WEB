@@ -1,6 +1,7 @@
 <?php
 session_start();	// démarrage d'une session
 
+$erreur = false;	// Vérifie s'il y a des erreur lors de l'authentification
 // Vérification des données entrées dans le formulaire
 if (isset($_POST['login']) && isset($_POST['password'])) {
 
@@ -66,6 +67,8 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 		}
 		// Variable indiquant que l'authentification a réussi
 		$authOK = true;
+	} else {
+		$erreur = true;
 	}
 }
 ?>
@@ -99,6 +102,12 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 		<!--Authentification-->
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
+				<?php if($erreur == true) { ?>
+						<div class="row">
+							<h3 class="enRouge center">Identifiant ou mot de passe incorrect !</h3>
+							<h4 class="enRouge center"><i>Merci de saisir correctement vos coordonnées de connexion !</i></h4>
+						</div>
+				<?php ;} ?>
 					<form action="index.php" method="post">
 						<p class="titre">Connexion à mon compte : </p>
 						<div class="row">
