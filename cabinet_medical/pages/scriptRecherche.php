@@ -1,4 +1,4 @@
-<div class="container">
+
     <div class="row paddingForm">
         <div class="row">
             <!--Titre "Recherche de médicaments"-->
@@ -136,4 +136,4 @@
         </div>
     </div>
     </div>
-</div>
+

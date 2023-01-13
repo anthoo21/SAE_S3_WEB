@@ -47,8 +47,9 @@ session_start(); //démarrage d'une session
 			//throw new PDOException($e->getMessage(), (int)$e->getCode());
 		}
 		include('requeteRecherche.php');
-		?>
+	?>
 		<div class="container">
+			<!-- Nav-bar -->
 			<div class="row nav">
 				<div class="col-md-4 col-sm-4 col-xs-4">
 					<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
@@ -75,11 +76,12 @@ session_start(); //démarrage d'une session
 					?>
 				</div>	
 			</div>
-		<?php include('scriptRecherche.php'); ?>
+			<?php include('scriptRecherche.php'); ?>
+		</div>
 		<script>
 			function myFunction() {
 			window.open("http://localhost:81/SAE_S3_WEB/cabinet_medical/pages/ficheMedicament.php", "", "width=80%, height=80%");
 			}
-</script>
+		</script>
   </body>
 </html>
