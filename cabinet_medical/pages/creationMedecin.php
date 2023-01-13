@@ -47,41 +47,43 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 
 		//Récupération des données
-		$ToutOK=true; //Savoir si toutes les données ont été rentrées
+		$ToutOK=true; 			// Toutes les données ont été rentrées
+		$IdentifiantOK=true; 	// Nom + Prénom + Date de naissance OK => générer identifiant
 		
 		//Récupération du nom
-		if(isset($_POST['nom']) and $_POST['nom']!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $_POST['nom'])) {
+		if(isset($_POST['nom']) and $_POST['nom']!="" and preg_match("/^[A-Z][A-Za-z\s'-]*[A-Za-z]$/", $_POST['nom'])) {
 			$nom=htmlspecialchars($_POST['nom']);
 		} else {
 			$nom="";
 			$ToutOK=false;
+			$IdentifiantOK=false;
 		}
-		// TODO => Attention aux caractères ' " ...
 		
 		//Récupération du prenom
-		if(isset($_POST['prenom']) and $_POST['prenom']!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $_POST['prenom'])) {
+		if(isset($_POST['prenom']) and $_POST['prenom']!="" and preg_match("/^[A-Z][a-zA-Z'-]*$/", $_POST['prenom'])) {
 			$prenom=htmlspecialchars($_POST['prenom']);
 		} else {
 			$prenom="";
 			$ToutOK=false;
+			$IdentifiantOK=false;
 		}
 
-		//Récupération de l'adresse
-		if(isset($_POST['adresse']) and $_POST['adresse']!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $_POST['adresse'])) {
+		//Récupération de l'adresse => l'apostrophe ne fonctionne pas
+		if(isset($_POST['adresse']) and $_POST['adresse']!="" and preg_match("/^([0-9]{1,4}[a-zA-Z]{0,1})?\s*[a-zA-Z'.-]+(\s[a-zA-Z'.-]+)*\s*[0-9]{5}\s*[a-zA-Z]+([\s-][a-zA-Z]+)*$/", $_POST['adresse'])) {
 			$adresse=htmlspecialchars($_POST['adresse']);
 		} else {
 			$adresse="";
 			$ToutOK=false;
 		}
 		//Récupération du numéro de portable
-		if(isset($_POST['portable']) and $_POST['portable']!="" and preg_match("~(0){1}[0-9]{9}~", $_POST['portable'])) {
+		if(isset($_POST['portable']) and $_POST['portable']!="" and preg_match("/^0[1-9][0-9]{8}$/", $_POST['portable'])) {
 			$portable=htmlspecialchars($_POST['portable']);
 		} else {
 			$portable="";
 			$ToutOK=false;
 		}
 		//Récupération de l'email
-		if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['mail'])) {
+		if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/", $_POST['mail'])) {
 			$mail=htmlspecialchars($_POST['mail']);
 		} else {
 			$mail="";
@@ -93,6 +95,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		} else {
 			$date="";
 			$ToutOK=false;
+			$IdentifiantOK=false;
 		}
 
 		//Récupération de l'identifiant
@@ -109,6 +112,24 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		} else {
 			$motDePasse ="";
 			$ToutOK = false;
+		}
+
+		// Les données nom, prénom et date de naissance sont OK
+		if($IdentifiantOK){ 
+			//Fonction pour générer un identifiant
+			function generer_identifiant($nom, $prenom, $date) {
+				$nom_abr = substr($nom, 0, 3);
+				$prenom_abr = substr($prenom, 0, 3);
+				$annee_abr = substr(date("d/m/Y", strtotime($date)), -2);
+				return strtolower($nom_abr.$prenom_abr.$annee_abr);
+			}
+			$identifiant  = generer_identifiant($nom, $prenom, $date);
+			//Fonction pour générer un mot de passe rapide et simple
+			function generer_mdp($nom) {
+				$nom_abr = substr($nom, 0, 3);
+				return strtolower($nom_abr.$nom_abr);
+			}
+			$motDePasse = generer_mdp($nom);
 		}
 
 		$role = 'ADM';		
@@ -167,7 +188,12 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						</div>
 						<!--Message-->
 						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
-							<h2>Enregistrement du nouveau medecin validé !</h2>
+							<h2 class="enBleu">Enregistrement du nouveau medecin validé !</h2>
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12 titreOK"></div>
+						<!--Retour création-->
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<a href="accueilAdmin.php"><span class="fas fa-arrow-left"></span>  Retour à l'accueil administrateur </a>
 						</div>
 					</div>
 				</div>
@@ -187,8 +213,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="creationMedecin.php" method="post">
-							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<a href="accueilAdmin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="medecin" value="true"><span class="fas fa-user"></button></a>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
@@ -208,12 +233,13 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						</div>
 						<!--Message-->
 						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
-							<h2>Erreur lors de l'enregistrement ! </br> <?php echo $erreur ?></h2>
+							<h2 class="enRouge">Erreur lors de l'enregistrement ! </br><i> <?php echo $erreur ?></i></h2>
 						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12 titreOK"></div>
 						<!--Retour création-->
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							</br> </br> </br>
-							<a href="creationMedecin.php">Retour à la création</a>
+							<a href="creationMedecin.php"><span class="fas fa-arrow-left"></span>  Retour à la création de médecin</a>
 						</div>
 					</div>
 				</div>
@@ -239,7 +265,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						</form>
 					</div>	
 				</div>
-				<!--Nom du docteur-->
+				<!--Titre administrateur-->
 				<div class="row">
 					</br>
 					<div class="col-md-12 col-sm-12 col-xs-12 adminName">
@@ -257,9 +283,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							<form action="creationMedecin.php" method="post">
 								<div class="col-md-12 col-sm-12 col-xs-12 formPatient">
 								
-									<!--Partie Gauche-->
+									<!--Partie Gauche de la page-->
 									<div class="col-md-6 col-sm-12 col-xs-12">
-										<!--Saisie du nom-->
+										<!--Nom-->
 										</br>
 										<div class="row">
 											<div class="col-md-6 col-sm-6 col-xs-12 <?php if($nom=="") { echo "enRouge";}?>">
@@ -270,7 +296,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du prénom-->
+											<!--Prénom-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($prenom=="") { echo "enRouge";}?>">
 												<label for="prenom">Prénom : </label>
 											</div>
@@ -279,7 +305,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de l'adresse-->
+											<!--Adresse postale-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($adresse=="") { echo "enRouge";}?>">
 												<label for="adresse">Adresse : </label>
 											</div>
@@ -288,7 +314,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du téléphone-->
+											<!--Téléphone-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($portable=="") { echo "enRouge";}?>">
 												<label for="portable">Portable : </label>
 											</div>
@@ -297,7 +323,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du mail-->
+											<!--Adresse email-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($mail=="") { echo "enRouge";}?>">
 												<label for="mail">Email : </label>
 											</div>
@@ -306,7 +332,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de la date de naissance-->
+											<!--Date de naissance-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($date=="") { echo "enRouge";}?>">
 												<label for="date">Date de naissance : </label>
 											</div>
@@ -316,13 +342,13 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 										</div>
 									</div>
 								
-									<!--Partie Droite-->
+									<!--Partie Droite de la page-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
 										<div class="row paddingForm center">
 											<h3 class="entete">Coordonnées de connexion :</h3>
 										</div>
 										<div class="row paddingForm">
-											<!--Saisie de l'identifiant -->
+											<!--Identifiant -->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($identifiant=="") { echo "enRouge";}?>">
 												<label for="identifiant">Identifiant : </label>
 											</div>
@@ -331,7 +357,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row paddingForm">
-											<!--Saisie du mot de passe -->
+											<!-- Mot de passe -->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($motDePasse=="") { echo "enRouge";}?>">
 												<label for="motDePasse" >Mot de passe : </label>
 											</div>
@@ -341,7 +367,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 										</div>
 									</div>
 									
-									<!--Bouton Valider-->
+									<!--Bouton de validation du formulaire-->
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton center">
 										<div class="row divBouton">
 										<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
