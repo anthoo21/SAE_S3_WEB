@@ -105,19 +105,27 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			<div class="row paddingForm">
 				<div class="row formPatient">
 					<!--Titre "Dossier du patient"-->
-					<div class="col-md-9 col-sm-12 col-xs-12 titreDossier">
+					<div class="col-md-7 col-sm-12 col-xs-12 titreDossier">
 						Dossier du médecin : <?php echo $nom.' '.$prenom;?> 
 					</div>
 					<div class="col-md-2 hidden-sm hidden-xs">
 					</div>
 					
-					<!-- Boutons de modification -->
-					<!--<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="modificationPatient.php" method="post">
-							<button type="submit" class="btn btn-success btn-circle btn-xl" name="modifPatient" value="true" title="Modifier ce patient"><span class="fas fa-pencil"></span></button>		
-							<input type="hidden" name="idCV" value="<?php echo $noCV;?>">
+					<!-- Boutons de modification TODO-->
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="modificationMedecin.php" method="post">
+							<button type="submit" class="btn btn-info btn-circle btn-xl" name="modifPatient" value="true" title="Modifier ce patient"><span class="fas fa-pencil"></span></button>		
+							<input type="hidden" name="idCV" value="true">
 						</form>
-					</div>-->
+					</div>
+
+					<!-- Boutons de suppression TODO-->
+					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+						<form action="suppressionPatient.php" method="post">
+							<button type="submit" onclick="myFunction()" class="btn btn-info btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
+							<input type="hidden" id="sup" name="okSup" value="true">
+						</form>
+					</div>
 
 					<!-- Boutons de retour -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
