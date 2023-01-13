@@ -141,7 +141,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 
 				$requete = "INSERT INTO utilisateurs (identifiant, motDePasse, code_role) VALUES (?, ?, ?);";
 				$stmt = $pdo->prepare($requete);
-				$stmt->execute([$identifiant, $motDePasse, $role]);
+				$stmt->execute([$identifiant, md5($motDePasse), $role]);
 
 				$requete2 = "INSERT INTO medecins (nom, prenom, dateNai, adresse, tel, email, id_util) VALUES (?, ?, ?, ?, ?, ?, ?);";
 				$stmt2 = $pdo->prepare($requete2);
