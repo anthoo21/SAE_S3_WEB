@@ -50,10 +50,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 
 		//Récupération des données
-		$ToutOK=true; //Savoir si toutes les données ont été rentrées
+		$ToutOK=true; 	//Savoir si toutes les données ont été rentrées
 		
 		//Récupération du nom
-		if(isset($_POST['nom']) and $_POST['nom']!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $_POST['nom'])) {
+		if(isset($_POST['nom']) and $_POST['nom']!="" and preg_match("/^[A-Z][A-Za-z\s'-]*[A-Za-z]$/", $_POST['nom'])) {
 			$nom=htmlspecialchars($_POST['nom']);
 		} else {
 			$nom="";
@@ -61,7 +61,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		//Récupération du prenom
-		if(isset($_POST['prenom']) and $_POST['prenom']!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $_POST['prenom'])) {
+		if(isset($_POST['prenom']) and $_POST['prenom']!="" and preg_match("/^[A-Z][a-zA-Z'-]*$/", $_POST['prenom'])) {
 			$prenom=htmlspecialchars($_POST['prenom']);
 		} else {
 			$prenom="";
@@ -80,21 +80,21 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$ToutOK=false;
 		}
 		//Récupération de l'adresse
-		if(isset($_POST['adresse']) and $_POST['adresse']!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $_POST['adresse'])) {
+		if(isset($_POST['adresse']) and $_POST['adresse']!="" and preg_match("/^([0-9]{1,4}[a-zA-Z]{0,1})?\s*[a-zA-Z'.-]+(\s[a-zA-Z'.-]+)*\s*[0-9]{5}\s*[a-zA-Z]+([\s-][a-zA-Z]+)*$/", $_POST['adresse'])) {
 			$adresse=htmlspecialchars($_POST['adresse']);
 		} else {
 			$adresse="";
 			$ToutOK=false;
 		}
 		//Récupération du numéro de portable
-		if(isset($_POST['portable']) and $_POST['portable']!="" and preg_match("~(0){1}[0-9]{9}~", $_POST['portable'])) {
+		if(isset($_POST['portable']) and $_POST['portable']!="" and preg_match("/^0[1-9][0-9]{8}$/", $_POST['portable'])) {
 			$portable=htmlspecialchars($_POST['portable']);
 		} else {
 			$portable="";
 			$ToutOK=false;
 		}
 		//Récupération de l'email
-		if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['mail'])) {
+		if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/", $_POST['mail'])) {
 			$mail=htmlspecialchars($_POST['mail']);
 		} else {
 			$mail="";
@@ -108,7 +108,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$ToutOK=false;
 		}
 		//Récupération du poids
-		if(isset($_POST['poids']) and $_POST['poids']!="") {			//preg_match("~([1|2]?([0-9]{1,2}))(\.[0-9]{1,3})?~", $_POST['poids'])
+		if(isset($_POST['poids']) and $_POST['poids']!="" and preg_match("/^[0-9]{1,3}([.,][0-9]{3})?$/", $_POST['poids'])) {
 			$poids=htmlspecialchars($_POST['poids']);
 		} else {
 			$poids="";
@@ -116,7 +116,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		//TODO => regex
 		//Récupération du numero de carte vitale
-		if(isset($_POST['noCV']) and $_POST['noCV']!="" and preg_match("#^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$#", $_POST['noCV'])) {
+		if(isset($_POST['noCV']) and $_POST['noCV']!="" and preg_match("/^(1[0-9]{14}|2[0-9]{14})$/", $_POST['noCV'])) {
 			$noCV=htmlspecialchars($_POST['noCV']);
 		} else {
 			$noCV="";
@@ -139,18 +139,28 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$ToutOK=false;
 		}
 		//Récupération de l'ID du médecin connecté => TODO
-		$id_medecin="001";
+		$id_medecin=$_SESSION['idMed'];
+		var_dump($id_medecin);
+		$erreur = '';
 
 		// Toutes les données sont correctes
 		if($ToutOK) {
 			try {
-				$requete="INSERT INTO patients (numeroCarteVitale, nom, prenom, id_genre, tel, email, dateNai, poids, id_medecin, allergies, commentaires)
-					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				//Transaction pour éviter une insertion d'un patient déjà existant
+				$pdo->beginTransaction();
+				$requete="INSERT INTO patients (numeroCarteVitale, nom, prenom, id_genre, adresse, tel, email, dateNai, poids, id_medecin, allergies, commentaires)
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				$stmt = $pdo->prepare($requete);
-				$stmt->execute([$noCV, $nom, $prenom, $genre, $portable, $mail, $date, $poids, $id_medecin, $allergies, $commentaires]);
+				$stmt->execute([$noCV, $nom, $prenom, $genre, $adresse, $portable, $mail, $date, $poids, $id_medecin, $allergies, $commentaires]);
+				$pdo->commit();
 			} catch (PDOException $e) {
-				echo $e->getMessage();
+				$erreur = $e->getMessage();
+				$pdo->rollBack();
 			}
+		}
+
+		//Toutes les données sont correctes et il n'y a pas de problème d'insertion
+		if($ToutOK && $erreur == '') {
 		?>
 			<div class="container">
 				<!-- Nav-bar -->
@@ -165,8 +175,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!-- Boutons -->
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="accueilMedecin.php" method="post">
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<a href="accueilMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button></a>				
+							<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button></a>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
@@ -188,14 +198,67 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
 							<h2>Enregistrement du nouveau patient validé !</h2>
 						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12"></br></br></div>
 						<!--Retour accueil-->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<a href="accueilMedecin.php"><span class="fas fa-home"></span> -- Retour à ma page d'accueil</a>
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<a href="accueilMedecin.php"><span class="fas fa-arrow-left"></span>  Retour à ma page d'accueil</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		<?php					
+		<?php
+		// Toutes les données sont correctes mais il y a un problème d'insertion
+		} elseif ($ToutOK && $erreur != '') {
+		?>
+			<div class="container">
+				<!-- Nav-bar -->
+				<div class="row nav">
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
+						<img class="logo2" src="../assets/logo_titre.png" alt="logo medsoft">
+					</div>	
+					<div class="col-md-4 col-sm-4 col-xs-4">
+					<!--Espace dans la navbar-->
+					</div>
+					<!-- Boutons -->
+					<div class="col-md-4 col-sm-4 col-xs-4 logos">
+						<form action="accueilMedecin.php" method="post">
+							<a href="accueilMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button></a>				
+							<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button></a>
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
+						</form>
+					</div>	
+				</div>
+				<!--Nom du docteur-->
+				<div class="row">
+					</br>
+					<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
+						<?php echo "Docteur ".$_SESSION['nom'].' '.$_SESSION['prenom']; ?>
+					</div>	
+				</div>
+				<div class="row paddingForm">
+					<div class="row formPatient">
+						<!--Titre "Création d'un patient"-->
+						<div class="col-md-12 col-sm-12 col-xs-12 titre titreCreation">
+							Création d'un patient
+						</div>
+						<!--Message-->
+						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
+							<h2 class="enRouge">Erreur lors de l'enregistrement !</br><i><?php echo $erreur;?></i></h2>
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+						</br></br></br>
+						</div>
+						<!--Retour accueil-->
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<a href="creationPatient.php"><span class="fas fa-arrow-left"></span>  Retour à la création</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		<?php
+		// Les données ne sont pas toutes correctes					
 		} else {
 		?>
 			<div class="container">
@@ -211,7 +274,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="accueilMedecin.php" method="post">
 							<a href="accueilMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button></a>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button></a>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
