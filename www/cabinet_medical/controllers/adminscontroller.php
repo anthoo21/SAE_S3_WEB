@@ -57,6 +57,7 @@ class AdminsController {
     public function areAllFichOK($pdo) {
 
         $check = true;
+        $allVerifOk = true;
         $tabName = array('CIS_bdpm.txt','CIS_CIP_bdpm.txt','CIS_COMPO_bdpm.txt',
             'CIS_CPD_bdpm.txt', 'CIS_GENER_bdpm.txt','CIS_HAS_ASMR_bdpm.txt',
             'CIS_HAS_SMR_bdpm.txt','CIS_InfoImportantes_bdpm.txt','HAS_LiensPageCT_bdpm.txt');
@@ -92,6 +93,9 @@ class AdminsController {
             } else {
                 $check = false;
             }
+            if(!file_exists($target_file)) {
+                $allVerifOk = false;
+            }
         }
 
 
@@ -105,7 +109,7 @@ class AdminsController {
         $view->setVar('selectAllMedecins', $medecins);
         $view->setVar('compteMed', $nbMedecins);
         $view->setVar('comptePatients', $nbpatients);
-        $view->setVar('allVerifOk', $check); 
+        $view->setVar('allVerifOk', $allVerifOk); 
         return $view;
     } 
 

@@ -108,7 +108,7 @@
 				<p style="color: darkred">Importer les 9 fichiers de la base de données dans la bonne ligne</p>
 			</div>
 			<?php 
-			// INSERT DES DONNEES
+			//INSERT DES DONNEES
 			// if(isset($_POST['ValidationImport'])) {
 			// 	try {
 			// 		$tabName = array('CIS_bdpm.txt','CIS_CIP_bdpm.txt','CIS_COMPO_bdpm.txt',
@@ -435,10 +435,11 @@
 					<?php
 						if($allVerifOk) {
 					?>
-						<form action="accueilAdmin.php" method="post">
+						<form action="index.php" method="post">
 							<div class="col-md-6 col-xs-6 col-sm-6">
+								<input hidden name="controller" value="InsertFichier">
+								<input hidden name="action" value="insertFich">
 								<input hidden value="ValidationImport" name="ValidationImport">
-
 								<input type="submit" value="Importer" name="btnImport2" class="btnImport">
 							</div>
 						</form>

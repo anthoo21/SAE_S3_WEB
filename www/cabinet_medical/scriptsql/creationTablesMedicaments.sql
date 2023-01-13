@@ -38,7 +38,7 @@ CREATE TABLE CIS_COMPO_bdpm (
     dosage VARCHAR(100),
     refDosage VARCHAR(100),
     natureCompo VARCHAR(10),
-    numeroLier VARCHAR(10)
+    numeroLier VARCHAR(500)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 4 Structure table CIS_COMPO_bdpm
