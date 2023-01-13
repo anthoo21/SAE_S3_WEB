@@ -148,37 +148,39 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				</div>	
 			</div>
 			<?php if(isset($_POST['Supprimer']) and $_POST['Supprimer']) {?>
-				<div class="row paddingForm">
-					<!--Message-->
-					<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
-						<div class="col-md-12 col-sm-12 col-xs-12 center">
-							<span class="fas fa-check"></span>
-							<h3>Le patient <?php echo $nom.' '.$prenom;?> a été supprimé de la base de données</h3>
-						</div>
+			<div class="row paddingForm">
+				<!--Message-->
+				<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
+					<div class="col-md-12 col-sm-12 col-xs-12 center">
+						<span class="fas fa-check"></span>
+						<h3>Le patient <?php echo $nom.' '.$prenom;?> a été supprimé de la base de données</h3>
 					</div>
 				</div>
+			</div>
 			<?php } else {?>
-				<div class="row paddingForm">
-					<!--Message-->
-					<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
-						<div class="col-md-12 col-sm-12 col-xs-12 center">
-							<span class="fas fa-triangle-exclamation"></span>
-							<h3>Lorsque vous supprimez un patient, les visites et ordonnances </br>qui lui sont associées seront également supprimé.</h3>
-							<h3>Voulez-vous supprimer le patient <?php echo $nom.' '.$prenom;?> ?</h3>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 center">
-							<form action="suppressionPatient.php" method="post">
-								<input type="submit" name="Supprimer" class="btn btn-success btn-xl" value="SUPPRIMER">
-							</form>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 center">
-							<form action="dossierPatient.php" method="post">
-								<input type="hidden" name="id" value="<?php echo $_SESSION['idPatient'];?>">
-								<input type="submit" name="Annuler" class="btn btn-secondary btn-xl" value="ANNULER">
-							</form>
-						</div>
+			<div class="row paddingForm">
+				<!--Message-->
+				<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
+					<div class="col-md-12 col-sm-12 col-xs-12 center">
+						<span class="fas fa-triangle-exclamation"></span>
+						<h3>Lorsque vous supprimez un patient, les visites et ordonnances </br>qui lui sont associées seront également supprimé.</h3>
+						<h3>Voulez-vous supprimer le patient <?php echo $nom.' '.$prenom;?> ?</h3>
+					</div>
+					<!--Bouton Supprimer-->
+					<div class="col-md-6 col-sm-6 col-xs-6 center">
+						<form action="suppressionPatient.php" method="post">
+							<input type="submit" name="Supprimer" class="btn btn-success btn-xl" value="SUPPRIMER">
+						</form>
+					</div>
+					<!--Bouton Annuler-->
+					<div class="col-md-6 col-sm-6 col-xs-6 center">
+						<form action="dossierPatient.php" method="post">
+							<input type="hidden" name="id" value="<?php echo $_SESSION['idPatient'];?>">
+							<input type="submit" name="Annuler" class="btn btn-secondary btn-xl" value="ANNULER">
+						</form>
 					</div>
 				</div>
+			</div>
 			<?php }?>
 		</div>
   </body>
