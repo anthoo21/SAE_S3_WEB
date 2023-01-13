@@ -75,7 +75,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			$modifPatient = 0;
 			
 			//Récupération du nom
-			if(isset($_POST['newNom']) and $_POST['newNom']!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $_POST['newNom'])) {
+			if(isset($_POST['newNom']) and $_POST['newNom']!="" and preg_match("/^[A-Z][A-Za-z\s'-]*[A-Za-z]$/", $_POST['newNom'])) {
 				$newNom=htmlspecialchars($_POST['newNom']);
 				if($_POST['newNom'] != $nom) {
 					$modifPatient++;
@@ -85,7 +85,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			}
 			
 			//Récupération du prenom
-			if(isset($_POST['newPrenom']) and $_POST['newPrenom']!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $_POST['newPrenom'])) {
+			if(isset($_POST['newPrenom']) and $_POST['newPrenom']!="" and preg_match("/^[A-Z][a-zA-Z'-]*$/", $_POST['newPrenom'])) {
 				$newPrenom=htmlspecialchars($_POST['newPrenom']);
 				if($_POST['newPrenom'] != $prenom) {
 					$modifPatient++;
@@ -115,7 +115,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				}
 			}
 			//Récupération de l'adresse
-			if(isset($_POST['newAdresse']) and $_POST['newAdresse']!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $_POST['newAdresse'])) {
+			if(isset($_POST['newAdresse']) and $_POST['newAdresse']!="" and preg_match("/^([0-9]{1,4}[a-zA-Z]{0,1})?\s*[a-zA-Z'.-]+(\s[a-zA-Z'.-]+)*\s*[0-9]{5}\s*[a-zA-Z]+([\s-][a-zA-Z]+)*$/", $_POST['newAdresse'])) {
 				$newAdresse=htmlspecialchars($_POST['newAdresse']);
 				if($_POST['newAdresse'] != $adresse) {
 					$modifPatient++;
@@ -124,7 +124,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				$newAdresse=$adresse;
 			}
 			//Récupération du numéro de portable
-			if(isset($_POST['newPortable']) and $_POST['newPortable']!="" and preg_match("~(0){1}[0-9]{9}~", $_POST['newPortable'])) {
+			if(isset($_POST['newPortable']) and $_POST['newPortable']!="" and preg_match("/^0[1-9][0-9]{8}$/", $_POST['newPortable'])) {
 				$newPortable=htmlspecialchars($_POST['newPortable']);
 				if($_POST['newPortable'] != $tel) {
 					$modifPatient++;
@@ -133,7 +133,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				$newPortable=$tel;
 			}
 			//Récupération de l'email
-			if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['mail'])) {
+			if(isset($_POST['mail']) and $_POST['mail']!="" and preg_match("/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/", $_POST['mail'])) {
 				$mail=htmlspecialchars($_POST['mail']);
 				if($_POST['mail'] != $email) {
 					$modifPatient++;
@@ -151,7 +151,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				$newDate=$date;
 			}
 			//Récupération du poids
-			if(isset($_POST['newPoids']) and $_POST['newPoids']!="") {			//preg_match("~([1|2]?([0-9]{1,2}))(\.[0-9]{1,3})?~", $_POST['newPoids'])
+			if(isset($_POST['newPoids']) and $_POST['newPoids']!="" and preg_match("/^[0-9]{1,3}([.,][0-9]{3})?$/", $_POST['newPoids'])) {
 				$newPoids=htmlspecialchars($_POST['newPoids']);
 				if($_POST['newPoids'] != $poids) {
 					$modifPatient++;
@@ -161,7 +161,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 			}
 			//TODO => regex
 			//Récupération du numero de carte vitale
-			if(isset($_POST['newCV']) and $_POST['newCV']!="" and preg_match("#^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$#", $_POST['newCV'])) {
+			if(isset($_POST['newCV']) and $_POST['newCV']!="" and preg_match("/^(1[0-9]{14}|2[0-9]{14})$/", $_POST['newCV'])) {
 				$newCV=htmlspecialchars($_POST['newCV']);
 				if($_POST['newCV'] != $noCV) {
 					$modifPatient++;
@@ -197,7 +197,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		//Récupération de l'ID du médecin connecté => TODO
-		$id_medecin="001";
+		$id_medecin=$_SESSION['idMed'];
 
 		// Toutes les données sont correctes
 		if(isset($_POST['valider']) and $_POST['valider']) {
@@ -224,8 +224,8 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 					<!-- Boutons -->
 					<div class="col-md-4 col-sm-4 col-xs-4 logos">
 						<form action="accueilMedecin.php" method="post">
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
+							<a href="accueilMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button></a>				
+							<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button></a>
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
 						</form>
 					</div>	
@@ -239,14 +239,18 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 				</div>
 				<div class="row paddingForm">
 					<div class="row formPatient">
+						<!--Titre "Modification d'un medecin"-->
+						<div class="col-md-12 col-sm-12 col-xs-12 titre titreCreation">
+							Modification d'un patient
+						</div>
 						<!--Message-->
 						<div class="col-md-12 col-sm-12 col-xs-12 titreOK">
 							<h2>Enregistrement des modifications apportées au patient <?php echo $nom.' '.$prenom;?>. </br>Il y a eu <?php echo $modifPatient.' modifications effectuées';?></h2>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12"></br></br></div>
 						<!--Retour accueil-->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<a href="accueilMedecin.php"><span class="fas fa-home"></span> -- Retour à ma page d'accueil -- </a>
+						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
+							<a href="accueilMedecin.php"><span class="fas fa-arrow-left"></span> -- Retour à ma page d'accueil -- </a>
 						</div>
 					</div>
 				</div>
@@ -292,9 +296,9 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 							<form action="modificationPatient.php" method="post">
 								<div class="col-md-12 col-sm-12 col-xs-12 formPatient">
 								
-									<!--Partie Gauche-->
+									<!--Partie Gauche de la page-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
-										<!--Saisie du nom-->
+										<!--Nom-->
 										<div class="row">
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newNom!=$nom) { echo "enBleu";}?>">
 												<label for="newNom">Nom : </label>
@@ -304,7 +308,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du prénom-->
+											<!--Prénom-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newPrenom!=$prenom) { echo "enBleu";}?>">
 												<label for="prenom">Prénom : </label>
 											</div>
@@ -313,7 +317,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du Genre-->
+											<!--Genre-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($nomGenre != $genre) { echo "enBleu";}?>">
 												<label for="genre">Genre: </label>
 											</div>
@@ -325,7 +329,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de l'adresse-->
+											<!--Adresse postale-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newAdresse != $adresse) { echo "enBleu";}?>">
 												<label for="newAdresse">Adresse : </label>
 											</div>
@@ -334,7 +338,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du téléphone-->
+											<!--Téléphone-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newPortable != $tel) { echo "enBleu";}?>">
 												<label for="newPortable">Portable : </label>
 											</div>
@@ -343,7 +347,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du mail-->
+											<!--Adresse email-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($mail!= $email) { echo "enBleu";}?>">
 												<label for="mail">Email : </label>
 											</div>
@@ -352,7 +356,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de la date de naissance-->
+											<!--Date de naissance-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newDate != $date) { echo "enBleu";}?>">
 												<label for="newDate">Date de naissance : </label>
 											</div>
@@ -362,10 +366,10 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 										</div>
 									</div>
 								
-									<!--Partie Droite-->
+									<!--Partie Droite de la page-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
 										<div class="row">
-											<!--Saisie du poids-->
+											<!--Poids-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newPoids != $poids) { echo "enBleu";}?>">
 												<label for="newPoids">Poids: </label>
 											</div>
@@ -374,7 +378,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie du numéro de sécu-->
+											<!--Numéro de sécu-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($newCV != $noCV) { echo "enBleu";}?>">
 												<label for="newCV" >N° carte vitale: </label>
 											</div>
@@ -383,7 +387,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de l'allergie-->
+											<!--Allergie-->
 											<div class="col-md-6 col-sm-6 col-xs-12  <?php if($allergies=="") { echo "enRouge";}?>">
 												<label for="newAllergies">Allergie: </label>
 											</div>
@@ -395,7 +399,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 											</div>
 										</div>
 										<div class="row">
-											<!--Saisie de commentaires-->
+											<!--Commentaires-->
 											<div class="col-md-12 col-sm-7 col-xs-12  <?php if($newCom=="") { echo "enRouge";}?>">
 												<label for="newCom">Commentaires: </label>
 											</div>
@@ -412,7 +416,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 										</div>
 									</div>
 									
-									<!--Bouton Valider-->
+									<!--Bouton de validation du formulaire-->
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton buttonVert">
 										<div class="row divBouton buttonVert">
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
