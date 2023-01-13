@@ -111,22 +111,26 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 					<form action="index.php" method="post">
 						<p class="titre">Connexion à mon compte : </p>
 						<div class="row">
-							<!--Identifiant correct (non vide): apparaît en vert sinon en rouge-->
-							<div class="col-md-5 col-sm-12 col-xs-12">
-								<label>Identifiant : </label>				
+							<!--Identifiant-->
+							<div class="col-md-2 hidden-sm hidden-12"></div>
+							<div class="col-md-3 col-sm-12 col-xs-12">
+								<label>IDENTIFIANT : </label>				
 							</div>
-							<div class="col-md-7 col-sm-12 col-xs-12">
+							<div class="col-md-5 col-sm-12 col-xs-12">
 								<input type="text" name="login" class="form-control saisie fond">
 							</div>
+							<div class="col-md-2 hidden-sm hidden-12"></div>
 						</div>
 						<div class="row">
-						<!--Mot de passe correct (non vide) : apparaît en vert sinon en rouge-->
-							<div class="col-md-5 col-sm-12 col-xs-12">
-								<label>Mot de passe : </label>
+							<!--Mot de passe-->
+							<div class="col-md-2 hidden-sm hidden-12"></div>
+							<div class="col-md-3 col-sm-12 col-xs-12">
+								<label>MOT DE PASSE : </label>
 							</div>
-							<div class="col-md-7 col-sm-12 col-xs-12">
+							<div class="col-md-5 col-sm-12 col-xs-12">
 								<input type="password" name="password" class="form-control saisie fond">
 							</div>
+							<div class="col-md-2 hidden-sm hidden-12"></div>
 						</div>
 						<div class="row divBouton">
 							<!--Identifiant et mot de passe dans la BDD : affichage page d'accueil-->
