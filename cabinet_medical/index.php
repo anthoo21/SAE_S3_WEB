@@ -95,7 +95,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="home">
-					Bienvenue sur le site </br>de notre cabinet MedSoft
+					Bienvenue sur le site </br></br>de notre cabinet MedSoft
 				</div>
 			</div>	
 		</div>
