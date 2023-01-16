@@ -33,9 +33,15 @@ class PosologieController {
         }
         $idP = HttpHelper::getParam('idP');
         $idMedoc = HttpHelper::getParam('idMedoc');
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
         $view = new View('SAE_S3_WEB/views/ajoutPosologie');
         $view->setVar('idMedoc', $idMedoc);
         $view->setVar('idP', $idP);
+        $view->setVar('dateVisite', $dateVisite);
+        $view->setVar('motif', $motif);
+        $view->setVar('observation', $observation);
         return $view;
     }
 
@@ -43,6 +49,9 @@ class PosologieController {
         $idMedoc = HttpHelper::getParam('idMedoc');
         $posologie = HttpHelper::getParam('posologie');
         $idP = HttpHelper::getParam('idP');
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
         $insertPrescri = $this->posologieService->insertPrescri($pdo, $idMedoc, $posologie);
         $searchStmt = $this->posologieService->findAllMedoc($pdo);
         $searchStmt2 = $this->posologieService->findAllTypes($pdo);
@@ -54,6 +63,9 @@ class PosologieController {
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
         $view->setVar('requeteOrdo', $requeteOrdo);
         $view->setVar('idP', $idP);
+        $view->setVar('dateVisite', $dateVisite);
+        $view->setVar('motif', $motif);
+        $view->setVar('observation', $observation);
         return $view;
     }
 

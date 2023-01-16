@@ -54,6 +54,7 @@
                                 echo 'Recherche';
                                 $title = "recherche";
                             }?>">
+                            <input hidden name="idP" value="<?php echo $_POST['idP'] ?>">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
