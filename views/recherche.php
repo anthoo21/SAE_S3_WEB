@@ -92,7 +92,7 @@
                             <!--Recherche par médicaments génériques -->
                             <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
                                 <p class="text"><b>Génériques ?</b></p>
-
+                                <!-- Si l'un des champs a déjà été rempli, le remettre lors de l'envoi du formulaire-->
                                 <input type="radio" name="generiques" id="generiqueOui" value="Oui" 
                                 <?php if(isset($_POST['generiques']) && $_POST['generiques'] == "Oui") {
                                         echo "checked";
@@ -142,11 +142,13 @@
                         </tr>
                         <?php 
                             while($ligne = $searchStmt->fetch()) {
+                                //affiche Oui si il y a des génériques, Non sinon
                                 if($ligne['libelle'] != "") {
                                     $gener = 'Oui';
                                 } else {
                                     $gener = 'Non';
                                 }
+                                //Permet d'afficher les médicaments selon la recherche de l'utilisateur
                                 echo '<form action="index.php" method="post">';
                                     echo '<tr>';
                                         echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">';
@@ -165,6 +167,7 @@
                 <?php } ?>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 titre">
+                <!-- Affiche le nombre de médicaments trouvés. -->
                 Nombre de médicaments : <?php echo $searchStmt->rowCount(); ?>
             </div>
         </div>
