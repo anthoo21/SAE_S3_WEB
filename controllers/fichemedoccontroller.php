@@ -32,6 +32,7 @@ class FicheMedocController {
             return $view;
         }
         $idMedoc = HttpHelper::getParam('idMedoc');
+        $OrdoToFiche = HttpHelper::getParam('OrdoToFiche');
         $requeteMedGeneral = $this->ficheMedocService->requeteMedGeneral($pdo, $idMedoc);
         $requeteMedCIP = $this->ficheMedocService->requeteMedCIP($pdo, $idMedoc);
         $requeteMedCOMPO = $this->ficheMedocService->requeteMedCOMPO($pdo, $idMedoc);
@@ -39,6 +40,7 @@ class FicheMedocController {
         $requeteMedSMR = $this->ficheMedocService->requeteMedSMR($pdo, $idMedoc);
         $requeteMedINFO = $this->ficheMedocService->requeteMedINFO($pdo, $idMedoc);
         $view = new View('SAE_S3_WEB/views/ficheMedoc');
+        $view->setVar('OrdoToFiche', $OrdoToFiche);
         $view->setVar('requeteMedGeneral', $requeteMedGeneral);
         $view->setVar('requeteMedCIP', $requeteMedCIP);
         $view->setVar('requeteMedCOMPO', $requeteMedCOMPO);

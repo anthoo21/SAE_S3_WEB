@@ -223,7 +223,6 @@ a:hover {
 }
 .divBouton {
 	text-align:center;
-	border:1px solid blue;
 }
 /*Bouton "Valider"*/
 .buttonValid {
@@ -337,4 +336,6 @@ a:hover {
 .texteCentre {
 	text-align: center;
 }
+
+
 

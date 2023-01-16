@@ -29,6 +29,7 @@
             <div class="row paddingForm">
 				<div class="row formPatient">
 					<div class="col-md-7 col-sm-12 col-xs-12 titreMedoc">
+                        <!-- Assigne des variables aux informations générales d'un médicament-->
                         <?php while($ligne = $requeteMedGeneral->fetch()) {
                                 echo $ligne['denomination'];
                                 $forme = $ligne['forme'];
@@ -47,7 +48,12 @@
 					</div>
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="index.php" method="post">
-                            <input hidden name="controller" value="Recherche">
+                            <input hidden name="controller" value="<?php if(isset($OrdoToFiche)) {echo 'Visite';
+                                $title = "création de visite";
+                            } else {
+                                echo 'Recherche';
+                                $title = "recherche";
+                            }?>">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>
@@ -76,6 +82,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Présentation(boîte de médicaments) :</u></h3>
 							<?php
+                            //vérifie chaque champ pour savoir si il est vide ou non
                             while($ligne = $requeteMedCIP->fetch()) {
                                 if(!isset($ligne['libelle'])) {
                                     $ligne['libelle'] = "";
@@ -116,6 +123,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Composition :</u></h3>
 							<?php
+                            //affiche les infos concernant la composition d'un médicament
                             while($ligne = $requeteMedCOMPO->fetch()) {
                                 echo '<p>Dénomination substance : '.$ligne['denomSubstance'].'</p>';
                                 echo '<p>Dosage : '.$ligne['dosage'].'</p>';
@@ -131,6 +139,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Avis ASMR de la HAS :</u></h3>
 							<?php
+                            //affiche l'avis ASMR de la HAS
                             while($ligne = $requeteMedASMR->fetch()) {
                                 if($requeteMedASMR->rowCount() != 0) {
                                     echo '<p>Motif d\'évaluation : '.$ligne['motifEval'].'</p>';
@@ -150,6 +159,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Avis SMR de la HAS :</u></h3>
 							<?php
+                            //affiche l'avis SMR de la HAS
                             while($ligne = $requeteMedSMR->fetch()) {
                                 if($requeteMedSMR->rowCount() != 0) {
                                     echo '<p>Motif d\'évaluation : '.$ligne['motifEval'].'</p>';
@@ -169,6 +179,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 paddingForm">
 							<h3><u>Informations importantes :</u></h3>
 							<?php
+                            //affiche les infos importantes concernant un médicament
                             while($ligne = $requeteMedINFO->fetch()) {
                                 if($requeteMedINFO->rowCount() != 0) {
                                     echo '<p>Date de début de l\'information : '.$ligne['dateDebut'].'</p>';

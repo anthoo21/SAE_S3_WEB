@@ -20,8 +20,8 @@
 			<!-- Nav-bar -->
 			<div class="row nav">
 				<div class="col-md-4 col-sm-4 col-xs-4">
-                    <img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
-                    <img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
+				<img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
+				<img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
 				</div>	
 				<div class="col-md-4 col-sm-4 col-xs-4">
 				<!--Espace dans la navbar-->
@@ -175,7 +175,14 @@
 						</div>
 						<!--Bouton "Ajouter une visite"  TODO a modif mvc-->
 						<div class="row divBtnA">
-							<a href="creationVisite.php"><button type="button" class="btn btn-success btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter une visite  </a>
+							<form action="index.php" method="post">
+								<input hidden name="controller" value="Visite">
+								<?php 
+								var_dump($noCV);
+								?>
+								<input hidden name="idP" value="<?php echo $noCV; ?>">
+								<button type="submit" class="btn btn-success btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter une visite
+							</form>
 						</div>
 					</div>
 				</div>

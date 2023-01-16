@@ -71,6 +71,7 @@
 							</tr>
 								
 								<?php 
+								//Affiche tous les médecins du cabinet
 								while($ligne = $selectAllMedecins->fetch()) {
 									echo '<tr class="ligneMed">';
 										echo '<form action="index.php" method="post">';
@@ -261,6 +262,7 @@
 					</div>
 					</form>	
 					<?php
+					//si tous les fichiers ont été upload, alors le bouton "Importer" apparaît
 						if($allVerifOk) {
 					?>
 						<form action="index.php" method="post">
