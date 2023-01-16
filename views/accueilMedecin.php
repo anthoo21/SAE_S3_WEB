@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="Fr">
   <head>
-      <title>MEDSOFT - Accueil Admin</title>
+      <title>MEDSOFT - Accueil Medecin</title>
       <meta charset="utf-8">
 	  <link rel="stylesheet" href="bootstrap\css\bootstrap.css">
 	  <link rel="stylesheet" href="fontawesome-free-5.10.2-web\css\all.css">
@@ -90,7 +90,7 @@
 		<!--Liste des patients-->
 		<div class="row divTable">
 			<table class="table table-bordered table-striped">
-			<!--TODO : pb d'affichage -> 8 colonnes en ordi / 4 colonnes en tablette / 3 colonnes en smartphone-->
+			
 				<div class="col-md-12">
 					<tr class="testtest">
 						<th class="thMed">Nom</th>
@@ -99,19 +99,26 @@
 						<th class="thMed">Téléphone</th>
 						<th class="thMed">Email</th>
 						<th class="thMed">Date de naissance</th>
-						<th class="thMed">Dernière visite</th>
+						<th class="thMed">Num Carte Vitale</th>
+						<th class="thMed"><span class="fas fa-eye"></th>
 					</tr>
 					<?php 
 						while($ligne = $searchStmt->fetch()) {
+							echo '<form action="index.php" method="post">';
 							echo '<tr>';
 								echo '<td>'.$ligne['nom'].'</td>';
-								echo '<td>'.$ligne['prenom'].'</td>';
+								echo '<td>'.$ligne['prenom'].'</td>';	
 								echo '<td>'.$ligne['sexe'].'</td>';
 								echo '<td>'.$ligne['tel'].'</td>';
 								echo '<td>'.$ligne['email'].'</td>';
 								echo '<td>'.$ligne['dateNai'].'</td>';
-								echo '<td>'.$ligne['date_visite'].'</td>'; //affiche seulement une des visites qu'ils ont
+								echo '<td>'.$ligne['numeroCarteVitale'].'</td>';
+								echo '<input hidden name="numCarte" value="'.$ligne['numeroCarteVitale'].'">';
+								echo '<input hidden name="controller" value="Medecins">';
+								echo '<input hidden name="action" value="goToFichePatient">';
+								echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
 							echo '</tr>';
+							echo '</form>';
 						}
 					?>
 				</div>

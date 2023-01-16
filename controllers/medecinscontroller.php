@@ -57,6 +57,29 @@ class MedecinsController {
         return $view;
     }
 
+    public function goToFichePatient($pdo) {
+        $numSecu = HttpHelper::getParam('numCarte');
+        $searchStmt = $this->medecinsService->findPatientFile($pdo, $numSecu);
+        $searchStmtB = $this->medecinsService->findPatientVisit($pdo, $numSecu);
+        $view = new View('SAE_S3_WEB/views/dossierPatient');
+        while($ligne = $searchStmt->fetch()) {
+            $view->setVar('nom', $ligne['nom']);
+            $view->setVar('prenom', $ligne['prenom']);
+            $view->setVar('adresse', $ligne['adresse']);
+            $view->setVar('noCV', $ligne['numeroCarteVitale']);
+            $view->setVar('tel', $ligne['tel']);
+            $view->setVar('email', $ligne['email']);
+            $view->setVar('date', $ligne['dateNai']);
+            $view->setVar('poids', $ligne['poids']);
+            $view->setVar('genre', $ligne['sexe']);
+            $view->setVar('medecin', $ligne['nomMedecin']);
+            $view->setVar('allergies', $ligne['allergies']);
+            $view->setVar('commentaires', $ligne['commentaires']);
+        }
+        $view->setVar('searchStmt', $searchStmtB);
+        return $view;
+    }
+
     public function deconnexion() {
         session_destroy();
         $view = new View('SAE_S3_WEB/views/accueil');
