@@ -3,70 +3,16 @@
   <head>
       <title>MEDSOFT - Création de visite</title>
       <meta charset="utf-8">
-	  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-	  <link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.css">
-	  <link rel="stylesheet" href="../css/style.css"> 
+	  <link rel="stylesheet" href="bootstrap\css\bootstrap.css">
+	  <link rel="stylesheet" href="fontawesome-free-5.10.2-web\css\all.css">
+	  <link rel="stylesheet" href="css\style.css"> 
+      <link rel="stylesheet" href="css\styleVisite.css"> 
   </head>
   
   <body>
 	<?php
-                                
-        if(isset($_POST['recupId'])) {
-            $idMed = $_POST['recupId'];
-            $requete="DELETE FROM prescriptionsTemp WHERE id_medicaments = :idMed";
-            $stmt=$pdo->prepare($requete);
-            $stmt->bindParam('idMed',$idMed);
-            $stmt->execute();
-        }
-  
-		$idP = $_SESSION['idPatient'];
-		
-		//Récupération des infos du patient
-		try {
-			$requeteOrdo='SELECT C.denomination, P.posologie, P.id_medicaments FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments';
-			$resultatsOrdo = $pdo->query($requeteOrdo);
-			$requeteP="SELECT patients.nom, patients.prenom, patients.numeroCarteVitale, patients.dateNai, patients.poids
-			FROM patients 
-			WHERE patients.numeroCarteVitale = :id";
-			$resultats = $pdo->prepare($requeteP);
-			$resultats->bindParam('id', $idP);
-			$resultats->execute();
-			while($ligne = $resultats->fetch()) {
-				$nomP = $ligne['nom'];
-				$prenomP = $ligne['prenom'];
-				$dateNai = date("d/m/Y", strtotime($ligne['dateNai']));
-				$poids = $ligne['poids'];
-			}
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-		
 		//Récupération des données
-		$ToutOK=true; //Savoir si toutes les données ont été rentrées
 		
-		//Récupération de la date de la visite
-		if(isset($_POST['dateVisite']) and $_POST['dateVisite']!="")  {
-			$dateVisite=htmlspecialchars($_POST['dateVisite']);
-		} else {
-			$dateVisite="";
-			$ToutOK=false;
-		}
-		
-		//Récupération du motif de la visite
-		if(isset($_POST['motif']) and $_POST['motif']!="") {
-			$motif=htmlspecialchars($_POST['motif']);
-		} else {
-			$motif="";
-			$ToutOK=false;
-		}
-		
-		//Récupération des commentaires
-		if(isset($_POST['observation']) and $_POST['observation']!="") {
-			$observation=htmlspecialchars($_POST['observation']);
-		} else {
-			$observation="";
-			$ToutOK=false;
-		}
 		
 		// Toutes les données sont correctes
 		if($ToutOK && isset($_POST['valideInsertion'])) {
@@ -111,8 +57,8 @@
 				<!-- Nav-bar -->
 				<div class="row nav">
 					<div class="col-md-4 col-sm-4 col-xs-4">
-						<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
-						<img class="logo2" src="../assets/logo_titre.png" alt="logo medsoft">
+                        <img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
+                        <img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
 					</div>	
 					<div class="col-md-4 col-sm-4 col-xs-4">
 					<!--Espace dans la navbar-->
@@ -155,19 +101,32 @@
 				<!-- Nav-bar -->
 				<div class="row nav">
 					<div class="col-md-4 col-sm-4 col-xs-4">
-						<img class="logo1" src="../assets/logo_dessin.png" alt="logo plus">
-						<img class="logo2" src="../assets/logo_titre.png" alt="logo medsoft">
+                    <img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
+				<img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
 					</div>	
 					<div class="col-md-4 col-sm-4 col-xs-4">
 					<!--Espace dans la navbar-->
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="accueilMedecin.php" method="post">
-							<a href="accueilMedecin.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true" title="Patients"><span class="fas fa-user"></button></a>				
-							<a href="recherche.php"><button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button></a>
+					<div class="col-md-1 col-sm-1 col-xs-1">
+                        <form action="index.php" method="post">
+                            <input hidden name="controller" value="Medecins">
+                            <input hidden name="action" value="index">
+                            <button type="submit" class="btn btn-info btn-circle btn-xl" name="patient" value="true" title="Patients"><span class="fas fa-user"></button>				
+                        </form>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                        <form action="index.php" method="post">
+                            <input hidden name="controller" value="Recherche">				
+                            <button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+                        </form>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="deconnexion">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
 						</form>
-					</div>	
+					</div>
 				</div>
 				<!--Nom du docteur-->
 				<div class="row">
@@ -178,6 +137,7 @@
 						?>
 					</div>	
 				</div>
+                <?php var_dump($idP) ?>
 				<div class="row paddingForm">
 					<div class="row formPatient">
 						<!--Titre "Création d'un patient"-->
@@ -186,7 +146,7 @@
 						</div>
 						<div class="row paddingForm">
 							<!--Formulaire-->
-							<form action="creationVisite.php" method="post">
+							<form action="index.php" method="post">
 								<div class="col-md-12 col-sm-12 col-xs-12 formPatient">
 								
 									<!--Partie Gauche-->
@@ -205,10 +165,14 @@
 												<input type="date" name="dateVisite" class="form-control" value="<?php echo $dateVisite; ?>">
 											</div>
 										</div>
+                                        <?php 
+                                        //Récupération des infos du patient
+                                        while($ligne = $requeteInfoPatient->fetch()) {
+                                        ?>
 										<div class="row">
 											<!-- Patient -->
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<label for="patient">Patient :  </label><?php echo ' '.$nomP.' '.$prenomP;?>
+												<label for="patient">Patient :  </label><?php echo ' '.$ligne['nom'].' '.$ligne['prenom'];?>
 											</div>
 					
 										</div>
@@ -239,15 +203,16 @@
 										<div class="row">
 											<!--Saisie de la date de naissance-->
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<label for="date">Date de naissance : </label><?php echo ' '.$dateNai; ?>
+												<label for="date">Date de naissance : </label><?php echo ' '.date("d/m/Y", strtotime($ligne['dateNai'])); ?>
 											</div>
 										</div>
 										<div class="row">
 											<!--Saisie du poids-->
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<label for="poids">Poids: </label><?php echo ' '.$poids.' kg'; ?>
+												<label for="poids">Poids: </label><?php echo ' '.$ligne['poids'].' kg'; ?>
 											</div>
 										</div>
+                                        <?php }?>
 									</div>
 									<!--Partie Droite-->
 									<div class="col-md-6 col-sm-12 col-xs-12 formGD">
@@ -268,12 +233,15 @@
                                                                     <th>Supprimer</th>
 																</tr>
 																<?php 
-																while($ligne = $resultatsOrdo->fetch()) {
-                                                                    echo '<form action="creationVisite.php" method="post">';
+																while($ligne = $requeteOrdo->fetch()) {
+                                                                    echo '<form action="index.php" method="post">';
                                                                         echo '<tr>';
                                                                             echo '<input type="hidden" name="recupId" value="'.$ligne['id_medicaments'].'">';
                                                                             echo '<td>'.$ligne['denomination'].'</td>';
                                                                             echo '<td>'.$ligne['posologie'].'</td>';
+                                                                            echo '<input hidden name="controller" value="Visite">';
+                                                                            echo '<input hidden name="action" value="supprMedoc">';
+                                                                            echo '<input hidden name="idP" value="'.$idP.'">';
                                                                             echo '<td><button type="submit" class="btn btn-danger btn-circle" name="suppression" value="true" title="Supprimer un médicament"><span class="fas fa-trash"></button></td>';
                                                                         echo '</tr>';
                                                                     echo '</form>';
@@ -326,7 +294,7 @@
                                                                                 <select class="form-control" name="Type" id="type">
                                                                                     <option value="TOUS">TOUS</option>
                                                                                     <?php
-                                                                                    while($ligne = $resultatsT->fetch()) {
+                                                                                    while($ligne = $searchStmt2->fetch()) {
                                                                                         echo '<option';
                                                                                         if(isset($_POST['Type']) && $_POST['Type'] == $ligne['forme']) {
                                                                                             echo " selected";
@@ -336,25 +304,6 @@
                                                                                     ?>
                                                                                 </select>
                                                                             </div>		
-                                                                            
-                                                                            <!--Recherche par principes actifs -->
-                                                                            <!-- <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
-                                                                                <p class="text"><b>Laboratoire :</b></p> -->
-                                                                                <!-- Liste des principes actifs -->
-                                                                                <!-- <select class="form-control" name="labo" id="labo">
-                                                                                    <option value="TOUS">TOUS</option> -->
-                                                                                    <?php
-                                                                                    // while($ligne = $resultatsL->fetch()) {
-                                                                                    // 	echo '<option';
-                                                                                    // 	if(isset($_POST['labo']) && $_POST['labo'] == $ligne['titulaire']) {
-                                                                                    // 		echo " selected";
-                                                                                    // 	} 
-                                                                                    // 	echo '>'.$ligne['titulaire'].'</option>';
-                                                                                    // }
-                                                                                    ?>
-                                                                                <!-- </select>
-                                                                            </div>
-                                                                            -->
                                                                             <!--Recherche par médicaments génériques -->
                                                                             <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
                                                                                 <p class="text"><b>Génériques ?</b></p>
@@ -392,7 +341,7 @@
                                                                 Résultat de la recherche
                                                             </div>
                                                             <div class="row paddingForm">
-                                                                <?php if($resultatsAllMedic->rowCount() == 0) {
+                                                                <?php if($searchStmt->rowCount() == 0) {
                                                                             echo '<div class="col-md-12 col-sm-12 col-xs-12 titre">';
                                                                                 echo 'Aucun médicament trouvé.';
                                                                             echo '</div>';
@@ -408,7 +357,7 @@
                                                                             <th><span class="fa-solid fa-cart-plus"></th>
                                                                         </tr>
                                                                         <?php 
-                                                                            while($ligne = $resultatsAllMedic->fetch()) {
+                                                                            while($ligne = $searchStmt->fetch()) {
                                                                                 if($ligne['libelle'] != "") {
                                                                                     $gener = 'Oui';
                                                                                 } else {
@@ -419,14 +368,16 @@
                                                                                     echo '<td>'.$ligne['forme'].'</td>';
                                                                                     echo '<td>'.$ligne['titulaire'].'</td>';
                                                                                     echo '<td>'.$gener.'</td>';          
-                                                                                    echo '<form action="ficheMedicament.php" method="post">';
+                                                                                    echo '<form action="index.php" method="post">';
                                                                                         echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">';
-                                                                                        echo '<input type="hidden" name="OrdoToFiche">';
+                                                                                        echo '<input type="hidden" name="OrdoToFiche" value="1">';
                                                                                         echo '<input hidden name="controller" value="FicheMedoc">';
                                                                                         echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament" name="voir"><span class="fas fa-eye"></button>';
                                                                                     echo '</form>';
-                                                                                    echo '<form action="insertMedicament.php" method="post">';
+                                                                                    echo '<form action="index.php" method="post">';
                                                                                         echo '<input hidden name="idMedoc" value="'.$ligne['codeCis'].'">';
+                                                                                        echo '<input hidden name="controller" value="Posologie">';
+                                                                                        echo '<input hidden name="idP" value="'.$idP.'">';
                                                                                         echo '<td><button type="submit" class="btn btn-secondary" title="Ajouter un médicament" name="ajouter"><span class="fa-solid fa-cart-plus"></button>';
                                                                                     echo '</form>';
                                                                                 echo '</tr>';
@@ -437,7 +388,7 @@
                                                                 <?php } ?>
                                                             </div>
                                                             <div class="col-md-12 col-sm-12 col-xs-12 titre">
-                                                                Nombre de médicaments : <?php echo $resultatsAllMedic->rowCount(); ?>
+                                                                Nombre de médicaments : <?php echo $searchStmt->rowCount(); ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -449,6 +400,9 @@
 									<div class="col-md-12 col-sm-12 col-xs-12 divBouton buttonVert">
 										<div class="row divBouton">
 											<input type="hidden" name="valideInsertion">
+                                            <input hidden name="controller" value="Visite">
+                                            <input hidden name="action" value="insertVisite">
+                                            <input hidden name="idP" value="<?php echo $idP ?>">
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>

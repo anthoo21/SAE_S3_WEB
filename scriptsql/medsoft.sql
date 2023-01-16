@@ -139,3 +139,8 @@ CREATE TABLE `prescriptions` (
 INSERT INTO prescriptions VALUES ('000001', '00001', '65089833', '3 fois par jour');
 INSERT INTO prescriptions VALUES ('000002', '00002', '60904643', '1 comprimé toutes les 4h');
 INSERT INTO prescriptions VALUES ('000003', '00002', '66796142', '1 comprimé tous les soirs');
+
+CREATE TABLE `prescriptionsTemp` (
+	`id_medicaments` INT(8) NOT NULL,
+	`posologie` VARCHAR(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

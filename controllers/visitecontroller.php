@@ -33,12 +33,17 @@ class VisiteController {
             return $view;
             exit();
         }
-
+        $idP = HttpHelper::getParam('idP');
         $searchStmt = $this->visiteService->findAllMedoc($pdo);
         $searchStmt2 = $this->visiteService->findAllTypes($pdo);
+        $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
+        $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
         $view = new View('SAE_S3_WEB/views/creationVisite');
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
+        $view->setVar('requeteInfoPatient', $requeteInfoPatient);
+        $view->setVar('requeteOrdo', $requeteOrdo);
+        $view->setVar('idP', $idP);
         return $view;
     }
 
@@ -46,6 +51,7 @@ class VisiteController {
         $designation = HttpHelper::getParam('designation');
         $type = HttpHelper::getParam('Type');
         $generiques = HttpHelper::getParam('generiques');
+        $idP = HttpHelper::getParam('idP');
         if((isset($designation) && $designation != "") || (isset($type) && $type != "")
         || (isset($generiques) && $generiques != "")) {
             $searchStmt = $this->visiteService->rechercheCritere($pdo, $designation, $type, $generiques);
@@ -53,15 +59,67 @@ class VisiteController {
             $searchStmt = $this->visiteService->findAllMedoc($pdo);
         }
         $searchStmt2 = $this->visiteService->findAllTypes($pdo);
+        $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
+        $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
+        $view = new View('SAE_S3_WEB/views/creationVisite');
+        $view->setVar('requeteInfoPatient', $requeteInfoPatient);
+        $view->setVar('requeteOrdo', $requeteOrdo);
         $view = new View('SAE_S3_WEB/views/creationVisite');
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
+        $view->setVar('idP', $idP);
         return $view;
     }
 
-    public function requeteOrdo($pdo) {
-        $sql = "SELECT C.denomination, P.posologie, P.id_medicaments
-        FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments";
+    public function supprMedoc($pdo) {
+        $idMed = HttpHelper::getParam('recupId');
+        $idP = HttpHelper::getParam('idP');
+        $supprMedoc = $this->visiteService->supprMedoc($pdo, $idMed);
+        $searchStmt = $this->visiteService->findAllMedoc($pdo);
+        $searchStmt2 = $this->visiteService->findAllTypes($pdo);
+        $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
+        $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
+        $view = new View('SAE_S3_WEB/views/creationVisite');
+        $view->setVar('searchStmt', $searchStmt);
+        $view->setVar('searchStmt2', $searchStmt2);
+        $view->setVar('requeteInfoPatient', $requeteInfoPatient);
+        $view->setVar('requeteOrdo', $requeteOrdo);
+        $view->setVar('idP', $idP);
+        return $view;
+    }
+
+    public function insertVisite($pdo) {
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
+        $ToutOK=true; //Savoir si toutes les données ont été rentrées
+		//Récupération de la date de la visite
+		if(isset($_POST['dateVisite']) and $_POST['dateVisite']!="")  {
+			$dateVisite=htmlspecialchars($_POST['dateVisite']);
+		} else {
+			$dateVisite="";
+			$ToutOK=false;
+		}	
+		//Récupération du motif de la visite
+		if(isset($_POST['motif']) and $_POST['motif']!="") {
+			$motif=htmlspecialchars($_POST['motif']);
+		} else {
+			$motif="";
+			$ToutOK=false;
+		}	
+		//Récupération des commentaires
+		if(isset($_POST['observation']) and $_POST['observation']!="") {
+			$observation=htmlspecialchars($_POST['observation']);
+		} else {
+			$observation="";
+			$ToutOK=false;
+		}
+
+        if($ToutOk) {
+            
+        } else {
+
+        }
     }
 
     public function deconnexion() {

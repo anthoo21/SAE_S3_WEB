@@ -48,7 +48,12 @@
 					</div>
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="index.php" method="post">
-                            <input hidden name="controller" value="Recherche">
+                            <input hidden name="controller" value="<?php if(isset($OrdoToFiche)) {echo 'Visite';
+                                $title = "création de visite";
+                            } else {
+                                echo 'Recherche';
+                                $title = "recherche";
+                            }?>">
 							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true"><span class="fas fa-arrow-left"></span></button>
 						</form>
 					</div>

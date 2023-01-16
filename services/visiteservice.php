@@ -78,7 +78,6 @@ class VisiteService
         $sql = "SELECT C.denomination, P.posologie, P.id_medicaments
         FROM cis_bdpm C JOIN prescriptionsTemp P ON C.codeCis = P.id_medicaments";
         $requeteOrdo = $pdo->prepare($sql);
-        $requeteOrdo->bindParam("medicamentDes", $medicament);
         $requeteOrdo->execute();
         return $requeteOrdo;
     }
@@ -91,6 +90,15 @@ class VisiteService
         $requeteInfoPatient->bindParam('id', $idP);
         $requeteInfoPatient->execute();
         return $requeteInfoPatient;
+    }
+
+    public function supprMedoc($pdo, $idMed) {
+        $sql="DELETE FROM prescriptionsTemp
+        WHERE id_medicaments = :idMed";
+        $supprMedoc = $pdo->prepare($sql);
+        $supprMedoc->bindParam('idMed',$idMed);
+        $supprMedoc->execute();
+        return $supprMedoc;
     }
 
     private static $defaultService;
