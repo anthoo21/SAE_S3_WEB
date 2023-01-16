@@ -29,9 +29,8 @@
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 logos">
 				<form action="index.php" method="post">
-					<input hidden name="controller" value="Medecins">		
-					<input hidden name="action" value="goToRecherche">			
-					<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+					<input hidden name="controller" value="Recherche">				
+					<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
 				</form>
 				<form action="index.php" method="post">
 					<input hidden name="controller" value="Medecins">
