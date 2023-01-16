@@ -29,7 +29,7 @@ class AdminsController {
         // Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
             exit();
         }
@@ -39,7 +39,7 @@ class AdminsController {
         $nbMedecins = $medecins->rowCount(); //compte le nombre de medecins
         $patients = $this->adminsService->findAllPatients($pdo);
         $nbpatients = $patients->rowCount();
-        $view = new View('cabinet_medical\views\accueilAdmin');
+        $view = new View('SAE_S3_WEB\views\accueilAdmin');
         $view->setVar('requeteCabinet', $nomsCabinets);
         $view->setVar('selectAllMedecins', $medecins);
         $view->setVar('compteMed', $nbMedecins);
@@ -104,7 +104,7 @@ class AdminsController {
         $nbMedecins = $medecins->rowCount(); //compte le nombre de medecins
         $patients = $this->adminsService->findAllPatients($pdo);
         $nbpatients = $patients->rowCount();
-        $view = new View('cabinet_medical\views\accueilAdmin');
+        $view = new View('SAE_S3_WEB\views\accueilAdmin');
         $view->setVar('requeteCabinet', $nomsCabinets);
         $view->setVar('selectAllMedecins', $medecins);
         $view->setVar('compteMed', $nbMedecins);
@@ -122,7 +122,7 @@ class AdminsController {
     public function goDossMedecin($pdo) {
         $idMed = HttpHelper::getParam('idMed');
         $dossMedecin = $this->adminsService->getInfoDoctor($pdo, $idMed);
-        $view = new View('cabinet_medical\views\dossierMedecin');
+        $view = new View('SAE_S3_WEB\views\dossierMedecin');
         while($ligne = $dossMedecin->fetch()) {
             $view->setVar('nom', $ligne['nom']);
             $view->setVar('prenom', $ligne['prenom']);
@@ -153,7 +153,7 @@ class AdminsController {
 
     public function deconnexion() {
         session_destroy();
-        $view = new View('cabinet_medical/views/accueil');
+        $view = new View('SAE_S3_WEB/views/accueil');
         $view->setVar('erreurLog', false);
         return $view;
 		exit();

@@ -27,12 +27,12 @@ class AjoutMedecinController {
 		// Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
             exit();
         }
 		
-        $view = new View('cabinet_medical/views/creationMedecin');
+        $view = new View('SAE_S3_WEB/views/creationMedecin');
         $view->setVar('check', false);
         return $view;
     }
@@ -117,7 +117,7 @@ class AjoutMedecinController {
 		}
 
         $role = "MED";	
-		$view = new View('cabinet_medical/views/creationMedecin');
+		$view = new View('SAE_S3_WEB/views/creationMedecin');
 		if ($ToutOK == false) {
 			$view->setVar('check', $ToutOK);
         } else if ($ToutOK == true){

@@ -39,6 +39,7 @@
 				</br>
 				<div class="col-md-12 col-sm-12 col-xs-12 doctorName">
 					<?
+                        //affiche le Nom et Prénom du Docteur connecté
 						echo "Docteur ".$_SESSION['nom'].' '.$_SESSION['prenom'];
 					?>
 				</div>	
@@ -59,6 +60,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12 inputCritere">
                                 <p class="text"><b>Désignation :</b></p>
                                 <input type="texte" name="designation" class="form-control" placeholder="Tapez un mot à chercher" value="<?php 
+                                //vérifie si l'utilisateur avait déjà rempli ce champ lors de l'envoi du formulaire
                                 if(isset($_POST['designation'])) {
                                     echo $_POST['designation'];
                                 } else {
@@ -74,8 +76,10 @@
                                 <select class="form-control" name="Type" id="type">
                                     <option value="TOUS">TOUS</option>
                                     <?php
+                                    //boucle pour afficher tous les types de médicaments
                                     while($ligne = $searchStmt2->fetch()) {
                                         echo '<option';
+                                        //vérifie si l'utilisateur avait déjà rempli ce champ lors de l'envoi du formulaire
                                         if(isset($_POST['Type']) && $_POST['Type'] == $ligne['forme']) {
                                             echo " selected";
                                         } 

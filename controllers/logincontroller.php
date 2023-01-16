@@ -32,12 +32,12 @@ class LoginController {
         // Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
             exit();
         }
 
-        $view = new View('cabinet_medical/views/acceuil');
+        $view = new View('SAE_S3_WEB/views/acceuil');
         $view->setVar('erreurLog', false);
         return $view;
     }
@@ -76,7 +76,7 @@ class LoginController {
                     return $this->goToAdminAccueil($pdo);
                 }
             } else {
-                $view = new View('cabinet_medical/views/accueil');
+                $view = new View('SAE_S3_WEB/views/accueil');
                 $view->setVar('identifiant', $login);
                 $view->setVar('erreurLog', true);
                 return $view;
@@ -86,7 +86,7 @@ class LoginController {
 
     public function goToMedecinAccueil($pdo) {
         $searchStmt = $this->medecinsService->findAllPatients($pdo, $_SESSION["idMed"]);
-        $view = new View('cabinet_medical/views/accueilMedecin');
+        $view = new View('SAE_S3_WEB/views/accueilMedecin');
         $view->setVar('searchStmt', $searchStmt);
         return $view;
     }
@@ -97,7 +97,7 @@ class LoginController {
         $nbMedecins = $medecins->rowCount(); //compte le nombre de medecins
         $patients = $this->adminsService->findAllPatients($pdo);
         $nbpatients = $patients->rowCount();
-        $view = new View('cabinet_medical\views\accueilAdmin');
+        $view = new View('SAE_S3_WEB\views\accueilAdmin');
         $view->setVar('requeteCabinet', $nomsCabinets);
         $view->setVar('selectAllMedecins', $medecins);
         $view->setVar('compteMed', $nbMedecins);

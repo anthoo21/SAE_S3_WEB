@@ -28,7 +28,7 @@ class FicheMedocController {
         // Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
         }
         $idMedoc = HttpHelper::getParam('idMedoc');
@@ -38,7 +38,7 @@ class FicheMedocController {
         $requeteMedASMR = $this->ficheMedocService->requeteMedASMR($pdo, $idMedoc);
         $requeteMedSMR = $this->ficheMedocService->requeteMedSMR($pdo, $idMedoc);
         $requeteMedINFO = $this->ficheMedocService->requeteMedINFO($pdo, $idMedoc);
-        $view = new View('cabinet_medical/views/ficheMedoc');
+        $view = new View('SAE_S3_WEB/views/ficheMedoc');
         $view->setVar('requeteMedGeneral', $requeteMedGeneral);
         $view->setVar('requeteMedCIP', $requeteMedCIP);
         $view->setVar('requeteMedCOMPO', $requeteMedCOMPO);
@@ -50,7 +50,7 @@ class FicheMedocController {
 
     public function deconnexion() {
         session_destroy();
-        $view = new View('cabinet_medical/views/accueil');
+        $view = new View('SAE_S3_WEB/views/accueil');
         $view->setVar('erreurLog', false);
         return $view;
 		exit();

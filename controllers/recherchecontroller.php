@@ -28,13 +28,13 @@ class RechercheController {
         // Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
         }
         
         $searchStmt = $this->rechercheService->findAllMedoc($pdo);
         $searchStmt2 = $this->rechercheService->findAllTypes($pdo);
-        $view = new View('cabinet_medical/views/recherche');
+        $view = new View('SAE_S3_WEB/views/recherche');
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
         return $view;
@@ -51,7 +51,7 @@ class RechercheController {
             $searchStmt = $this->rechercheService->findAllMedoc($pdo);
         }
         $searchStmt2 = $this->rechercheService->findAllTypes($pdo);
-        $view = new View('cabinet_medical/views/recherche');
+        $view = new View('SAE_S3_WEB/views/recherche');
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
         return $view;
@@ -59,7 +59,7 @@ class RechercheController {
 
     public function deconnexion() {
         session_destroy();
-        $view = new View('cabinet_medical/views/accueil');
+        $view = new View('SAE_S3_WEB/views/accueil');
         $view->setVar('erreurLog', false);
         return $view;
 		exit();

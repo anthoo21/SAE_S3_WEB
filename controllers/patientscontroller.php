@@ -26,12 +26,12 @@ class PatientsController {
         // Test si on est bien connecté (session existante et bon numéro de session
         if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
             // Renvoi vers la page de connexion
-            $view = new View('cabinet_medical/views/accueil');
+            $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
             exit();
         }
         
-        $view = new View('cabinet_medical/views/creationPatient');
+        $view = new View('SAE_S3_WEB/views/creationPatient');
         $view->setVar('check', false);
         return $view;
     }
@@ -148,7 +148,7 @@ class PatientsController {
         $commentaires=htmlspecialchars($commentaires);
 
         //Appel de la fonction insert ou la vue form
-        $view = new View('cabinet_medical/views/creationPatient');
+        $view = new View('SAE_S3_WEB/views/creationPatient');
         if ($check == false) {
             $view->setVar('nom',$nom);
             $view->setVar('prenom',$prenom);
@@ -191,7 +191,7 @@ class PatientsController {
 
     public function deconnexion() {
         session_destroy();
-        $view = new View('cabinet_medical/views/accueil');
+        $view = new View('SAE_S3_WEB/views/accueil');
         $view->setVar('erreurLog', false);
         return $view;
 		exit();
