@@ -69,9 +69,12 @@
 					
 					<!-- Boutons de modification -->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="modificationPatient.php" method="post">
+						<form action="index.php" method="post">
+							<input hidden name="noCV" value="<?php echo $noCV;?>">
+							<input hidden name="controller" value="ModificationPatient">
+							<input hidden name="action" value="index">
 							<button type="submit" class="btn btn-success btn-circle btn-xl" name="modifPatient" value="true" title="Modifier ce patient"><span class="fas fa-pencil"></span></button>		
-							<input type="hidden" name="idCV" value="<?php echo $noCV;?>">
+							
 						</form>
 					</div>
 					<!-- Boutons de suppression TODO-->

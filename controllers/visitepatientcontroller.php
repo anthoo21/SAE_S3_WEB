@@ -25,6 +25,7 @@ class VisitePatientController {
             $view = new View('SAE_S3_WEB/views/accueil');
             return $view;
         }
+        
         $idVisite = HttpHelper::getParam('idVisite');
         $stmt = $this->visitePatientService->getVisiteData($pdo, $idVisite);
         
