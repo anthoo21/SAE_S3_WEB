@@ -26,17 +26,27 @@
 				<!--Espace dans la navbar-->
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
-					<form action="accueilMedecin.php" method="post">
-						<input hidden name="controller" value="Medecin">		
-						<input hidden name="action" value="goToRecherche">			
-						<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
-					</form>
-					<form action="index.php" method="post">
-						<input hidden name="controller" value="Patients">			
-						<input hidden name="action" value="deconnexion">			
-						<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
-					</form>
-				</div>	
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">				
+							<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="deconnexion">
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="index">
+							<button type="submit" class="btn btn-info= btn-circle btn-xxl" name="deconnexion" value="true" title="Patients"><span class="fas fa-user"></button>
+						</form>
+					</div>
+				</div>		
 			</div>
 		<!--Nom du docteur-->
 		<div class="row">

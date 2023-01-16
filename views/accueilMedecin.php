@@ -27,17 +27,21 @@
 			<div class="col-md-4 col-sm-4 col-xs-4">
 			<!--Espace dans la navbar-->
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-4 logos">
-				<form action="index.php" method="post">
-					<input hidden name="controller" value="Recherche">				
-					<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
-				</form>
-				<form action="index.php" method="post">
-					<input hidden name="controller" value="Medecins">
-					<input hidden name="action" value="deconnexion">
-					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
-				</form>
-			</div>	
+				<div class="col-md-4 col-sm-4 col-xs-4 logos">
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">				
+							<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="deconnexion">
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
+						</form>
+					</div>
+				</div>	
 		</div>
 		<!--Nom du docteur-->
 		<div class="row">

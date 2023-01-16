@@ -77,7 +77,7 @@
 					<!-- Boutons de suppression TODO-->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
 						<form action="suppressionPatient.php" method="post">
-							<button type="submit" onclick="myFunction()" class="btn btn-success btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
+							<button type="submit" onclick="myFunction()" class="btn btn-danger btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
 							<input type="hidden" id="sup" name="okSup" value="true">
 						</form>
 					</div>
@@ -151,8 +151,8 @@
                                                 echo '<tr>';
                                                 echo '<td><button type="submit" class="btn btn-secondary" title="Voir la visite"><span class="fas fa-eye"></span></button></td>';
                                                 echo '<input hidden name="idVisite" value="'.$ligne['id_visite'].'">';
-                                                echo '<input hidden name="controller" value="">';// a rajouter -> direction fiche visite
-                                                echo '<input hidden name="action" value="">';// a rajouter -> direction fiche visite
+                                                echo '<input hidden name="controller" value="VisitePatient">';// a rajouter -> direction fiche visite
+                                                echo '<input hidden name="action" value="index">';// a rajouter -> direction fiche visite
                                                 echo '<td>'.$ligne['date_visite'].'</td>';
                                                 echo '<td>'.$ligne['nom'].' '.$ligne['prenom'].'</td>';
                                                 echo '<td>'.$ligne['motif'].'</td>';
