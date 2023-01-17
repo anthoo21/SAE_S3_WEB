@@ -101,6 +101,63 @@ class VisiteService
         return $supprMedoc;
     }
 
+    public function insertInVisite($pdo, $dateVisite, $idP, $idMedecin, $motif, $observation) {
+        $sql="INSERT INTO visites (date_visite, id_patient, id_medecin, motif, observations)
+				  VALUES (:dateVisite, :idP, :idMedecin, :motif, :observation);";
+        $insertInVisite = $pdo->prepare($sql);
+        $insertInVisite->bindParam('dateVisite', $dateVisite);
+        $insertInVisite->bindParam('idP', $idP);
+        $insertInVisite->bindParam('idMedecin', $idMedecin);
+        $insertInVisite->bindParam('motif', $motif);
+        $insertInVisite->bindParam('observation', $observation);
+        $insertInVisite->execute();
+        return $insertInVisite;
+    }
+
+    public function insertInOrdo($pdo) {
+        $sql = "INSERT INTO ordonnances (id_visite) VALUES (:idVisite)";
+        $reqMaxVis = "SELECT MAX(id_visite) FROM visites";
+        $result=$pdo->query($reqMaxVis);
+        $result = $result->fetchColumn();
+        $insertInOrdo=$pdo->prepare($sql);
+        $insertInOrdo->bindParam('idVisite', $result);
+        $insertInOrdo->execute();
+        return $insertInOrdo;
+    }
+
+    public function insertInPrescri($pdo) {
+        $reqMaxOrdo="SELECT MAX(id_ordo) FROM ordonnances";
+        $resultOrdo=$pdo->query($reqMaxOrdo);
+        $resultOrdo = $resultOrdo->fetchColumn();
+        $selectPrescri="SELECT * FROM prescriptionstemp";
+        $result = $pdo->query($selectPrescri);
+        while($ligne = $result->fetch()) {
+            $sql = "INSERT INTO prescriptions (id_ordonnance, id_medicaments, posologie) VALUES(:idOrdo, :idMedoc, :posologie)";
+            $insertInPrescri=$pdo->prepare($sql);
+            $insertInPrescri->bindParam('idOrdo', $resultOrdo);
+            $insertInPrescri->bindParam('idMedoc', $ligne['id_medicaments']);
+            $insertInPrescri->bindParam('posologie', $ligne['posologie']);
+            $insertInPrescri->execute();
+            return $insertInPrescri;
+        }
+    }
+
+    public function deletePrescriTemp($pdo) {
+        $sql = "DELETE FROM prescriptionsTemp";
+        $deletePrescriTemp=$pdo->prepare($sql);
+        $deletePrescriTemp->execute();
+        return $deletePrescriTemp;
+    }
+
+    public function searchPatientsAccueil($pdo, $idMed) {
+        $sql = "SELECT nom, prenom, sexe, tel, email, dateNai, date_visite, numeroCarteVitale FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale 
+        WHERE P.id_medecin = :id";
+        $searchPatients = $pdo->prepare($sql);
+        $searchPatients->bindParam('id', $idMed);
+        $searchPatients->execute();
+        return $searchPatients;
+    }
+
     private static $defaultService;
 
     /**

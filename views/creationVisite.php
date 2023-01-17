@@ -13,46 +13,10 @@
 	<?php
 		//Récupération des données
 		
-		
+		$idMedecin = $_SESSION['idMed'];
 		// Toutes les données sont correctes
-		if($ToutOK && isset($_POST['valideInsertion'])) {
-			try {
-				$requete="INSERT INTO visites (date_visite, id_patient, id_medecin, motif, observations)
-					VALUES (?, ?, ?, ?, ?);";
-				$stmt = $pdo->prepare($requete);
-				$stmt->execute([$dateVisite, $idP, $_SESSION['idMed'], $motif, $observation]);
-				//--------------------------------------------------------------------------
-				$requeteInsertVisite="INSERT INTO ordonnances (id_visite) VALUES (:idVisite)";
-				$reqMaxVis="SELECT MAX(id_visite) FROM visites";
-				$result=$pdo->query($reqMaxVis);
-				$result = $result->fetchColumn();
-				$stmt=$pdo->prepare($requeteInsertVisite);
-				$stmt->bindParam('idVisite', $result);
-				$stmt->execute();
-				//---------------------------------------------------------------------------
-				$reqMaxOrdo="SELECT MAX(id_ordo) FROM ordonnances";
-				$resultOrdo=$pdo->query($reqMaxOrdo);
-				$resultOrdo = $resultOrdo->fetchColumn();
-				$selectPrescri="SELECT * FROM prescriptionstemp";
-				$result = $pdo->query($selectPrescri);
-				while($ligne = $result->fetch()) {
-					$requete="INSERT INTO prescriptions (id_ordonnance, id_medicaments, posologie) VALUES(:idOrdo, :idMedoc, :posologie)";
-					$stmt=$pdo->prepare($requete);
-					$stmt->bindParam('idOrdo', $resultOrdo);
-					$stmt->bindParam('idMedoc', $ligne['id_medicaments']);
-					$stmt->bindParam('posologie', $ligne['posologie']);
-					$stmt->execute();
-				}
-				//----------------------------------------------------------------------------
-				$reqDelete="DELETE FROM prescriptionsTemp";
-				$stmt=$pdo->prepare($reqDelete);
-				$stmt->execute();
-
-			} catch (PDOException $e) {
-				echo $e->getMessage();
-			}
+		if(isset($ToutOK) && $ToutOK) {
 		?>
-		
 		<div class="container">
 				<!-- Nav-bar -->
 				<div class="row nav">
@@ -89,7 +53,11 @@
 						</div>
 						<!--Retour accueil-->
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<a href="accueilMedecin.php"><span class="fas fa-home"></span> -- Retour à la liste des patients -- </a>
+							<form action="index.php" method="post">
+								<input hidden name="controller" value="Medecins">
+								<input hidden name="idMed" value="<?php echo $idMed ?>">
+								<button type="submit"><span class="fas fa-home"></span></button> -- Retour à la liste des patients --
+							</form>
 						</div>
 					</div>
 				</div>
@@ -137,7 +105,6 @@
 						?>
 					</div>	
 				</div>
-                <?php var_dump($idP) ?>
 				<div class="row paddingForm">
 					<div class="row formPatient">
 						<!--Titre "Création d'un patient"-->
@@ -329,6 +296,7 @@
                                                                             <div class="col-md-12 col-sm-12 col-xs-12 divBtn">
                                                                                 <input hidden name="controller" value="Visite">
                                                                                 <input hidden name="action" value="rechercheCritere">
+																				<input hidden name="idP" value="<?php echo $idP ?>">
                                                                                 <button type="submit" name="rechercher" value="Rechercher" class="btn-secondary form-control" id="refresh-button"><span class="fas fa-search"> R E C H E R C H E R</button>
                                                                             </div>	
                                                                         </form>
@@ -372,6 +340,10 @@
                                                                                         echo '<input type="hidden" name="idMedoc" value="'.$ligne['idGeneral'].'">';
                                                                                         echo '<input type="hidden" name="OrdoToFiche" value="1">';
                                                                                         echo '<input hidden name="controller" value="FicheMedoc">';
+																						echo '<input type="hidden" name="idP" value="'.$idP.'">';
+																						echo '<input type="hidden" name="dateVisite" value="'.$dateVisite.'">';
+																						echo '<input type="hidden" name="motif" value="'.$motif.'">';
+																						echo '<input type="hidden" name="observation" value="'.$observation.'">';
                                                                                         echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament" name="voir"><span class="fas fa-eye"></button>';
                                                                                     echo '</form>';
                                                                                     echo '<form action="index.php" method="post">';
@@ -403,6 +375,7 @@
                                             <input hidden name="controller" value="Visite">
                                             <input hidden name="action" value="insertVisite">
                                             <input hidden name="idP" value="<?php echo $idP ?>">
+											<input hidden name="idMedecin" value="<?php echo $idMedecin ?>">
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>

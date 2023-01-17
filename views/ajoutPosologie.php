@@ -7,7 +7,7 @@
     </head>
     <body>
 <?php 
-var_dump($idP);
+
 if(isset($idMedoc)) { ?>
 <div class="row">
     <h2>Ajouter posologie :</h2>
@@ -17,6 +17,9 @@ if(isset($idMedoc)) { ?>
         <input hidden name="idP" value="<?php echo $idP ?>">
         <input hidden name="controller" value="Posologie">
         <input hidden name="action" value="insertPrescri">
+        <input hidden name="dateVisite" value="<?php echo $dateVisite?>">
+        <input hidden name="motif" value="<?php echo $motif?>">
+        <input hidden name="observation" value="<?php echo $observation?>">
         <input type="submit" class="btnInsert" value="Valider">
     </form>
 </div>

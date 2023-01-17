@@ -34,6 +34,10 @@ class VisiteController {
             exit();
         }
         $idP = HttpHelper::getParam('idP');
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
+        $ToutOK=false;
         $searchStmt = $this->visiteService->findAllMedoc($pdo);
         $searchStmt2 = $this->visiteService->findAllTypes($pdo);
         $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
@@ -44,6 +48,10 @@ class VisiteController {
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
         $view->setVar('requeteOrdo', $requeteOrdo);
         $view->setVar('idP', $idP);
+        $view->setVar('dateVisite', $dateVisite);
+        $view->setVar('motif', $motif);
+        $view->setVar('observation', $observation);
+        $view->setVar('ToutOK', $ToutOK);
         return $view;
     }
 
@@ -52,6 +60,10 @@ class VisiteController {
         $type = HttpHelper::getParam('Type');
         $generiques = HttpHelper::getParam('generiques');
         $idP = HttpHelper::getParam('idP');
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
+        $ToutOK=false;
         if((isset($designation) && $designation != "") || (isset($type) && $type != "")
         || (isset($generiques) && $generiques != "")) {
             $searchStmt = $this->visiteService->rechercheCritere($pdo, $designation, $type, $generiques);
@@ -64,22 +76,33 @@ class VisiteController {
         $view = new View('SAE_S3_WEB/views/creationVisite');
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
         $view->setVar('requeteOrdo', $requeteOrdo);
-        $view = new View('SAE_S3_WEB/views/creationVisite');
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
         $view->setVar('idP', $idP);
+        $view->setVar('dateVisite', $dateVisite);
+        $view->setVar('motif', $motif);
+        $view->setVar('observation', $observation);
+        $view->setVar('ToutOK', $ToutOK);
         return $view;
     }
 
     public function supprMedoc($pdo) {
         $idMed = HttpHelper::getParam('recupId');
         $idP = HttpHelper::getParam('idP');
+        $dateVisite = HttpHelper::getParam('dateVisite');
+        $motif = HttpHelper::getParam('motif');
+        $observation = HttpHelper::getParam('observation');
+        $ToutOK=false;
         $supprMedoc = $this->visiteService->supprMedoc($pdo, $idMed);
         $searchStmt = $this->visiteService->findAllMedoc($pdo);
         $searchStmt2 = $this->visiteService->findAllTypes($pdo);
         $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
         $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
         $view = new View('SAE_S3_WEB/views/creationVisite');
+        $view->setVar('dateVisite', $dateVisite);
+        $view->setVar('motif', $motif);
+        $view->setVar('observation', $observation);
+        $view->setVar('ToutOK', $ToutOK);
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
@@ -92,6 +115,9 @@ class VisiteController {
         $dateVisite = HttpHelper::getParam('dateVisite');
         $motif = HttpHelper::getParam('motif');
         $observation = HttpHelper::getParam('observation');
+        $idP = HttpHelper::getParam('idP');
+        $idMed = HttpHelper::getParam('idMedecin');
+        $view = new View('SAE_S3_WEB/views/creationVisite');
         $ToutOK=true; //Savoir si toutes les données ont été rentrées
 		//Récupération de la date de la visite
 		if(isset($_POST['dateVisite']) and $_POST['dateVisite']!="")  {
@@ -115,11 +141,30 @@ class VisiteController {
 			$ToutOK=false;
 		}
 
-        if($ToutOk) {
-            
+        if($ToutOK) {
+            $insertInVisite = $this->visiteService->insertInVisite($pdo, $dateVisite, $idP, $idMed, $motif, $observation);
+            $insertInOrdo = $this->visiteService->insertInOrdo($pdo);
+            $insertInPrescri = $this->visiteService->insertInPrescri($pdo);
+            $deletePrescriTemp = $this->visiteService->deletePrescriTemp($pdo);
+            $view->setVar('ToutOK', $ToutOK);
         } else {
-
+            $view->setVar('dateVisite', $dateVisite);
+            $view->setVar('motif', $motif);
+            $view->setVar('observation', $observation);
+            $view->setVar('ToutOK', $ToutOK);
         }
+        $searchStmt = $this->visiteService->findAllMedoc($pdo);
+        $searchStmt2 = $this->visiteService->findAllTypes($pdo);
+        $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
+        $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
+        $requeteSearchPatients = $this->visiteService->searchPatientsAccueil($pdo, $idMed);
+        $view->setVar('searchStmt', $searchStmt);
+        $view->setVar('searchStmt2', $searchStmt2);
+        $view->setVar('requeteInfoPatient', $requeteInfoPatient);
+        $view->setVar('requeteOrdo', $requeteOrdo);
+        $view->setVar('idP', $idP);
+        $view->setVar('idMed', $idMed);
+        return $view;
     }
 
     public function deconnexion() {
