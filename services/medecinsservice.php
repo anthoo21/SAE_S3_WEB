@@ -15,7 +15,7 @@ class MedecinsService
      *  to access to all patients
      */
     public function findAllPatients($pdo, $idMed) {
-        $sql = "SELECT nom, prenom, sexe, tel, email, dateNai, date_visite, numeroCarteVitale FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale 
+        $sql = "SELECT DISTINCT nom, prenom, sexe, tel, email, dateNai, date_visite, numeroCarteVitale FROM patients P JOIN genres G ON P.id_genre = G.id_genre JOIN visites ON id_patient = numeroCarteVitale 
         WHERE P.id_medecin = :id";
         $searchStmt = $pdo->prepare($sql);
         $searchStmt->bindParam('id', $idMed);

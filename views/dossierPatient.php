@@ -79,9 +79,11 @@
 					</div>
 					<!-- Boutons de suppression TODO-->
 					<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
-						<form action="suppressionPatient.php" method="post">
-							<button type="submit" onclick="myFunction()" class="btn btn-danger btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
-							<input type="hidden" id="sup" name="okSup" value="true">
+						<form action="index.php" method="post">
+							<input hidden name="noCV" value="<?php echo $noCV;?>">
+							<input hidden name="controller" value="SuppressionPatient">
+							<input hidden name="action" value="index">
+							<button type="submit" class="btn btn-danger btn-circle btn-xl" name="supprimePatient" value="true" title="Supprimer ce patient"><span class="fas fa-trash"></span></button>
 						</form>
 					</div>
 					<!-- Boutons de retour -->
@@ -177,9 +179,6 @@
 						<div class="row divBtnA">
 							<form action="index.php" method="post">
 								<input hidden name="controller" value="Visite">
-								<?php 
-								var_dump($noCV);
-								?>
 								<input hidden name="idP" value="<?php echo $noCV; ?>">
 								<button type="submit" class="btn btn-success btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter une visite
 							</form>
