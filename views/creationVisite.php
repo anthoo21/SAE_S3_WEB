@@ -303,6 +303,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+														<?php 
+														?>
                                                         <div class="row">
                                                             <div class="col-md-12 col-sm-12 col-xs-12 titre">
                                                                 Résultat de la recherche
@@ -380,7 +382,6 @@
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>
-									<?php var_dump($idMedecin);?>
 								</div>
 							</form>
 						</div>

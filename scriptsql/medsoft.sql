@@ -37,17 +37,17 @@ INSERT INTO cabinet VALUES ('CB','Medsoft','Avenue de Bordeaux 12000 Rodez');
 -- 2 Structure table utilisateurs
 CREATE TABLE `utilisateurs` (
   `identifiant` CHAR(8) NOT NULL,
-  `motDePasse` CHAR(8) NOT NULL,
+  `motDePasse` VARCHAR(255) NOT NULL,
   `code_role` CHAR(3) NOT NULL,
   PRIMARY KEY(identifiant),
   CONSTRAINT fk_utilisateurs_roles FOREIGN KEY(code_role) REFERENCES roles(id_role)  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Insertion des utilisateurs
-INSERT INTO utilisateurs VALUES ('torcal83', '#lm3G7!x', 'MED');
-INSERT INTO utilisateurs VALUES ('vaucle85', 'M!56#gs8', 'MED');
-INSERT INTO utilisateurs VALUES ('administ', 'aDm1n1s!', 'ADM');
-INSERT INTO utilisateurs VALUES ('chaber90', 'apM#é!Kp', 'MED');
+INSERT INTO utilisateurs VALUES ('torcal83', 'torcal', 'MED');
+INSERT INTO utilisateurs VALUES ('vaucle85', 'vaucle', 'MED');
+INSERT INTO utilisateurs VALUES ('administ', 'administ', 'ADM');
+INSERT INTO utilisateurs VALUES ('chaber90', 'chaber', 'MED');
 
 -- 3 Structure table medecins
 CREATE TABLE `medecins` (

@@ -60,13 +60,14 @@ class VisiteController {
         $designation = HttpHelper::getParam('designation');
         $type = HttpHelper::getParam('Type');
         $generiques = HttpHelper::getParam('generiques');
+        var_dump($type);
         $idP = HttpHelper::getParam('idP');
         $dateVisite = HttpHelper::getParam('dateVisite');
         $motif = HttpHelper::getParam('motif');
         $observation = HttpHelper::getParam('observation');
         $ToutOK=false;
-        if((isset($designation) && $designation != "") || (isset($type) && $type != "")
-        || (isset($generiques) && $generiques != "")) {
+        if((isset($designation)) || (isset($type))
+        || (isset($generiques))) {
             $searchStmt = $this->visiteService->rechercheCritere($pdo, $designation, $type, $generiques);
         } else {
             $searchStmt = $this->visiteService->findAllMedoc($pdo);
@@ -84,6 +85,7 @@ class VisiteController {
         $view->setVar('motif', $motif);
         $view->setVar('observation', $observation);
         $view->setVar('ToutOK', $ToutOK);
+        $view->setVar('test', $test);
         return $view;
     }
 

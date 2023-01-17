@@ -58,7 +58,7 @@ class PatientsController {
         $medecin = HttpHelper::getParam('medecin');
 
         //Check nom
-        if(isset($nom) and $nom!="" and preg_match("/^[A-Z][A-Za-z\s'-]*[A-Za-z]$/", $nom)) {
+        if(isset($nom) and $nom!="") {
 			$nom=htmlspecialchars($nom);
 		} else {
             $nom="";
@@ -66,7 +66,7 @@ class PatientsController {
 		}
 
         //Check prenom
-        if(isset($prenom) and $prenom!="" and preg_match("/^[A-Z][a-zA-Z'-]*$/", $prenom)) {
+        if(isset($prenom) and $prenom!="") {
 			$prenom=htmlspecialchars($prenom);
 		} else {
             $prenom="";
