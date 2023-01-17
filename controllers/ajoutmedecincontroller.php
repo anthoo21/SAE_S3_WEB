@@ -55,7 +55,7 @@ class AjoutMedecinController {
         $motDePasse = HttpHelper::getParam('motDePasse');
 
         //Récupération du nom
-		if(isset($nom) and $nom!="" and preg_match("/^[[:alpha:]][[:alpha:][:space:]éèçàù'-]{0,33}[[:alpha:]éèçàù]$/", $nom)) {
+		if(isset($nom) and $nom!="" and preg_match("/^[A-Z][A-Za-z\s'-]*[A-Za-z]$/", $nom)) {
 			$nom=htmlspecialchars($nom);
 		} else {
 			$nom="";
@@ -64,7 +64,7 @@ class AjoutMedecinController {
 		// TODO => Attention aux caractères ' " ...
 		
 		//Récupération du prenom
-		if(isset($prenom) and $prenom!="" and preg_match("^[A-Z][A-Za-z\é\è\ê\-]+$^", $prenom)) {
+		if(isset($prenom) and $prenom!="" and preg_match("/^[A-Z][a-zA-Z'-]*$/", $prenom)) {
 			$prenom=htmlspecialchars($prenom);
 		} else {
 			$prenom="";
@@ -72,21 +72,21 @@ class AjoutMedecinController {
 		}
 
 		//Récupération de l'adresse
-		if(isset($adresse) and $adresse!="" and preg_match("/\b(?!\d{5}\b)\d+\b(?:\s*\w\b)?(?=\D*\b\d{5}\b|\D*$)/", $adresse)) {
+		if(isset($adresse) and $adresse!="" and preg_match("/^([0-9]{1,4}[a-zA-Z]{0,1})?\s*[a-zA-Z'.-]+(\s[a-zA-Z'.-]+)*\s*[0-9]{5}\s*[a-zA-Z]+([\s-][a-zA-Z]+)*$/", $adresse)) {
 			$adresse=htmlspecialchars($adresse);
 		} else {
 			$adresse="";
 			$ToutOK=false;
 		}
 		//Récupération du numéro de portable
-		if(isset($portable) and $portable!="" and preg_match("~(0){1}[0-9]{9}~", $portable)) {
+		if(isset($portable) and $portable!="" and preg_match("/^0[1-9][0-9]{8}$/", $portable)) {
 			$portable=htmlspecialchars($portable);
 		} else {
 			$portable="";
 			$ToutOK=false;
 		}
 		//Récupération de l'email
-		if(isset($mail) and $mail!="" and preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $mail)) {
+		if(isset($mail) and $mail!="" and preg_match("/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/", $mail)) {
 			$mail=htmlspecialchars($mail);
 		} else {
 			$mail="";
@@ -137,7 +137,6 @@ class AjoutMedecinController {
 		$view->setVar('date', $date);
 		$view->setVar('identifiant', $identifiant);
 		$view->setVar('motDePasse', $motDePasse);
-		var_dump($view);
 		return $view;
     }
 }

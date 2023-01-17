@@ -14,6 +14,10 @@
 		spl_autoload_register();
 
 		use yasmf\HttpHelper;
+
+		var_dump($check);
+		var_dump($_SESSION);
+		var_dump($_POST);
 	?>
 		<div class="container">
 			<!-- Nav-bar -->
@@ -72,8 +76,6 @@
 			</div>
 		</div>
 			<?php
-				//Récupération de l'ID du médecin connecté => TODO
-				$id_medecin="001";
 				if ($check == true) {
 			?>
 			<div class="row">
@@ -212,7 +214,7 @@
 							<!--Médecin traitant-->
 							<div class="col-md-6 col-sm-6 col-xs-6">
 								<label>Médecin traitant : </label>
-								<?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> <!--TODO : automatisé depuis l'authentification-->
+								<?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> 
 							</div>
 						</div>
 					</div>

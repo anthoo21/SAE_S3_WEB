@@ -15,12 +15,16 @@ class PatientsService
      */
     public static function addPatient($pdo, $nom, $prenom, $genre, $adresse, $portable, $mail, $poids, $date, $noCV, $allergies, $commentaires, $medecin) {
         try {
-            $sql = "INSERT INTO patients(numeroCarteVitale, nom, prenom, id_genre, tel, email, dateNai, poids, id_medecin, allergies, commentaires) 
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $insertStmt = $pdo->prepare($sql);
-            $insertStmt->execute([$noCV, $nom, $prenom, $genre, $portable, $mail, $date, $poids, $medecin, $allergies, $commentaires]);
-        } catch (PDOException $exception) {
-            throw new PDOException($exception->getMessage(), (int)$exception->getCode());
+            //Transaction pour éviter une insertion d'un patient déjà existant
+            $pdo->beginTransaction();
+            $sql="INSERT INTO patients (numeroCarteVitale, nom, prenom, id_genre, adresse, tel, email, dateNai, poids, id_medecin, allergies, commentaires)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$noCV, $nom, $prenom, $genre, $adresse, $portable, $mail, $date, $poids, $medecin, $allergies, $commentaires]);
+            $pdo->commit();
+        } catch (PDOException $e) {
+            $erreur = $e->getMessage();
+            $pdo->rollBack();
         }
         
     }

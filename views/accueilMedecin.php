@@ -104,6 +104,7 @@
 					</tr>
 					<?php 
 						while($ligne = $searchStmt->fetch()) {
+							var_dump($searchStmt);
 							echo '<form action="index.php" method="post">';
 							echo '<tr>';
 								echo '<td>'.$ligne['nom'].'</td>';
