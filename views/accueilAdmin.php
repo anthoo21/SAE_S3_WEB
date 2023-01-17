@@ -66,7 +66,6 @@
 								<th class="thAdm">Prénom</th>
 								<th class="thAdm">Email</th>
 								<th class="thAdm">Identifiant</th>
-								<th class="thAdm">Mot de passe</th>
 								<th class="thAdm"><span class="fas fa-eye"></th>
 							</tr>
 								
@@ -82,7 +81,6 @@
 										echo '<td>'.$ligne['prenom'].'</td>';
 										echo '<td>'.$ligne['email'].'</td>';
 										echo '<td>'.$ligne['id_util'].'</td>';
-										echo '<td>'.$ligne['motDePasse'].'</td>';
 										echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
 										echo '</form>';
 									echo '</tr>';

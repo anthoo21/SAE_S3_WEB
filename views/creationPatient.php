@@ -14,10 +14,6 @@
 		spl_autoload_register();
 
 		use yasmf\HttpHelper;
-
-		var_dump($check);
-		var_dump($_SESSION);
-		var_dump($_POST);
 	?>
 		<div class="container">
 			<!-- Nav-bar -->
@@ -177,7 +173,7 @@
 								<label for="poids">Poids: </label>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="poids" class="form-control" placeholder="Ex : 112.500" value="<?php if(isset($poids) && $poids!="") {echo $poids;}?>">
+								<input type="text" name="poids" class="form-control" placeholder="Ex : 112" value="<?php if(isset($poids) && $poids!="") {echo $poids;}?>">
 							</div>
 						</div>
 						<div class="row">

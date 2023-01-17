@@ -95,16 +95,6 @@
 						</form>
 					</div>
 					
-					<?php
-						// TODO
-						// Si le bouton "Suppression d'un patient" est activé
-						// if(isset($_POST['supprimePatient']) and $_POST['supprimePatient']){			// PB => dès que j'appuie sur un bouton, cela me renvoit sur l'accueil médecin
-							// $requeteSup='DELETE FROM patient WHERE numeroCarteVitale = ?';
-							// $stmtSup = $pdo->prepare($requeteSup);
-							// $stmtSup->execute($_SESSION['idPatient']);
-						// }
-						?>
-					
 					<!-- Affichage des informations générales du patient-->
 					<div class="col-md-7 col-sm-12 col-xs-12 paddingDossier">
 						<div class="col-md-12 col-sm-12 col-xs-12 bordureD">
@@ -164,9 +154,8 @@
                                                 echo '</form>';
                                                 echo '<form action="index.php" method="post">';
                                                 echo '<td><button type="submit" class="btn btn-secondary" title="Voir l\'ordonnance"><span class="fas fa-eye"></span></button></td>';
-                                                echo '<input hidden name="idOrdonnance" value="'.$ligne['id_visite'].'">';
-                                                echo '<input hidden name="controller" value="">';// a rajouter -> direction ordonnance
-                                                echo '<input hidden name="action" value="">';// a rajouter -> direction ordonnance
+                                                echo '<input hidden name="idVisite" value="'.$ligne['id_visite'].'">';
+                                                echo '<input hidden name="controller" value="OrdoPatient">';// a rajouter -> direction ordonnance
                                                 echo '</tr>';
                                                 echo '</form>';
                                             }

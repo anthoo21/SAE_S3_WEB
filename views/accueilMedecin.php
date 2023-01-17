@@ -104,21 +104,20 @@
 					</tr>
 					<?php 
 						while($ligne = $searchStmt->fetch()) {
-							var_dump($searchStmt);
 							echo '<form action="index.php" method="post">';
-							echo '<tr>';
-								echo '<td>'.$ligne['nom'].'</td>';
-								echo '<td>'.$ligne['prenom'].'</td>';	
-								echo '<td>'.$ligne['sexe'].'</td>';
-								echo '<td>'.$ligne['tel'].'</td>';
-								echo '<td>'.$ligne['email'].'</td>';
-								echo '<td>'.$ligne['dateNai'].'</td>';
-								echo '<td>'.$ligne['numeroCarteVitale'].'</td>';
-								echo '<input hidden name="numCarte" value="'.$ligne['numeroCarteVitale'].'">';
-								echo '<input hidden name="controller" value="Medecins">';
-								echo '<input hidden name="action" value="goToFichePatient">';
-								echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
-							echo '</tr>';
+								echo '<tr>';
+									echo '<td>'.$ligne['nom'].'</td>';
+									echo '<td>'.$ligne['prenom'].'</td>';	
+									echo '<td>'.$ligne['sexe'].'</td>';
+									echo '<td>'.$ligne['tel'].'</td>';
+									echo '<td>'.$ligne['email'].'</td>';
+									echo '<td>'.$ligne['dateNai'].'</td>';
+									echo '<td>'.$ligne['numeroCarteVitale'].'</td>';
+									echo '<input hidden name="numCarte" value="'.$ligne['numeroCarteVitale'].'">';
+									echo '<input hidden name="controller" value="Medecins">';
+									echo '<input hidden name="action" value="goToFichePatient">';
+									echo '<td><button type="submit" class="btn btn-secondary" title="Voir le dossier"><span class="fas fa-eye"></button>';
+								echo '</tr>';
 							echo '</form>';
 						}
 					?>

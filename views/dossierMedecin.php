@@ -99,7 +99,6 @@
 									echo '<p>Telephone : '.$tel.'</p>';
 									echo '<p>Email : '.$email.'</p>';
 									echo '<p>Identifiant : '.$identifiant.'</p>';
-									echo '<p>Mot de passe : '.$mdp.'</p>';
 								?>
 							</div>
 						</div>
