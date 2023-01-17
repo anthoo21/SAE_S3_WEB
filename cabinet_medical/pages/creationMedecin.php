@@ -1,11 +1,11 @@
 <?php
 session_start(); //démarrage d'une session
 
-
-//Vérification que les variables sessions de l'utilisateur existent
-if(isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-	$login = $_SESSION['login'];
-	$pwd = $_SESSION['pwd'];
+// Test si on est bien connecté (session existante et bon numéro de session
+if (!isset($_SESSION['login']) || !isset($_SESSION['id']) || $_SESSION['id']!=session_id()) {
+	// Renvoi vers la page de connexion
+	  header('Location: ../index.php');
+	  exit();
 }
 
 if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
