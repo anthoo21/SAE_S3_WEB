@@ -132,7 +132,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		
 		$erreur = '';
-		var_dump($_SESSION['idMed']);
+
 		// Toutes les données sont correctes
 		if(isset($_POST['valider']) and $_POST['valider']) {
 			try {
