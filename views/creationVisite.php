@@ -10,6 +10,7 @@
   </head>
   
   <body>
+  <?php if(isset($ToutOK) && $ToutOK) {?>
 		<div class="container">
 				<!-- Nav-bar -->
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
@@ -35,17 +36,6 @@
 						</form>
 					</div>
 				</div>	
-					<!--Espace dans la navbar-->
-					</div>
-					<!-- Boutons -->
-					<div class="col-md-4 col-sm-4 col-xs-4 logos">
-						<form action="accueilMedecin.php" method="post">
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="patient" value="true"><span class="fas fa-user"></button>				
-							<button type="button" class="btn btn-info btn-circle btn-xl" name="recherche" value="true"><span class="fas fa-search"></button>
-							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true"><span class="fas fa-power-off"></button>
-						</form>
-					</div>	
-				</div>
 				<!--Nom du docteur-->
 				<div class="row">
 					</br>
@@ -65,7 +55,6 @@
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<form action="index.php" method="post">
 								<input hidden name="controller" value="Medecins">
-								<input hidden name="idMed" value="<?php echo $idMed ?>">
 								<button type="submit"><span class="fas fa-home"></span></button> -- Retour à la liste des patients --
 							</form>
 						</div>
@@ -354,12 +343,14 @@
 																						echo '<input type="hidden" name="dateVisite" value="'.$dateVisite.'">';
 																						echo '<input type="hidden" name="motif" value="'.$motif.'">';
 																						echo '<input type="hidden" name="observation" value="'.$observation.'">';
+																						echo '<input hidden name="idMedecin" value="'.$idMedecin.'">';
                                                                                         echo '<td><button type="submit" class="btn btn-secondary" title="Voir la fiche médicament" name="voir"><span class="fas fa-eye"></button>';
                                                                                     echo '</form>';
                                                                                     echo '<form action="index.php" method="post">';
                                                                                         echo '<input hidden name="idMedoc" value="'.$ligne['codeCis'].'">';
                                                                                         echo '<input hidden name="controller" value="Posologie">';
                                                                                         echo '<input hidden name="idP" value="'.$idP.'">';
+																						echo '<input hidden name="idMedecin" value="'.$idMedecin.'">';
                                                                                         echo '<td><button type="submit" class="btn btn-secondary" title="Ajouter un médicament" name="ajouter"><span class="fa-solid fa-cart-plus"></button>';
                                                                                     echo '</form>';
                                                                                 echo '</tr>';
@@ -389,7 +380,7 @@
 											<input type="submit" name="valider" value="VALIDER" class="buttonValid form-control">
 										</div>
 									</div>
-									
+									<?php var_dump($idMedecin);?>
 								</div>
 							</form>
 						</div>

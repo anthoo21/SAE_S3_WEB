@@ -20,6 +20,7 @@ if(isset($idMedoc)) { ?>
         <input hidden name="dateVisite" value="<?php echo $dateVisite?>">
         <input hidden name="motif" value="<?php echo $motif?>">
         <input hidden name="observation" value="<?php echo $observation?>">
+        <input hidden name="idMedecin" value="<?php echo $idMedecin?>">
         <input type="submit" class="btnInsert" value="Valider">
     </form>
 </div>

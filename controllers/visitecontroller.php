@@ -52,6 +52,7 @@ class VisiteController {
         $view->setVar('motif', $motif);
         $view->setVar('observation', $observation);
         $view->setVar('ToutOK', $ToutOK);
+        $view->setVar('idMedecin', $_SESSION['idMed']);
         return $view;
     }
 
@@ -92,6 +93,7 @@ class VisiteController {
         $dateVisite = HttpHelper::getParam('dateVisite');
         $motif = HttpHelper::getParam('motif');
         $observation = HttpHelper::getParam('observation');
+        $idMedecin = HttpHelper::getParam('idMedecin');
         $ToutOK=false;
         $supprMedoc = $this->visiteService->supprMedoc($pdo, $idMed);
         $searchStmt = $this->visiteService->findAllMedoc($pdo);
@@ -108,6 +110,7 @@ class VisiteController {
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
         $view->setVar('requeteOrdo', $requeteOrdo);
         $view->setVar('idP', $idP);
+        $view->setVar('idMedecin', $idMedecin);
         return $view;
     }
 
@@ -116,7 +119,7 @@ class VisiteController {
         $motif = HttpHelper::getParam('motif');
         $observation = HttpHelper::getParam('observation');
         $idP = HttpHelper::getParam('idP');
-        $idMed = HttpHelper::getParam('idMedecin');
+        $idMedecin = HttpHelper::getParam('idMedecin');
         $view = new View('SAE_S3_WEB/views/creationVisite');
         $ToutOK=true; //Savoir si toutes les données ont été rentrées
 		//Récupération de la date de la visite
@@ -142,7 +145,7 @@ class VisiteController {
 		}
 
         if($ToutOK) {
-            $insertInVisite = $this->visiteService->insertInVisite($pdo, $dateVisite, $idP, $idMed, $motif, $observation);
+            $insertInVisite = $this->visiteService->insertInVisite($pdo, $dateVisite, $idP, $idMedecin, $motif, $observation);
             $insertInOrdo = $this->visiteService->insertInOrdo($pdo);
             $insertInPrescri = $this->visiteService->insertInPrescri($pdo);
             $deletePrescriTemp = $this->visiteService->deletePrescriTemp($pdo);
@@ -157,13 +160,13 @@ class VisiteController {
         $searchStmt2 = $this->visiteService->findAllTypes($pdo);
         $requeteInfoPatient = $this->visiteService->recupInfoPatient($pdo, $idP);
         $requeteOrdo = $this->visiteService->requeteOrdo($pdo);
-        $requeteSearchPatients = $this->visiteService->searchPatientsAccueil($pdo, $idMed);
+        $requeteSearchPatients = $this->visiteService->searchPatientsAccueil($pdo, $idMedecin);
         $view->setVar('searchStmt', $searchStmt);
         $view->setVar('searchStmt2', $searchStmt2);
         $view->setVar('requeteInfoPatient', $requeteInfoPatient);
         $view->setVar('requeteOrdo', $requeteOrdo);
         $view->setVar('idP', $idP);
-        $view->setVar('idMed', $idMed);
+        $view->setVar('idMedecin', $idMedecin);
         return $view;
     }
 
