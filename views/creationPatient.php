@@ -81,9 +81,11 @@
 					<h2>Enregistrement du nouveau patient validé !</h2>
 				</div>
 				<!--Retour accueil-->
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<a href="">Retour à ma page d'accueil</a>
-				</div>
+				<form action="index.php" method="post">
+					<input hidden name="controller" value="Medecins">
+					<input hidden name="action" value="index">
+					<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à l'accueil medecin">Retour à l'accueil</span></button>
+				</form>
 			</div>
 			<?php					
 				} else if($check == false) {
