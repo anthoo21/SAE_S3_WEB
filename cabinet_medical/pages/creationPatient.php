@@ -140,7 +140,7 @@ if(isset($_POST['deconnexion']) && $_POST['deconnexion']) {
 		}
 		//Récupération de l'ID du médecin connecté => TODO
 		$id_medecin=$_SESSION['idMed'];
-		var_dump($id_medecin);
+
 		$erreur = '';
 
 		// Toutes les données sont correctes
