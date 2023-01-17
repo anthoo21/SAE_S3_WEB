@@ -30,7 +30,8 @@
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
 					<div class="col-md-4 col-sm-4 col-xs-4 ">
 						<form action="index.php" method="post">
-							<input hidden name="controller" value="Medecins">				
+							<input hidden name="controller" value="Recherche">		
+							<input hidden bame="action" value="index">		
 							<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
 						</form>
 					</div>
@@ -42,7 +43,7 @@
 						</form>
 					</div>
 				</div>	
-		</div>
+			</div>
 		<!--Nom du docteur-->
 		<div class="row">
 		</br>
@@ -129,7 +130,7 @@
 			<form action="index.php" method="post">
 				<input hidden name="controller" value="Patients">
 				<input hidden name="action" value="index">
-				<input type="submit" class="btnDeTest" value=""><label style="text-align: center">Ajouter un patient</label>
+				<button type="submit" class="btn btn-success btn-circle btn-xl" name="ajouter" value="true"><span class="fas fa-plus"></button> Ajouter un patient
 			</form>
 		</div>
 	</div>

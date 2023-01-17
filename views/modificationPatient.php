@@ -29,7 +29,8 @@
 				<div class="col-md-4 col-sm-4 col-xs-4 logos">
 					<div class="col-md-4 col-sm-4 col-xs-4 ">
 						<form action="index.php" method="post">
-							<input hidden name="controller" value="Medecins">				
+							<input hidden name="controller" value="Recherche">		
+							<input hidden bame="action" value="index">		
 							<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
 						</form>
 					</div>
@@ -65,8 +66,13 @@
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12"></br></br></div>
 						<!--Retour accueil-->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<a href="accueilMedecin.php"><span class="fas fa-home"></span> -- Retour à ma page d'accueil -- </a>
+						<!-- Boutons de retour -->
+						<div class="col-md-1 col-sm-12 col-xs-12 titreDossier">
+							<form action="index.php" method="post">
+								<input hidden name="controller" value="Medecins">
+								<input hidden name="action" value="index">
+								<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="retour" value="true" title="Retour à l'accueil medecin"><span class="fas fa-arrow-left"></span></button>
+							</form>
 						</div>
 					</div>
 				</div>

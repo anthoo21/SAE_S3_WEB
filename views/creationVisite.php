@@ -10,21 +10,31 @@
   </head>
   
   <body>
-	<?php
-		//Récupération des données
-		
-		$idMedecin = $_SESSION['idMed'];
-		// Toutes les données sont correctes
-		if(isset($ToutOK) && $ToutOK) {
-		?>
 		<div class="container">
 				<!-- Nav-bar -->
-				<div class="row nav">
-					<div class="col-md-4 col-sm-4 col-xs-4">
-                        <img class="logo1" src="assets\logo_dessin.png" alt="logo plus">
-                        <img class="logo2" src="assets\logo_titre.png" alt="logo medsoft">
-					</div>	
-					<div class="col-md-4 col-sm-4 col-xs-4">
+				<div class="col-md-4 col-sm-4 col-xs-4 logos">
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Recherche">		
+							<input hidden bame="action" value="index">		
+							<button type="submit" class="btn btn-info btn-circle btn-xl" name="recherche" value="true" title="Recherche"><span class="fas fa-search"></button>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="deconnexion">
+							<button type="submit" class="btn btn-danger btn-circle btn-xxl" name="deconnexion" value="true" title="Déconnexion"><span class="fas fa-power-off"></button>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4 ">
+						<form action="index.php" method="post">
+							<input hidden name="controller" value="Medecins">
+							<input hidden name="action" value="index">
+							<button type="submit" class="btn btn-info= btn-circle btn-xxl" name="deconnexion" value="true" title="Patients"><span class="fas fa-user"></button>
+						</form>
+					</div>
+				</div>	
 					<!--Espace dans la navbar-->
 					</div>
 					<!-- Boutons -->
