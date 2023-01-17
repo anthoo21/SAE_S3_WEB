@@ -44,10 +44,10 @@ CREATE TABLE `utilisateurs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Insertion des utilisateurs
-INSERT INTO utilisateurs VALUES ('torcal83', 'torcal', 'MED');
-INSERT INTO utilisateurs VALUES ('vaucle85', 'vaucle', 'MED');
-INSERT INTO utilisateurs VALUES ('administ', 'administ', 'ADM');
-INSERT INTO utilisateurs VALUES ('chaber90', 'chaber', 'MED');
+INSERT INTO utilisateurs VALUES ('torcal83', '8d73b81801f466d97a82f53e2c676fe0', 'MED');
+INSERT INTO utilisateurs VALUES ('vaucle85', '93d1b408945722cf27fb5aaf24119c78', 'MED');
+INSERT INTO utilisateurs VALUES ('administ', 'a22b6ec6a945b84564a1fbdb35ceb4aa', 'ADM');
+INSERT INTO utilisateurs VALUES ('chaber90', '2fab212ad3d6b55f670089877cf92348', 'MED');
 
 -- 3 Structure table medecins
 CREATE TABLE `medecins` (
