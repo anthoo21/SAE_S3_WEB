@@ -45,7 +45,7 @@ class LoginController {
     public function connexion($pdo) {
         if (isset($_POST['login']) && isset($_POST['password'])) {
             $login = htmlspecialchars(HttpHelper::getParam('login'));
-            $mdp = htmlspecialchars(HttpHelper::getParam('password'));
+            $mdp = md5(htmlspecialchars(HttpHelper::getParam('password')));
             $user = $this->loginService->getUser($pdo, $login, $mdp);
 
             if($user->rowCount() == 1) {
